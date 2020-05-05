@@ -2,8 +2,6 @@ foo
 env.py
 
 # development folders
-README.md
-docs/
 
 .vscode/*
 !.vscode/settings.json
