@@ -2,10 +2,9 @@
 
 ## Exclusive model cars e-commerce site
 
-Heroku App: 
+Heroku App:
 
-
-Heroku git: 
+Heroku git:
 
 GitHub: https://github.com/Junon72/DreamsOnWheels
 
@@ -31,9 +30,79 @@ The project was created as Milestone project for the Full Stack Development modu
 
 ## Project brief
 
+**DreamsOnWheels** is an e-commerce site for exclusive model car collectables.
+
+The site sells dreams in form of model cars:
+
+- as a gift for a car lover
+- as a reminder of a goal to own the real dream car
+- to add to the collection of other dreams cars
+- to decorate the empty place on a shelve with something classy
+- to adore
+
+For the project I will combine two suggestions provided for the project:
+
+*Project Idea 0*
+
+Bring your own idea(s) to life, based on providing value to users to address a specific real or imagined need.
+And a modified.
+
+*Project Idea 2*
+
+Build an e-commerce place to sell collectable items
+
+**External user’s goal:**
+
+- Find, learn about and acquire collectable items they are interested in
+
+**Site owner's goal:**
+
+- Earn money on selling collectables (the site owner is the seller) and share the passion with other enthusiasts.
+
+**Potential features to include:** 
+
+- Create an online store focused on selling exclusive collectable items. In this case model cars from real dream cars.
+
+- Allow users to search for artifacts based on various fields.
+
+- Allow users to see the price, image and other basic details about a collectable.
+
+- Users would be able to learn about the original dream car and its history.
+
+- Allow users to vote for a model, they would like to see promoted. Users have to be registered for this.
+
+**Advanced potential feature (nice-to-have)**
+
+- Allow registered users to write comments to the blogs about dream cars and models.
+
+- Expand the search functionality to allow users to sort results based on price and other parameters in both ascending and descending order.
+
+- Include pagination and/or other dynamic display actions using javascript.
+
+- Use javascript polling to update the page whenever there's a new vote.
+
 ## Project Overview
 
+DOW - DreamsOnWheels user is able to:
+
+- Create an account with a username and password
+- Sign-in with a registered username and password
+- Reset password
+- Create a profile
+- Search models cars by name (and perhaps other search terms, like brand, style, color, price)
+- View details about the car models
+- Vote for a monthly highlighted dream car to be promoted or taken in to the collection - and/or
+- Comment on highlighted cars
+- Read about the original dream cars
+- Read blogs
+- Comment on blogs
+- Add collectables in a shopping cart
+- View shopping cart
+- Purchase items in their shopping cart
+
 ## Who is this application for?
+
+The application is for dream car and model car enthusiasts
 
 ### Possible users types
 
@@ -45,6 +114,239 @@ The project was created as Milestone project for the Full Stack Development modu
 
 ## Functional flow and Features
 
+Navigation bar is visible on all pages.
+
+Before login user has access to:  Sales, Blogs, This month (Car highlight of the month) Login (+ Reset password), Register (and create a user profile) and Shopping cart
+
+After login user has access to: Sales, Blogs, This month (Car highlight of the month), Shopping cart Logout, Comment on This month (Car highlight), Comment on blogs, Profile (View, Edit, Delete user)
+
+The site has following pages and features
+
+1. **Landing page/ Home**
+
+Header section
+
+- Logo
+- Hero image
+
+About section
+
+- What is the site about in nutshell
+
+Sales preview section
+
+- Carousel of items on sale
+- Back/ forward carousel nav
+
+Car Highlight preview section
+
+- Image (right)
+- Title
+- Text
+- Button to view the page
+
+Blogs preview section
+
+- Image (left)
+- Title
+- Text
+- Button to view the page
+
+2. **Sales**
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Search filter:
+
+- product by name/ price/ brand
+
+*Model cars in sale (cards - full width. In rows)*
+Item card:
+Section left
+
+- Image
+- Price
+- Add to cart button (adding an item to cart requires login)
+
+Section Right
+
+- Title
+- Text (info about the model, specs)
+- Read about original button ( opens a modal)
+
+Writing about the original car (modal - full screen)
+
+User can read about the actual car the model is made from, with an actual price range of a real car
+
+- Image
+- Title
+- Text
+- Close button
+
+ 3. **This month (Car highlight)**
+
+Header section
+
+- logo
+- Extra navigation to home
+
+Highlight section
+
+- Title
+- Image
+- Text
+- Open comments button
+- Comments counter in button
+
+User engagement section (login required)
+
+Allows user to vote for the car. If aim is reached at the end of the month, the car model will be added to the sales with a promo, or promo will be added to the highlighted car already in sales items to boost sales and enhance user engagement.
+
+- Vote up button
+- Vote down button
+- Vote counter
+- Aim
+
+Leave a comment section
+
+Allows user to leave comments about the car and other users comments (chat) to enhance user engagement.
+
+- Leave a comment form
+- Submit comment button
+- Edit comment form/ Save comment button
+
+Question: Is vote feature a model or a view function?
+
+4. **Blogs**
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Blog carts (columns)
+
+- Image
+- Title
+- Text excerpt
+- See more button
+
+5. *Blog*
+
+Navigation back to Blogs
+
+Blog section
+
+- Title
+- Image
+- Text
+
+User engagement section (login required)
+
+Leave a comment
+
+- Leave a comment form
+- Submit comment button
+- Edit comment form/ Save comment button
+
+6. **Profile** (login required)
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Profile section
+
+- Edit profile form
+- Attach profile image
+- Save profile button
+- Delete profile button
+
+Confirm deletion dialogue modal
+
+- Cancel button
+- Delete button
+
+7. **Login**
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Login section
+
+- Login form
+- Submit button
+- Reset password link
+
+8. **Reset password**
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Reset password section
+
+- Reset password form
+- Submit button
+
+9. **Register**
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Registration section
+
+- registration from
+- submit button
+
+10. **Cart** (Login required)
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Cart section
+
+Selected items in cards
+
+- Image
+- Title
+- Unit price
+- Quantity form
+- Modify order button
+- Total price
+
+Make purchase section
+
+- Total of totals
+- Make purchase button
+- Back to sales button
+
+11. **Payment** (Login required)
+
+Header section
+
+- Logo
+- Extra navigation to home
+
+Stripe payment
+
+- Payment form
+- Submit payment button
+- Back to cart button
+
+12. Logout takes the user back to Home page
+
 ## Accessing the app
 
 ## Features and functions planned but not implemented yet
@@ -53,7 +355,7 @@ The project was created as Milestone project for the Full Stack Development modu
 
 ## Project Setup
 
-## Setting up IDE
+### Setting up IDE
 
 The project was developed using [VSCode IDE](https://code.visualstudio.com/ "VSCode IDE") with Mac OS High Sierra operating system.
 For the version control, the code was pushed to local git repository and then to [GitHub](https://github.com/ "GitHub") repository. The application was then auto-deployed through [Heroku](https://www.heroku.com "Heroku") from the GitHub Master.
@@ -70,7 +372,7 @@ To check if and which version of Python you have installed (Mac comes Python2 pr
 
  I wrote the application using Python3.7.6.
 
-## Setting up git for version control and connecting to GitHub
+### Setting up git for version control and connecting to GitHub
 
 For version control I have used GirHub open source version control system. You can also yous Git or any other version control system provider. To make a GitHub account you can [follow the instructions here](https://help.github.com/en/github/getting-started-with-github).
 
@@ -149,7 +451,7 @@ After this you can push using just `git push`.
 
 I have installed VSCode GitHub extension, which makes committing changes slightly easier, by skipping username and password inquiry with each new commit.
 
-## Installing packages
+### Installing packages
 
 To install packages to your environment you need to update your pip, which is a Python package installer:
 
@@ -183,7 +485,7 @@ Now the IDE workspace is set and at this point the file tree should look like th
 
 If you click bin, you will find the packages you have installed from there
 
-## Starting a Django project
+### Starting a Django project
 
 The workspace is now ready to start a Django project:
 
@@ -203,7 +505,7 @@ ALLOWED_HOSTS = [
 ]
 ```
 
-Before running the application to test Django it has to be migrated. I terminal type:
+Before running the application to test Django it has to be migrated to initialize it. I terminal type:
 
 `python3 manage.py migrate`
 
@@ -219,6 +521,13 @@ In browser you'll see the Django welcome page which confirms everything is confi
 
 ![Image of Django project page](docs/images/Django-page.png)
 
+## Testing
+
+## Media and Content Origin
+
+## References
+
+## Special Thanks
 
 
 
