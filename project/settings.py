@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'django_forms_bootstrap',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +70,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuth',
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -101,6 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -119,4 +130,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

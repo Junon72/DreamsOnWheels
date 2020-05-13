@@ -517,6 +517,8 @@ Then run the project:
 
 `Starting development server at http://127.0.0.1:8000/`
 
+Alternatively, you can set
+
 In browser you'll see the Django welcome page which confirms everything is configured properly.
 
 ![Image of Django project page](docs/images/Django-page.png)
