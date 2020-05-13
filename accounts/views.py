@@ -31,7 +31,7 @@ def login(request):
                 login_form.add_error(None, "Your username or password is incorrect!")
     else:
         login_form = UserLoginForm()
-    return render(request, "login.html", {"login_form": login_form})
+    return render(request, "login.html", {"login_form": login_form, "login_page": "active"})
 
 
 def register(request):
@@ -54,10 +54,10 @@ def register(request):
                 messages.error(request, "Unable to log you in at this time!")
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'register.html', {'user_form': user_form})
+    return render(request, 'register.html', {'user_form': user_form, "register_page": "active"})
 
 @login_required
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    return render(request, 'profile.html', {"profile": user, "profile_page": "active"})

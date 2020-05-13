@@ -8,21 +8,22 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Document</title>
 
-		<!-- Bootstrap CSS -->
+		<!-- Google fonts -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=BioRhyme+Expanded:wght@800&display=swap"
 			rel="stylesheet">
 		<link
 			href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&family=Lato:wght@300;400;700&display=swap"
 			rel="stylesheet">
-
+		<!-- Fontawesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/sandstone/bootstrap.min.css">
+		<!-- Bootswatch -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 		<!-- Slick Carousel -->
@@ -36,25 +37,73 @@
 	</head>
 
 	<body>
+		<header>
 
-		<!-- Page Header -->
+			<!-- Page Header -->
 
-		<div class="container top-container">
-			<div class="row d-flex w-100 justify-content-center no-gutters">
-				<div class="col text-center mt-2 mb-3 mt-lg-3 mb-lg-4 w-100">
-					<h1 class="logo-title">DOW</h1>
-					<p class="logo-sub">~ Dreams ~ On ~ Wheels ~</p>
+			<div class="container top-container">
+				<div class="row d-flex w-100 justify-content-center no-gutters">
+					<div class="col text-center mt-2 mb-3 mt-lg-3 mb-lg-4 w-100">
+						<h1 class="logo-title">DOW</h1>
+						<p class="logo-sub">~ Dreams ~ On ~ Wheels ~</p>
+					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- / Page Header -->
+			<!-- / Page Header -->
 
+			<!-- Navbar | Sticky -->
 
-		<!-- Navbar -->
+			<div class="nav-header" id="dowHeader">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+						aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
 
+					<div class="collapse navbar-collapse" id="navbarColor02">
+						<ul class="navbar-nav justify-content-center flex-md-fill w-100">
+							<li class="nav-item {{ index_page }}">
+								<a class="nav-link" href="{% url 'index' %}">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Sales </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Highlight</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Blogs</a>
+							</li>
+							{% if user.is_authenticated %}
+							<li class="nav-item {{ login_page }}">
+								<a class="nav-link" href="{% url 'login' %}">Login</a>
+							</li>
+							<li class="nav-item {{ register_page }}">
+								<a class="nav-link" href="{% url 'register' %}">Register</a>
+							</li>
+							{% else %}
+							<li class="nav-item">
+								<a class="nav-link" href="#">Logout</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Profile</a>
+							</li>
+							{% endif %}
+							<li class="nav-item">
+								<a class="nav-link" href="#">Cart<i
+										class="fa fa-shopping-cart pl-2"></i>{% if product_count > 0 %}<label
+										class="badge badge-warning">{{ product_count }}</label>{% endif %}</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
 
-		<!-- / Navbar -->
+			<!-- / Navbar | Sticky -->
+
+		</header>
+
 
 
 		<!-- Main content -->
@@ -63,20 +112,62 @@
 
 		<!-- / Main content -->
 
+
 		<!-- Footer -->
 
-
-
+		<footer>
+			<div class="bg-dark p-4">
+				<div class="container">
+					<div class="row">
+						<div class="p-0 col-lg-4 col-md-6">
+							<div class="col align-self-center p-4">
+								<h4 class="text-white">DOW</h4>
+								<p class="mb-4 text-white">Kosterverloren 5 <br>Amstelland, AK 1234 <br> <abbr
+										title="Phone">P:</abbr> +31 (020) 123 45 678 </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bg-dark py-3">
+				<div class="container">
+					<div class="row d-flex justify-content-between">
+						<div class="col-lg-4 col-md-6">
+							<div class="row text-end mb-3">
+								<div class="col-md-2 col-3">
+									<a href="#" target="_blank"><i class="fa fa-facebook text-light fa-2x"></i></a>
+								</div>
+								<div class="col-md-2 col-3">
+									<a href="#" target="_blank"><i class="fa fa-twitter text-light fa-2x"></i></a>
+								</div>
+								<div class="col-md-2 col-3">
+									<a href="#" target="_blank"><i class="fa fa-instagram text-light fa-2x"></i></a>
+								</div>
+								<div class="col-md-2 col-3">
+									<a href="#" target="_blank"><i class="fa fa-pinterest-p text-light fa-2x"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<p class="text-secondary">Copyright @ Jussi Nousiainen</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
 		<!-- / Footer -->
 
 
 		<!-- Scripts -->
 
+		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- Ajax -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
 		</script>
+		<!-- Bootstrap4 -->
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 		</script>
@@ -84,6 +175,8 @@
 		<script type="text/javascript" src="/static/vendor/slick/slick.js"></script>
 		<!-- Custom js -->
 		<script type="text/javascript" src="/static/js/script.js"></script>
+
+		<!-- / Scripts -->
 
 	</body>
 
