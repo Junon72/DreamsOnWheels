@@ -4,16 +4,32 @@
 {% load crispy_forms_tags%}
 
 {% block content %}
+<div class="container main-wrapper-index">
+    <!-- Login Header -->
+    <section id="generic-header">
+        <div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+            <div class="col">
+                <h1 class="section-title">Login</h1>
+            </div>
+            <div class="col headerRightElement backHome clearfix">
+                <a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
+                    data-placement="bottom" title="Take me back Home" data-delay="50"><i
+                        class="align-bottom home-arrow fa fa-chevron-left"></i>Back HOme</a>
+            </div>
+        </div>
+    </section>
+</div>
+
 <div class="container main-wrapper-index bg-light mb-5 py-5">
     <section id="register">
         <div class="row d-flex justify-content-center no-gutters">
             <div class="col-lg-8 col-md-10 col-sx-12 d-block mx-auto pt-3">
-                <p>If you don't yet have an account, you can register <a href="{% url 'register' % }">here.</a></p>
+                <p>If you don't yet have an account, you can register <a href="{% url 'register' %}">here.</a></p>
                 <form method="POST">
                     {% csrf_token %} {{ login_form | crispy }}
-                    <button type="submit" class="btn btn-sm btn-dark">Login</button>
-                </form>
-                <p class="pt-3"><a href="{% url 'password_reset' %}">Reset Password</a></p>
+                    <button type=" submit" class="btn btn-sm btn-dark">Login</button>
+                        </form>
+                        <p class="pt-3"><a href="{% url 'password_reset' %}">Reset Password</a></p>
             </div>
         </div>
     </section>

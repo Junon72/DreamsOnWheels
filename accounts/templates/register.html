@@ -5,6 +5,22 @@
 
 
 {% block content %}
+<div class="container main-wrapper-index">
+    <!-- Login Header -->
+    <section id="generic-header">
+        <div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+            <div class="col">
+                <h1 class="section-title">Register</h1>
+            </div>
+            <div class="col headerRightElement backHome clearfix">
+                <a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
+                    data-placement="bottom" title="Take me back Home" data-delay="50"><i
+                        class="align-bottom home-arrow fa fa-chevron-left"></i>Back HOme</a>
+            </div>
+        </div>
+    </section>
+</div>
+
 <div class="container main-wrapper-index bg-light mb-5 py-5">
 	<section id="register">
 		<div class="row d-flex justify-content-center no-gutters">

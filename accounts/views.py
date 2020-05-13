@@ -4,13 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 
-# Create your views here.
 
-def index(request):
-    """Return the index.html file"""
-    return render(request, "index.html")
-
-# @login_required
+@login_required
 def logout(request):
     """Logout the user"""
     auth.logout(request)
@@ -61,7 +56,7 @@ def register(request):
         user_form = UserRegistrationForm()
     return render(request, 'register.html', {'user_form': user_form})
 
-# @login_required
+@login_required
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
