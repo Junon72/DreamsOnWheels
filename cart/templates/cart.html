@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap_tags %}
+
+
+{% block content %}
+<!-- Cart Header -->
+<div class="container main-wrapper-index">
+	<section id="generic-header">
+		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+			<div class="col">
+				<h1 class="section-title">Cart</h1>
+			</div>
+			<div class="col headerRightElement backHome fontXOne clearfix">
+				<a href="{% url 'all_products' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
+					data-placement="bottom" title="Take me back Home" data-delay="50"><i
+						class="align-bottom home-arrow fa fa-chevron-left"></i>Back to sales</a>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- / Cart Header -->
+
+<!-- Products card field-->
+<div class="container main-wrapper-sales mb-5 pb-5 px-0">
+
+	<section id="products-sales-field">
+		<div class="row clearfix no-gutters">
+			<!-- Products column (row start) -->
+			<div class="col-md-7 mb-4 no-p">
+				<!-- Product1 -->
+				{% for item in cart_items %}
+				<div class="card sales-card pr-0 mb-4">
+					{% if item.product.status == 'p' %}
+					<span class="badge badge-success promo-badge lato position-absolute mb-2">Promotion</span>
+					{% endif %}
+					<div class="row pr-0 no-gutters">
+						<div class="col-12 col-sm-6 col-md-12 col-lg-6 d-flex align-items-center no-p">
+							<div class="view h-100">
+								<img class="img-fluid card-img cart-product-image"
+									src="{{ MEDIA_URL }}{{ item.product.image_main }}"
+									alt="{{ item.product.make }} | {{ item.product.model }}">
+							</div>
+						</div>
+						<div class="col-12 col-sm-6 col-md-12 col-lg-6 px-md-3 pl-sm-0 pl-lg-0">
+							<div class="card sales-card-no-border h-100">
+								<div class="card-body pt-4 pb-2 px-2">
+									<h5 class="card-title text-left my-0 mb-2 ml-2">
+										<strong class="lato">
+											{{ item.product.make }} | {{ item.product.model }}
+										</strong>
+									</h5>
+									<div class="row mb-1 no-gutters">
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Mfr. </strong></span>
+											<span class="lato scale mr-2">{{ item.product.manufacturer }}</span>
+										</div>
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Year: </strong></span>
+											<span class="lato scale mr-2">{{ item.product.build_year }}</span>
+										</div>
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Color: </strong></span>
+											<span class="lato scale mr-2">{{ item.product.color }}</span>
+										</div>
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Scale: </strong></span>
+											<span class="lato scale mr-2">{{ item.product.scale }}</span>
+										</div>
+									</div>
+									<div class="row mb-0 no-gutters">
+										<div class="col d-flex about-original clearfix ml-2">
+											<a href="original.html" class="btn btn-link text-warning pl-0"
+												data-toggle="modal" data-target="#productDetail{{ item.id }}">View
+												details</a>
+										</div>
+									</div>
+									<div class="row no-gutters">
+										<div class="col d-flex pt-5">
+											<div class="autoRight my-auto pl-3"><strong class="lato price medium">
+													Price:</strong>
+											</div>
+											{% if item.product.old_price > 0 %}
+											<div class="autoRight"><i class="fa fa-euro"></i>
+												<span class="old-price">{{ item.product.old_price }} </span><strong
+													class="lato price medium">&nbsp{{ item.product.price }}</strong>
+											</div>
+											{% else %}
+											<div class="autoRight"><i class="fa fa-euro"></i>
+												<strong class="lato price medium">{{ item.product.price }} </strong>
+											</div>
+											{% endif %}
+											<!-- <div class="float-right my-auto pr-3"><i class="fa fa-euro"></i><strong
+													class="lato price medium">
+													&nbsp 84.50</strong>
+											</div> -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer p-2">
+						<div class="row my-1 no-gutters">
+							<div class="col-md-6 d-flex clearfix mt-2 pl-2">
+								<form class="form-inline p-0 m-0" method="post"
+									action="#">
+									<span class="autoRight my-auto">
+										<a href="#" class="btn btn-dark btn-sm amend text-light pl-0 add-to-cart px-2"
+											data-toggle="tooltip" data-placement="bottom" title="Amend quantity"
+											data-delay="50">Amend</a>
+									</span>
+									<div class="form-group autoLeft pr-2 my-auto">
+										<div class="input-group">
+											<input name="quantity" type="number" min="0" max="{{ item.product.in_stock }}"
+												placeholder="{{ item.quantity }}" class="form-control">
+											<div class="input-group-append">
+												<span class="input-group-text">Qty</span>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-6 order-first order-md-last d-flex clearfix pr-3">
+								<span class="autoRight my-auto pl-3">
+									<button class="btn btn-link disabled btn-sm text-dark pl-0 add-to-cart"
+										data-toggle="tooltip" data-placement="bottom" title="Amend quantity"
+										data-delay="50"><strong>Total</strong></button>
+								</span>
+								<div class="autoLeft my-auto"><i class="fa fa-euro"></i><strong
+										class="lato price medium"> &nbsp{{ item.total }}</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="productDetail{{ item.id }}" tabindex="-1" role="dialog"
+					aria-labelledby="productDetailTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-scrollable" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="productDetailTitle">Description</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="view w-100 h-100">
+								<img class="img-fluid card-img product-image"
+									src="{{ MEDIA_URL }}{{ item.product.image_sec }}"
+									alt="{{ item.product.make }} | {{ item.product.model }}">
+							</div>
+							<div class="modal-body">
+								<p class="lato">{{ item.product.description }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+				<!-- /Products card1 -->
+			<!-- Totals card -->
+			<div class="col-md-5 mb-4">
+				<div class="card sales-card">
+					<div class="card-body pt-3 pb-2">
+						<h5 class="card-title mb-3 mt-2">
+							<strong class="lato">
+								Your shopping cart
+							</strong>
+						</h5>
+						<div class="row no-gutters">
+							<div class="col">
+								<div class="display-block mb-2"><strong class="lato price medium">
+										Login to use our promotions!</strong>
+								</div>
+								<button href="{% url 'login' %}" type="button"
+									class="btn btn-outline-dark btn-sm btn-block">Login</button>
+							</div>
+						</div>
+						<div class="row no-gutters mt-4">
+							<div class="col d-flex">
+								<div class="float-left my-auto"><strong class="lato price">
+										Total</strong>
+								</div>
+								<div class="float-right my-auto pr-3"><i class="fa fa-euro"></i><strong
+										class="lato price medium">
+										&nbsp {{ totals }}</strong>
+								</div>
+							</div>
+						</div>
+						<div class="row no-gutters mt-3 mb-2">
+							<div class="col">
+								<button href="#" type="button"
+									class="btn btn-dark btn-default btn-block">Checkout</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+{% endblock %}

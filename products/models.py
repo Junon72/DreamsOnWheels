@@ -45,10 +45,11 @@ class Product(models.Model):
     build_year = models.PositiveIntegerField(default='0')
     color = models.CharField(max_length=30, default='')
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    promo_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
+    old_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
     image_main = models.ImageField(upload_to="product_images")
     image_sec = models.ImageField(upload_to="product_images", blank=True)
     status = models.CharField(max_length=1, choices=PRODUCT_STATUS_CHOICES, default='y')
+    in_stock = models.PositiveIntegerField(default='0')
     original_key = models.ForeignKey(Original, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):

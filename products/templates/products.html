@@ -2,12 +2,11 @@
 
 {% load static %}
 {% load bootstrap_tags %}
-{% load crispy_forms_tags %}
 
 
 {% block content %}
+<!-- Sales Header -->
 <div class="container main-wrapper-index">
-	<!-- Sales Header -->
 	<section id="generic-header">
 		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 			<div class="col">
@@ -16,11 +15,12 @@
 			<div class="col headerRightElement backHome fontXOne clearfix">
 				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
 					data-placement="bottom" title="Take me back Home" data-delay="50"><i
-						class="align-bottom home-arrow fa fa-chevron-left"></i>Back HOme</a>
+						class="align-bottom home-arrow fa fa-chevron-left"></i>Back Home</a>
 			</div>
 		</div>
 	</section>
 </div>
+<!-- / Sales Header -->
 
 <!-- Search -->
 <div class="container main-wrapper px-0">
@@ -45,6 +45,13 @@
 <div class="container main-wrapper-sales mb-5 pb-5 px-0 mx-auto">
 
 	<section id="products-sales-field">
+		<!-- {% if request.user.is_authenticated == False %}
+		<div class="row clearfix no-gutters">
+			<div class="col">
+				<p class="login-notice">To make use of our promotions you have to be logged in.</p>
+			</div> 
+		</div>
+		{% endif %} -->
 		<div class="row clearfix no-gutters">
 			<!-- Products card1 (row start) -->
 			{% for product in products %}
@@ -54,7 +61,7 @@
 					<span class="badge badge-success promo-badge lato position-absolute mb-2">Promotion</span>
 					{% elif product.status == 's' %}
 					<span class="badge badge-danger promo-badge lato position-absolute mb-2">Sold out</span>
-					{% elif product.status == 'o' %}
+					{% elif product.status == 'o' or product.in_stock == 0 %}
 					<span class="badge badge-warning promo-badge lato position-absolute mb-2">Out of stock</span>
 					{% else %}
 					{% endif %}
@@ -107,8 +114,8 @@
 											<div class="col d-flex clearfix">
 												{% if product.promo_price > 0 %}
 												<div class="autoRight"><i class="fa fa-euro"></i>
-													<span class="old-price">{{ product.price }} </span><strong
-														class="lato price medium">&nbsp{{ product.promo_price }}</strong>
+													<span class="old-price">{{ product.old_price }} </span><strong
+														class="lato price medium">&nbsp{{ product.price }}</strong>
 												</div>
 												{% else %}
 												<div class="autoRight"><i class="fa fa-euro"></i>
@@ -119,12 +126,20 @@
 											<form class="product-form m-0 p-0" method="POST"
 												action="{% url 'add_to_cart' product.id %}">
 												{% csrf_token %}
+												<input name="quantity" type="hidden" value="1" class="form-control">
 												<span class="autoLeft">
-													<input name="quantity" type="hidden" value="1" class="form-control">
+													{% if product.status == 's' or product.status == 'o' or product.in_stock == 0 %}
+													<button
+														class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
+														disabled aria-disabled="true" data-toggle="tooltip"
+														data-placement="bottom" title="Product not available currently"
+														data-delay="50">add</button>
+													{% else %}
 													<button type="submit"
 														class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
 														data-toggle="tooltip" data-placement="bottom"
 														title="Add to cart" data-delay="50">add</button>
+													{% endif %}
 												</span>
 											</form>
 										</div>

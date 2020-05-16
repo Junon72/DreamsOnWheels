@@ -90,10 +90,14 @@
 								<a class="nav-link" href="{% url 'register' %}">Register</a>
 							</li>
 							{% endif %}
-							<li class="nav-item">
-								<a class="nav-link" href="#">Cart<i
-										class="fa fa-shopping-cart pl-2"></i>{% if product_count > 0 %}<label
-										class="badge badge-warning">{{ product_count }}</label>{% endif %}</a>
+							<li class="nav-item {{ cart_page }}">
+								<a class="nav-link" href="{% url 'view_cart' %}">
+									Cart
+									<i class="fa fa-shopping-cart pl-2"></i>
+									{% if product_count > 0 %}
+									<label class="badge badge-warning">{{ product_count }}</label>
+									{% endif %}
+								</a>
 							</li>
 						</ul>
 					</div>
