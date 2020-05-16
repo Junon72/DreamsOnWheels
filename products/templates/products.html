@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="container main-wrapper-index">
+	<!-- Sales Header -->
+	<section id="generic-header">
+		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+			<div class="col">
+				<h1 class="section-title">Sales</h1>
+			</div>
+			<div class="col headerRightElement backHome fontXOne clearfix">
+				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
+					data-placement="bottom" title="Take me back Home" data-delay="50"><i
+						class="align-bottom home-arrow fa fa-chevron-left"></i>Back HOme</a>
+			</div>
+		</div>
+	</section>
+</div>
+
+<!-- Search -->
+<div class="container main-wrapper px-0">
+	<section id="searchProduct">
+		<form class="form-inline my-2 my-lg-0">
+			<button class="btn btn-link disabled text-dark my-2 my-sm-0" type="#">Order by</button>
+			<select class="custom-select">
+				<option selected="">Open this select menu</option>
+				<option value="1">High to Low €</option>
+				<option value="2">Low to High €</option>
+				<option value="3">Newest</option>
+				<option value="3">Oldest</option>
+				<option value="3">Aa to Zz</option>
+				<option value="3">Zz to Aa</option>
+			</select>
+		</form>
+	</section>
+</div>
+<!-- Search -->
+
+<!-- Products card field-->
+<div class="container main-wrapper-sales mb-5 pb-5 px-0 mx-auto">
+
+	<section id="products-sales-field">
+		<div class="row clearfix no-gutters">
+			<!-- Products card1 (row start) -->
+			{% for product in products %}
+			<div class="col-md-6 mb-4 no-p">
+				<div class="card sales-card pr-0 h-100">
+					{% if product.status == 'p' %}
+					<span class="badge badge-success promo-badge lato position-absolute mb-2">Promotion</span>
+					{% elif product.status == 's' %}
+					<span class="badge badge-danger promo-badge lato position-absolute mb-2">Sold out</span>
+					{% elif product.status == 'o' %}
+					<span class="badge badge-warning promo-badge lato position-absolute mb-2">Out of stock</span>
+					{% else %}
+					{% endif %}
+					<div class="row pr-0 no-gutters">
+						<div class="col-sm-6 col-md-12 col-lg-7 d-flex align-items-center no-p">
+							<div class="view w-100 h-100">
+								<img class="img-fluid card-img product-image"
+									src="{{ MEDIA_URL }}{{ product.image_main }}"
+									alt="{{ product.make }} | {{ product.model }}">
+								<button class="btn btn-warning product-detail-button clearfix" data-toggle="modal"
+									data-target="#productDetail{{ product.id }}">See details</button>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-12 col-lg-5 pl-sm-0 pl-lg-0">
+							<div class="card sales-card-no-border">
+								<div class="card-body pb-2 px-2">
+									<h5 class="card-title text-left mb-2 my-0 ml-2">
+										<strong class="lato">
+											{{ product.make }} | {{ product.model }}
+										</strong>
+									</h5>
+									<div class="row mb-1 no-gutters">
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Mfr. </strong></span>
+											<span class="lato scale mr-2">{{ product.manufacturer }}</span>
+										</div>
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Year: </strong></span>
+											<span class="lato scale mr-2">{{ product.build_year }}</span>
+										</div>
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Color: </strong></span>
+											<span class="lato scale mr-2">{{ product.color }}</span>
+										</div>
+										<div class="col-12 d-flex ml-2">
+											<span class="lato scale mr-2"><strong>Scale: </strong></span>
+											<span class="lato scale mr-2">{{ product.scale }}</span>
+										</div>
+									</div>
+									<div class="row mb-0 no-gutters">
+										<div class="col d-flex about-original clearfix ml-2">
+											<a href="#" class="btn btn-link text-warning pl-0" data-toggle="tooltip"
+												data-placement="bottom" title="About original" data-delay="50">Read
+												about
+												original...</a>
+										</div>
+									</div>
+									<div class="card-footer p-2">
+										<div class="row mb-0 clearfix no-gutters">
+											<div class="col d-flex clearfix">
+												{% if product.promo_price > 0 %}
+												<div class="autoRight"><i class="fa fa-euro"></i>
+													<span class="old-price">{{ product.price }} </span><strong
+														class="lato price medium">&nbsp{{ product.promo_price }}</strong>
+												</div>
+												{% else %}
+												<div class="autoRight"><i class="fa fa-euro"></i>
+													<strong class="lato price medium">{{ product.price }} </strong>
+												</div>
+												{% endif %}
+											</div>
+											<form class="product-form m-0 p-0" method="POST"
+												action="{% url 'add_to_cart' product.id %}">
+												{% csrf_token %}
+												<span class="autoLeft">
+													<input name="quantity" type="hidden" value="1" class="form-control">
+													<button type="submit"
+														class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
+														data-toggle="tooltip" data-placement="bottom"
+														title="Add to cart" data-delay="50">add</button>
+												</span>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Modal -->
+			<div class="modal fade" id="productDetail{{ product.id }}" tabindex="-1" role="dialog"
+				aria-labelledby="productDetailTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-scrollable" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="productDetailTitle">Description</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="view w-100 h-100">
+							<img class="img-fluid card-img product-image" src="{{ MEDIA_URL }}{{ product.image_sec }}"
+								alt="{{ product.make }} | {{ product.model }}">
+						</div>
+						<div class="modal-body">
+							<p class="lato">{{ product.description }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+			<!-- /Products card1 -->
+		</div>
+	</section>
+</div>
+{% endblock %}

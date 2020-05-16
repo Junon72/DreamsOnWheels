@@ -1,5 +1,32 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Home Page{% endblock %}
+{% load bootstrap_tags static %}
 
-{% block page_heading %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero image -->
+<section id="hero-image">
+	<div class="topHeroWrap"><img src="/static/img/master-img.jpg" class="img-fluid mx-auto topHero"
+			alt="Responsive image"></div>
+</section>
+<!-- / Hero image -->
+
+<div class="container main-wrapper-index">
+	<!-- Login Header -->
+	<section id="generic-header">
+		<div class="container p-0">
+			<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+				<div class="col">
+					<h1 class="section-title">Home</h1>
+				</div>
+				<div class="col carousel-control headerRightElement clearfix">
+					<i class="align-bottom arrow fa fa-chevron-left prev"></i>
+					<i class="align-bottom arrow fa fa-chevron-right next"></i>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+
+{% endblock %}
