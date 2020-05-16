@@ -17,16 +17,32 @@
 		<div class="container p-0">
 			<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 				<div class="col">
-					<h1 class="section-title">Home</h1>
+					<h1 class="section-title">Sales</h1>
 				</div>
 				<div class="col carousel-control headerRightElement clearfix">
-					<i class="align-bottom arrow fa fa-chevron-left prev"></i>
+					<i class="align-bottom arrow fa fa-chevron-left prev mr-1"></i>
 					<i class="align-bottom arrow fa fa-chevron-right next"></i>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
+<!-- / Login Header -->
+
+<!-- Sales Carousel -->
+<section id="sales-carousel">
+	<div class="container-fluid main-wrapper-index">
+		<div class="responsive slider salesSlider clearfix" data-slick="{'slidesToShow': 4, 'slidesToScroll': 4}">
+			{% for item in products %}
+			<div class="sliderItem mr-1">
+				<img src="{{ MEDIA_URL }}{{ item.image_main }}" class="slider-image" alt="{{ product.make }} | {{ product.model }}">
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<br><br><br>
+<!-- / Sales Carousel -->
 
 
 {% endblock %}

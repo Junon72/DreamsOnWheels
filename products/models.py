@@ -6,7 +6,7 @@ STATUS_CHOICES = [
     ('d', 'Draft'),
     ('h', 'Highlight'),
     ('a', 'Active'),
-    ('i', 'inactive')
+    ('i', 'Inactive')
 ]
 
 
@@ -32,8 +32,8 @@ PRODUCT_STATUS_CHOICES = [
     ('p', 'Promotion'),
     ('s', 'Soldout'),
     ('o', 'Out of stock'),
-    ('n', 'Not in sales'),
-    ('y', 'In sales')
+    ('n', 'Not on sales'),
+    ('y', 'On sales')
 ]
 
 class Product(models.Model):
@@ -45,7 +45,7 @@ class Product(models.Model):
     build_year = models.PositiveIntegerField(default='0')
     color = models.CharField(max_length=30, default='')
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    old_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
+    old_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, default='0.0')
     image_main = models.ImageField(upload_to="product_images")
     image_sec = models.ImageField(upload_to="product_images", blank=True)
     status = models.CharField(max_length=1, choices=PRODUCT_STATUS_CHOICES, default='y')
