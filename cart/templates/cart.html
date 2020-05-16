@@ -13,8 +13,8 @@
 				<h1 class="section-title">Cart</h1>
 			</div>
 			<div class="col headerRightElement backHome fontXOne clearfix">
-				<a href="{% url 'all_products' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
-					data-placement="bottom" title="Take me back Home" data-delay="50"><i
+				<a href="{% url 'all_products' %}" class="btn btn-link back-button clearfix text-dark"
+					data-toggle="tooltip" data-placement="bottom" title="Take me back Home" data-delay="50"><i
 						class="align-bottom home-arrow fa fa-chevron-left"></i>Back to sales</a>
 			</div>
 		</div>
@@ -36,14 +36,14 @@
 					<span class="badge badge-success promo-badge lato position-absolute mb-2">Promotion</span>
 					{% endif %}
 					<div class="row pr-0 no-gutters">
-						<div class="col-12 col-sm-6 col-md-12 col-lg-6 d-flex align-items-center no-p">
+						<div class="col-12 col-sm-7 col-md-12 col-lg-7 d-flex align-items-center no-p">
 							<div class="view h-100">
 								<img class="img-fluid card-img cart-product-image"
 									src="{{ MEDIA_URL }}{{ item.product.image_main }}"
 									alt="{{ item.product.make }} | {{ item.product.model }}">
 							</div>
 						</div>
-						<div class="col-12 col-sm-6 col-md-12 col-lg-6 px-md-3 pl-sm-0 pl-lg-0">
+						<div class="col-12 col-sm-5 col-md-12 col-lg-5 px-md-3 pl-sm-0 pl-lg-0 pr-0">
 							<div class="card sales-card-no-border h-100">
 								<div class="card-body pt-4 pb-2 px-2">
 									<h5 class="card-title text-left my-0 mb-2 ml-2">
@@ -78,16 +78,16 @@
 									</div>
 									<div class="row no-gutters">
 										<div class="col d-flex pt-5">
-											<div class="autoRight my-auto pl-3"><strong class="lato price medium">
+											<div class="autoRight ml-1 my-auto"><strong class="lato price medium">
 													Price:</strong>
 											</div>
 											{% if item.product.old_price > 0 %}
-											<div class="autoRight"><i class="fa fa-euro"></i>
+											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
 												<span class="old-price">{{ item.product.old_price }} </span><strong
 													class="lato price medium">&nbsp{{ item.product.price }}</strong>
 											</div>
 											{% else %}
-											<div class="autoRight"><i class="fa fa-euro"></i>
+											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
 												<strong class="lato price medium">{{ item.product.price }} </strong>
 											</div>
 											{% endif %}
@@ -101,11 +101,10 @@
 							</div>
 						</div>
 					</div>
+					<form class="form p-0 m-0" method="post" action="#">
 					<div class="card-footer p-2">
-						<div class="row my-1 no-gutters">
-							<div class="col-md-6 d-flex clearfix mt-2 pl-2">
-								<form class="form-inline p-0 m-0" method="post"
-									action="#">
+							<div class="row my-1 no-gutters">
+								<div class="col-md-6 d-flex clearfix mt-2 pl-2">
 									<span class="autoRight my-auto">
 										<a href="#" class="btn btn-dark btn-sm amend text-light pl-0 add-to-cart px-2"
 											data-toggle="tooltip" data-placement="bottom" title="Amend quantity"
@@ -113,29 +112,29 @@
 									</span>
 									<div class="form-group autoLeft pr-2 my-auto">
 										<div class="input-group">
-											<input name="quantity" type="number" min="0" max="{{ item.product.in_stock }}"
-												placeholder="{{ item.quantity }}" class="form-control">
+											<input name="quantity" type="number" min="0"
+												max="{{ item.product.in_stock }}" placeholder="{{ item.quantity }}"
+												class="form-control">
 											<div class="input-group-append">
 												<span class="input-group-text">Qty</span>
 											</div>
 										</div>
 									</div>
-								</form>
-							</div>
-							<div class="col-md-6 order-first order-md-last d-flex clearfix pr-3">
-								<span class="autoRight my-auto pl-3">
-									<button class="btn btn-link disabled btn-sm text-dark pl-0 add-to-cart"
-										data-toggle="tooltip" data-placement="bottom" title="Amend quantity"
-										data-delay="50"><strong>Total</strong></button>
-								</span>
-								<div class="autoLeft my-auto"><i class="fa fa-euro"></i><strong
-										class="lato price medium"> &nbsp{{ item.total }}</strong>
+								</div>
+								<div class="col-md-6 order-first order-md-last d-flex clearfix pr-3">
+									<span class="autoRight my-auto pl-3">
+										<button class="btn btn-link disabled btn-sm text-dark pl-0 add-to-cart"
+											data-toggle="tooltip" data-placement="bottom" title="Amend quantity"
+											data-delay="50"><strong>Total</strong></button>
+									</span>
+									<div class="autoLeft my-auto"><i class="fa fa-euro"></i><strong
+											class="lato price medium"> &nbsp{{ item.total }}</strong>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</form>
 				</div>
-
 				<!-- Modal -->
 				<div class="modal fade" id="productDetail{{ item.id }}" tabindex="-1" role="dialog"
 					aria-labelledby="productDetailTitle" aria-hidden="true">
@@ -160,7 +159,7 @@
 				</div>
 				{% endfor %}
 			</div>
-				<!-- /Products card1 -->
+			<!-- /Products card1 -->
 			<!-- Totals card -->
 			<div class="col-md-5 mb-4">
 				<div class="card sales-card">
@@ -181,10 +180,10 @@
 						</div>
 						<div class="row no-gutters mt-4">
 							<div class="col d-flex">
-								<div class="float-left my-auto"><strong class="lato price">
+								<div class="autoRight my-auto"><strong class="lato price">
 										Total</strong>
 								</div>
-								<div class="float-right my-auto pr-3"><i class="fa fa-euro"></i><strong
+								<div class="autoLeft my-auto pr-3"><i class="fa fa-euro"></i><strong
 										class="lato price medium">
 										&nbsp {{ totals }}</strong>
 								</div>
