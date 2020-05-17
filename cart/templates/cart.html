@@ -12,7 +12,7 @@
 			<div class="col">
 				<h1 class="section-title">Cart</h1>
 			</div>
-			<div class="col headerRightElement backHome fontXOne clearfix">
+			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'all_products' %}" class="btn btn-link back-button clearfix text-dark"
 					data-toggle="tooltip" data-placement="bottom" title="Take me back Home" data-delay="50"><i
 						class="align-bottom home-arrow fa fa-chevron-left"></i>Back to sales</a>
@@ -71,9 +71,9 @@
 									</div>
 									<div class="row mb-0 no-gutters">
 										<div class="col d-flex about-original clearfix ml-2">
-											<a href="original.html" class="btn btn-link text-warning pl-0"
+											<button class="btn btn-link text-warning p-0"
 												data-toggle="modal" data-target="#productDetail{{ item.id }}">View
-												details</a>
+												details</button>
 										</div>
 									</div>
 									<div class="row no-gutters">
@@ -144,7 +144,7 @@
 								</button>
 							</div>
 							<div class="view w-100 h-100">
-								<img class="img-fluid card-img product-image"
+								<img class="img-fluid card-img modal-product-image"
 									src="{{ MEDIA_URL }}{{ item.product.image_sec }}"
 									alt="{{ item.product.make }} | {{ item.product.model }}">
 							</div>
