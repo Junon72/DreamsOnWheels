@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from products.models import Original
+from django.contrib.auth.models import User
+
 
 def get_highlight(request):
     """Get Originals with highlight status"""
@@ -10,3 +13,4 @@ def get_highlight(request):
         'highlight_page': 'active'
     }
     return render(request, "highlight.html", context)
+
