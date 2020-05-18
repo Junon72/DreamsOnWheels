@@ -101,7 +101,7 @@
 									</div>
 									<div class="row mb-0 no-gutters">
 										<div class="col d-flex about-original clearfix ml-2">
-											<a href="#" class="btn btn-link text-warning pl-0" data-toggle="tooltip"
+											<a href="{% url 'products:get_original' id=product.original_key.pk %}" class="btn btn-link text-warning pl-0" data-toggle="tooltip"
 												data-placement="bottom" title="About original" data-delay="50">Read
 												about
 												original...</a>

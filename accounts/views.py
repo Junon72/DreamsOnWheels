@@ -35,10 +35,10 @@ def login(request):
                 login_form.add_error(None, 'Your username or password is incorrect!')
     else:
         login_form = UserLoginForm()
-        context = {
-            'login_form': login_form,
-            'login_page': 'active'
-        }
+    context = {
+        'login_form': login_form,
+        'login_page': 'active'
+    }
     return render(request, 'login.html', context)
 
 
@@ -60,6 +60,7 @@ def register(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, 'You have successfully registered')
+                return redirect('index')
             else:
                 messages.error(request, 'Unable to log you in at this time!')
     else:

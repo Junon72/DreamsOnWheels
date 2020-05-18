@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.views.generic import RedirectView
 
 
 
@@ -21,7 +20,7 @@ class Original(models.Model):
     image_two = models.ImageField(upload_to="original_images", blank=True)
     image_three = models.ImageField(upload_to="original_images", blank=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='a')
-    votes_total = models.ManyToManyField(User, related_name="votes")
+    votes = models.PositiveIntegerField(default='0')
     price_min = models.DecimalField(max_digits=16, decimal_places=2, blank=True)
     price_max = models.DecimalField(max_digits=16, decimal_places=2, blank=True)
 
@@ -52,7 +51,7 @@ class Product(models.Model):
     image_sec = models.ImageField(upload_to="product_images", blank=True)
     status = models.CharField(max_length=1, choices=PRODUCT_STATUS_CHOICES, default='y')
     in_stock = models.PositiveIntegerField(default='0')
-    original_key = models.ForeignKey(Original, null=True, on_delete=models.SET_NULL)
+    original_key = models.ForeignKey(Original, null=True, related_name='products', on_delete=models.SET_NULL)
     
     def __str__(self):
         return self.model
@@ -63,5 +62,5 @@ class Vote(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['user', 'highlight'], name='unique vote')
+            models.UniqueConstraint(fields=['user', 'highlight'], name='up_vote')
         ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404, get_list_or_404
 from .models import Product, Original
 
 
@@ -10,4 +10,8 @@ def all_products(request):
     }
     return render(request, "products.html", context)
 
-# def get_original(request):
+def get_original(request, id):
+    """Get Product related Original"""
+
+    original = get_list_or_404(Original, id=id)
+    return render(request, "original.html", {'original': original})

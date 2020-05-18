@@ -5,43 +5,42 @@
 
 
 {% block content %}
-<!-- Highlight Header -->
+<!-- Original Header -->
 <div class="container main-wrapper-index">
 	<section id="generic-header">
 		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 			<div class="col">
-				<h1 class="section-title">Highlight</h1>
+				<h1 class="section-title"></h1>
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
-				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
+				<a href="{% url 'products:all_products' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
 					data-placement="bottom" title="Take me back Home" data-delay="50"><i
-						class="align-bottom home-arrow fa fa-chevron-left"></i>Back Home</a>
+						class="align-bottom home-arrow fa fa-chevron-left"></i>Back to Sales</a>
 			</div>
 		</div>
 	</section>
 </div>
-<!-- / Highlight Header -->
+<!-- / Original Header -->
 
 
-<!-- /Highlight Headline | Carousel -->
-{% for highlight in highlight %}
+<!-- /original Headline | Carousel -->
+{% for original in original %}
 
-<!-- Highlight Headline -->
+<!-- original Headline -->
 <div class="container main-wrapper-index bg-light mb-5 pb-5">
 	<section id="highlightArticle">
 		<div class="row d-flex w-100 justify-content-center no-gutters">
 			<div class="col text-center mt-lg-3 mb-lg-4 w-100 pt-5">
-				<h1 class="article-title">{{ highlight.make }} | {{ highlight.model }}</h1>
-				<h4 class="article-sub">Highlight of month {% now 'F' %}</h4>
+				<h1 class="article-title">{{ original.make }} | {{ original.model }}</h1>
 			</div>
 		</div>
 
 		<!-- Highligh Carousel -->
 		<div class="row justify-content-center">
 			<div class="col-lg-10 col-md-11 col-sx-12">
-				<div id="carouselIndicators{{ highlight.id }}" class="carousel slide highlightCarousel"
+				<div id="carouselIndicators{{ original.id }}" class="carousel slide highlightCarousel"
 					data-ride="carousel">
-					{% if highlight.image_main and highlight.image_two and highlight.image_three %}
+					{% if original.image_main and original.image_two and original.image_three %}
 					<ol class="carousel-indicators">
 						<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#carouselIndicators" data-slide-to="1"></li>
@@ -49,62 +48,62 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_main }}');"
 							alt="First slide">
 						</div>
 						<div class="carousel-item highlightItem"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_two }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_two }}');"
 							alt="Second slide">
 						</div>
 						<div class="carousel-item highlightItem"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_three }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_three }}');"
 							alt="Third slide">
 						</div>
 					</div>
-					{% elif highlight.image_main and highlight.image_two and not highlight.image_three %}
+					{% elif original.image_main and original.image_two and not original.image_three %}
 					<ol class="carousel-indicators">
 						<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#carouselIndicators" data-slide-to="1"></li>
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_main }}');"
 							alt="First slide">
 						</div>
 						<div class="carousel-item highlightItem"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_two }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_two }}');"
 							alt="Second slide">
 						</div>
 					</div>
-					{% elif highlight.image_main and highlight.image_three and not highlight.image_two %}
+					{% elif original.image_main and original.image_three and not original.image_two %}
 					<ol class="carousel-indicators">
 						<li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
 						<li data-target="#carouselIndicators" data-slide-to="1"></li>
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_main }}');"
 							alt="First slide">
 						</div>
 						<div class="carousel-item highlightItem"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_three }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_three }}');"
 							alt="Second slide">
 						</div>
 					</div>
 					{% else %}
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
+							style="background-image: url('{{ MEDIA_URL }}{{ original.image_main }}');"
 							alt="First slide">
 						</div>
 					</div>
 					{% endif %}
-					<a class="carousel-control-prev" href="#carouselIndicators{{ highlight.id }}" role="button"
+					<a class="carousel-control-prev" href="#carouselIndicators{{ original.id }}" role="button"
 						data-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span class="sr-only">Previous</span>
 					</a>
-					<a class="carousel-control-next" href="#carouselIndicators{{ highlight.id }}" role="button"
+					<a class="carousel-control-next" href="#carouselIndicators{{ original.id }}" role="button"
 						data-slide="next">
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 						<span class="sr-only">Next</span>
@@ -112,42 +111,25 @@
 				</div>
 			</div>
 		</div>
-		<!-- / Highlight Carousel -->
+		<!-- / Original Carousel -->
 
-		<!-- Highlight Article -->
+		<!-- Original Article -->
 		<div class="row py-4 px-0 no-gutters justify-content-center highlightArticle">
 			<div class="col-lg-10 col-md-11 col-sx-12">
-				<p class="lato">{{ highlight.description }}</p>
+				<p class="lato">{{ original.description }}</p>
 			</div>
 		</div>
 
-		<!-- Highlight Specs -->
-		<div class="row d-flex justify-content-center no-gutters">
+		<!-- Original Specs -->
+		<div class="row d-flex pb-4 justify-content-center no-gutters">
 			<div class="col-lg-10 col-md-11 col-sx-12">
 				<div class="highlightSpec">
-					<strong>Year of build: </strong><em> {{ highlight.build_year }}</em>
+					<strong>Year of build: </strong><em> {{ original.build_year }}</em>
 				</div>
 				<div class="highlightRange">
 					<strong>Price range: </strong>
-					<em>{{ highlight.price_min }} - {{ highlight.price_max }}</em>
+					<em>{{ original.price_min }} - {{ original.price_max }}</em>
 				</div>
-			</div>
-		</div>
-		<div class="row mt-5 justify-content-center no-gutters">
-			<div class="col-md-10 col-sx-12 mx-auto">
-				<p class="lato text-center"><em>
-						If you would like to see a model of this car in our promotions, please cast your vote.
-					</em></p>
-			</div>
-			<div class="col-md-6 col-sx-12 text-center">
-				             <form class="p-0 m-0" method="POST" action="{% url 'up_vote' highlight.id %}">
-					                    {% csrf_token %}
-					<input type="hidden" value="vote">
-					                    <button type="submit" class="btn btn-warning btn-block my-2">Vote</button>
-					<p class="lato text-left FySmall"><em>
-							You need to be logged in to vote*
-						</em></p>     
-				</form>
 			</div>
 		</div>
 	</section>
