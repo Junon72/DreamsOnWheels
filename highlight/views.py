@@ -19,7 +19,7 @@ def get_highlight(request):
 def up_vote(request, id):
     if not request.user.is_authenticated:
         messages.danger(request, "You have to login to vote.")
-        return redirect('get_highlight')
+        return redirect('highlight:get_highlight')
     else:
         if request.method == 'POST':
             highlight = get_object_or_404(Original, id=id)
@@ -30,5 +30,5 @@ def up_vote(request, id):
                 messages.success(request, "Thank you. Your vote has been accounted!")
             else:
                 messages.info(request, "You have already voted for this highlight")
-            return redirect('get_highlight')
+            return redirect('highlight:get_highlight')
 

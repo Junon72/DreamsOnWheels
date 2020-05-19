@@ -140,7 +140,7 @@
 					</em></p>
 			</div>
 			<div class="col-md-6 col-sx-12 text-center">
-				             <form class="p-0 m-0" method="POST" action="{% url 'up_vote' highlight.id %}">
+				             <form class="p-0 m-0" method="POST" action="{% url 'highlight:up_vote' highlight.id %}">
 					                    {% csrf_token %}
 					<input type="hidden" value="vote">
 					                    <button type="submit" class="btn btn-warning btn-block my-2">Vote</button>
