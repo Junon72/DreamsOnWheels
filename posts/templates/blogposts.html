@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap_tags %}
+
+{% block content %}
+
+<!-- Blog posts Header -->
+<div class="container main-wrapper-index px-0">
+	<section id="products-header">
+		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+			<div class="col">
+				<h1 class="section-title">Blogs</h1>
+			</div>
+			<div class="col headerRightElement backHome FyNorm clearfix">
+				<a href="{% url 'index' %}" class="btn btn-link back-button text-dark" data-toggle="tooltip"
+					data-placement="bottom" title="Take me back Home" data-delay="50"><i
+						class="align-bottom home-arrow fa fa-chevron-left"></i> Back Home</a>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- /Blog posts Header -->
+
+<!-- Blogs card field-->
+{% for post in posts%}
+<div class="container px-0">
+	<div class="grid-container">
+		<div class="card bg-warning">
+			<img class="card-img-top" src="{{ MEDIA_URL }}{{ post.image }}" alt="Card image cap">
+			<div class="row no-gutters">
+				<div class="col pl-3 pb-2 pt-1">
+					<span class="lato text-dark"><i class="fa fa-clock"></i><em> &nbsp
+							{{ post.published_date }}</em></span>
+				</div>
+			</div>
+
+			<div class="card-body">
+				<h5 class="card-title lato">{{ post.title }}</h5>
+				<p class="card-text lato">{{ post.content | truncatewords:100 }}</p>
+			</div>
+			<div class="row no-gutters">
+				<div class="col pl-3 pb-2">
+					<a class="toBlog lato text-dark" href="#">Read more...</a>
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<small class="text-muted">Comments {{ nr }}</small>
+			</div>
+		</div>
+	</div>
+</div>
+{% empty %}
+<div class="container">
+	<div class="row no-gutters h-100 justify-content-center">
+		<div class="col-12 text-center">
+			<h4>No blogs to see</h4>
+		</div>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

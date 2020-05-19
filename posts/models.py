@@ -8,7 +8,7 @@ class Post(models.Model):
     """
     title = models.CharField(max_length=200)
     content = models.TextField()
-    author = models.CharField(max_length=20, default="DOW  ")
+    author = models.CharField(max_length=20, default="DOW")
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     views = models.IntegerField(default=0)
@@ -20,4 +20,3 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
-

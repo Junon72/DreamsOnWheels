@@ -73,7 +73,7 @@
 								<a class="nav-link" href="{% url 'highlight:get_highlight' %}">Highlight</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Blogs</a>
+								<a class="nav-link {{ blogs_page }}" href="{% url 'get_posts' %}">Blogs</a>
 							</li>
 							{% if user.is_authenticated %}
 							<li class="nav-item">
