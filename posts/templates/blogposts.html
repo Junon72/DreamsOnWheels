@@ -29,24 +29,26 @@
 		<div class="card bg-warning">
 			<img class="card-img-top" src="{{ MEDIA_URL }}{{ post.image }}" alt="Card image cap">
 			<div class="row no-gutters">
-				<div class="col pl-3 pb-2 pt-1">
-					<span class="lato text-dark"><i class="fa fa-clock"></i><em> &nbsp
-							{{ post.published_date }}</em></span>
+				<div class="col pl-3 pt-1">
+					<span class="lato FySmall text-dark"><i class="fa fa-clock"></i><em> &nbsp
+							{{ post.published_date }} | {{ post.views }} views</em></span>
+					<p class="lato FyMed text-dark mb-0 mt-2">
+						{{ post.author }} </p>
 				</div>
 			</div>
 
-			<div class="card-body">
+			<div class="card-body pt-0">
 				<h5 class="card-title lato">{{ post.title }}</h5>
 				<p class="card-text lato">{{ post.content | truncatewords:100 }}</p>
 			</div>
 			<div class="row no-gutters">
 				<div class="col pl-3 pb-2">
-					<a class="toBlog lato text-dark" href="#">Read more...</a>
+					<a class="toBlog lato text-dark" href="{% url 'post_detail' pk=post.pk %}">Read more...</a>
 				</div>
 			</div>
 
 			<div class="card-footer">
-				<small class="text-muted">Comments {{ nr }}</small>
+				<small class="text-muted">Comments {{ post.comments.count }}</small>
 			</div>
 		</div>
 	</div>

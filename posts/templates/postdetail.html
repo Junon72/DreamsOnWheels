@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+
+
+
+<!-- Post page Header -->
+<div class="container main-wrapper-index">
+	<section id="blog-header">
+		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+			<div class="col">
+				<h1 class="section-title">Blog</h1>
+			</div>
+			<div class="col headerRightElement backHome FyNorm clearfix">
+				<a href="{% url 'get_posts' %}" class="btn btn-link back-button clearfix text-dark"
+					data-toggle="tooltip" data-placement="bottom" title="Take me back Home" data-delay="50"><i
+						class="align-bottom home-arrow fa fa-chevron-left"></i> Back to Blogs</a>
+			</div>
+		</div>
+	</section>
+</div>
+
+<!-- / Post page Header -->
+
+<!-- Post content  -->
+<div class="container main-wrapper-index bg-light mb-5 pb-5">
+	<section id="blogPost">
+		<div class="row d-flex justify-content-center no-gutters">
+			<div class="col-lg-8 col-md-10 col-sx-12 hero-image d-block mx-auto pt-3">
+				<img class="hero-image img-fluid" src="{{ MEDIA_URL }}{{ post.image }}" alt="Hero image">
+			</div>
+		</div>
+
+		<div class="row d-flex justify-content-center no-gutters">
+			<div class="text-center mt-lg-3 mb-lg-4 mb-md-4 w-100 pt-3">
+				<h1 class="article-title">{{ post.title }}</h1>
+			</div>
+		</div>
+		<div class="row mt-2 no-gutters justify-content-center">
+			<div class="col-lg-8 col-md-10 col-sx-12">
+				<div class="row mb-1 no-gutters">
+					<div class="col-md-1 col-sx-6 clearfix pl-3">
+						{% if post.author_image %}
+						<img class="rounded-circle" width="50" height="50" src="{{ MEDIA_URL }}{{ post.author_image }}"
+							alt="Authors image">
+						{% else %}
+						<img class="rounded-circle" width="40" height="40" src="/static/img/avatars/steering.jpg"
+							alt="DOW avatar image">
+						{% endif %}
+					</div>
+					<div class="col-md-11 col-sx-6 clearfix pl-3">
+						<strong class="lato">{{ post.author }}</strong>
+						<p class="article-published"><i class="fa fa-clock pr-2"></i>{{ post.published_date }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row pb-4 mt-2 no-gutters justify-content-center highlightArticle w-100">
+			<div class="col-lg-8 col-md-10 col-sx-12">
+				<p>{{ post.content }}</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- / Post content -->
+
+	<!-- Toggle comments -->
+	<div class="container">
+		<div class="row d-flex justify-content-center no-gutters">
+			<div class="col-lg-8 col-md-10 col-sx-12">
+				<button id="commentsToggle" type="button" class="btn btn-outline-dark btn-default btn-block">Comments
+					&nbsp
+					{{ post.comments.count }}</button>
+			</div>
+		</div>
+
+		<!-- Comment form -->
+		<div id="commentSection" class="m-0 p-0 hidden">
+			{% if user.is_authenticated %}
+			<div class="row mt-4 no-gutters justify-content-center">
+				<div class="col-lg-8 col-md-10 col-sx-12">
+					<div class="row mb-1 no-gutters">
+						<div class="col-md-1 col-sx-6 clearfix pl-3">
+							<!-- {% if user.profile %}
+							<img class="rounded-circle" width="40" height="40" src="#" alt="">
+							{% else %} -->
+							<img class="rounded-circle" width="40" height="40" src="/static/img/avatars/driving.jpg"
+								alt="">
+							<!-- {% endif %} -->
+						</div>
+						<div class="col-md-11 col-sx-6 clearfix pl-3">
+							<strong class="lato">{{ user }}</strong>
+							<p class="article-published"><i class="fa fa-clock pr-2"></i>{% now "DATETIME_FORMAT" %}
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-10 col-sx-12">
+					<form method="POST" class="mt-2 w-100">
+						<div class="form-group">
+							<label for="comment_form">Comment:</label>
+							{{ comment_form | as_bootstrap }}
+							{% csrf_token %}
+							<input type="hidden" name="owner" value="{{ user }}">
+							<button class="btn btn-sm btn-dark float-right mt-1" type="submit">submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			{% else %}
+
+			<div class="row mt-2 no-gutters justify-content-center">
+				<div class="col-lg-8 col-md-10 col-sx-12 ">
+					<p class="lato d-flex justify-content-end mb-0">To leave a comment, login is required.</p>
+				</div>
+			</div>
+			{% endif %}
+			<!-- / Comment form -->
+
+			<!-- Comment -->
+			{% for comment in post.comments.all|default_if_none:"No comments for this post yet" %}
+			{% if comment.status == 'p' %}
+			<div class="row mb-1 pt-4 no-gutters justify-content-center">
+				<div class="col-lg-8 col-md-10 col-sx-12 mt-2">
+					<div class="card border-light mb-3">
+						<div class="card-header p-0">
+							<div class="row mb-1 no-gutters">
+								<div class="col-md-1 col-sx-6 d-flex clearfix pl-3">
+									<!-- {% if user.profile %}
+									<img class="rounded-circle" width="40" height="40" src="#" alt="">
+									{% else %} -->
+									<img class="rounded-circle align-self-center" width="40" height="40"
+										src="/static/img/avatars/driving.jpg" alt="">
+									<!-- {% endif %} -->
+								</div>
+								<div class="col-md-11 col-sx-6 clearfix pl-3">
+									<strong class="lato">{{ comment.owner }} {{ comment.pk }}</strong>
+									<p class="article-published mb-0 fs"><i
+											class="fa fa-clock pr-2"></i>{{ comment.published_date }}
+									</p>
+								</div>
+								{% if user.is_authenticated and user == comment.owner %}
+								<a id="editComment" data-toggle="modal" data-target="#editCommentModal{{ comment.id }}"
+									data-tooltip="tooltip" data-placement="bottom" title="Edit comment"
+									data-delay="50"><i class="fas fa-user-edit text-color-dark"></i></a>
+								{% endif %}
+							</div>
+							<div class="card-body bg-light pt-1">
+								<p class="card-text pt-0">{{ comment.content|linebreaks }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- / Comment -->
+
+			<!-- Edit comment modal -->
+			<div class="modal" id="editCommentModal{{ comment.id }}" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Edit {{ comment.pk }}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body pb-0">
+							<div class="form-group">
+								<label for="editCommentForm">Comment:</label>
+								<textarea class="form-control" id="editCommentForm" rows="3"></textarea>
+								<div class="modal-footer pb-0">
+									<button type="button" class="btn btn-secondary btn-sm"
+										data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-danger btn-sm"
+										data-dismiss="modal">Delete</button>
+									<button type="button" class="btn btn-success btn-sm">Save changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+			<!-- / Edit comment modal -->
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}
