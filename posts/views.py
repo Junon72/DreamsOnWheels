@@ -1,7 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.contrib import auth, messages
+from django.views import generic
+from django.http import HttpResponseForbidden
+from django.urls import reverse_lazy
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, UpdateCommentForm
+from bootstrap_modal_forms.generic import BSModalUpdateView
+
 
 def get_posts(request):
     """
@@ -31,13 +37,16 @@ def post_detail(request, pk):
     comment = None
     # Processing post requests
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.owner = request.user
             comment.save()
-            return redirect('post_detail', pk=post.pk)
+            messages.success(request, "Thank you for commenting! Your comment is being reviewed")
+            return redirect('posts:post_detail', pk=post.pk)
     else:
         comment_form = CommentForm()
 
@@ -48,3 +57,10 @@ def post_detail(request, pk):
     }
 
     return render(request, "postdetail.html", context)
+
+class CommentUpdateView(BSModalUpdateView):
+    model = Comment
+    template_name = '/posts/templates/edit_comment.html'
+    form_class = UpdateCommentForm
+    success_message = 'Success! Comment was updated and is being reviewed'
+    success_url = reverse_lazy('posts:post_detail')

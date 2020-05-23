@@ -1,0 +1,49 @@
+<div class="nav-header" id="dowHeader">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+			aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav justify-content-center flex-md-fill w-100">
+				<li class="nav-item {{ index_page }}">
+					<a class="nav-link" href="{% url 'index' %}">Home</a>
+				</li>
+				<li class="nav-item {{ sales_page }}">
+					<a class="nav-link" href="{% url 'products:all_products' %}">Sales </a>
+				</li>
+				<li class="nav-item {{ highlight_page }}">
+					<a class="nav-link" href="{% url 'highlight:get_highlight' %}">Highlight</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ blogs_page }}" href="{% url 'posts:get_posts' %}">Blogs</a>
+				</li>
+				{% if user.is_authenticated %}
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'user_profile' %}">Profile</a>
+				</li>
+				{% else %}
+				<li class="nav-item {{ login_page }}">
+					<a class="nav-link" href="{% url 'login' %}">Login</a>
+				</li>
+				<li class="nav-item {{ register_page }}">
+					<a class="nav-link" href="{% url 'register' %}">Register</a>
+				</li>
+				{% endif %}
+				<li class="nav-item {{ cart_page }}">
+					<a class="nav-link" href="{% url 'view_cart' %}">
+						Cart
+						<i class="fa fa-shopping-cart pl-2"></i>
+						{% if product_count > 0 %}
+						<label class="badge badge-warning ml-1">{{ product_count }}</label>
+						{% endif %}
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</div>

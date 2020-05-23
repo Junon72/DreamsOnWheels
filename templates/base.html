@@ -17,14 +17,16 @@
 			rel="stylesheet">
 		<!-- Fontawesome -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/sandstone/bootstrap.min.css">
 		<!-- Bootswatch -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}"> -->
 
 		<!-- Slick Carousel -->
 		<link rel="stylesheet" href="/static/vendor/slick/slick-theme.css">
@@ -54,149 +56,49 @@
 
 			<!-- Navbar | Sticky -->
 
-			<div class="nav-header" id="dowHeader">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-						aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-
-					<div class="collapse navbar-collapse" id="navbarColor02">
-						<ul class="navbar-nav justify-content-center flex-md-fill w-100">
-							<li class="nav-item {{ index_page }}">
-								<a class="nav-link" href="{% url 'index' %}">Home</a>
-							</li>
-							<li class="nav-item {{ sales_page }}">
-								<a class="nav-link" href="{% url 'products:all_products' %}">Sales </a>
-							</li>
-							<li class="nav-item {{ highlight_page }}">
-								<a class="nav-link" href="{% url 'highlight:get_highlight' %}">Highlight</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link {{ blogs_page }}" href="{% url 'get_posts' %}">Blogs</a>
-							</li>
-							{% if user.is_authenticated %}
-							<li class="nav-item">
-								<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{% url 'user_profile' %}">Profile</a>
-							</li>
-							{% else %}
-							<li class="nav-item {{ login_page }}">
-								<a class="nav-link" href="{% url 'login' %}">Login</a>
-							</li>
-							<li class="nav-item {{ register_page }}">
-								<a class="nav-link" href="{% url 'register' %}">Register</a>
-							</li>
-							{% endif %}
-							<li class="nav-item {{ cart_page }}">
-								<a class="nav-link" href="{% url 'view_cart' %}">
-									Cart
-									<i class="fa fa-shopping-cart pl-2"></i>
-									{% if product_count > 0 %}
-									<label class="badge badge-warning ml-1">{{ product_count }}</label>
-									{% endif %}
-								</a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
+			{% include '_navbar.html' %}
 
 			<!-- / Navbar | Sticky -->
 
 		</header>
 
 		<!-- Messages -->
+		{% include '_messages.html' %}
+		<!-- / Messages -->
 
-		{% if messages %}
-		{% for message in messages %}
-		<div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
-			<div class="messages text-center">
-				{{ message }}
-			</div>
-		</div>
-		{% endfor %}
-		{% endif %}
-
-		<!-- Messages -->
-
-
+		<!-- bootstrap-modal-forms wrapper -->
+		{% include '_modal.html' %}
+		<!-- bootstrap-modal-forms wrapper -->
 
 		<!-- Main content -->
-
 		{% block content %} {% endblock %}
-
 		<!-- / Main content -->
 
-
 		<!-- Footer -->
-
-		<footer>
-			<div class="bg-dark p-4">
-				<div class="container">
-					<div class="row">
-						<div class="px-0 col-lg-4 col-md-6">
-							<div class="col align-self-center pt-4">
-								<h4 class="text-white">DOW</h4>
-								<p class="text-white">Kosterverloren 5 <br>Amstelland, AK 1234 <br> <abbr
-										title="Phone">P:</abbr> +31 (020) 123 45 678 </p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bg-dark py-3">
-				<div class="container">
-					<div class="row d-flex justify-content-between">
-						<div class="col-lg-4 col-md-6">
-							<div class="row text-end mb-3">
-								<div class="col-md-2 col-3">
-									<a href="#" target="_blank"><i class="fa fa-facebook text-light fa-2x"></i></a>
-								</div>
-								<div class="col-md-2 col-3">
-									<a href="#" target="_blank"><i class="fa fa-twitter text-light fa-2x"></i></a>
-								</div>
-								<div class="col-md-2 col-3">
-									<a href="#" target="_blank"><i class="fa fa-instagram text-light fa-2x"></i></a>
-								</div>
-								<div class="col-md-2 col-3">
-									<a href="#" target="_blank"><i class="fa fa-pinterest-p text-light fa-2x"></i></a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 pl-0">
-							<p class="text-secondary text-md-right">Copyright @ Jussi Nousiainen</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-
+		{% include '_footer.html' %}
 		<!-- / Footer -->
 
-
 		<!-- Scripts -->
-
 		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-		</script>
+		<script src="http://code.jquery.com/jquery-3.5.1.min.js"
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 		<!-- Ajax -->
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 		</script>
 		<!-- Bootstrap4 -->
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-		</script>
+		<<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+		<!-- Bootstrap modal forms-->
+		<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 		<!-- Slick carousel js -->
-		<script type="text/javascript" src="/static/vendor/slick/slick.js"></script>
+		<script type="text/javascript" src="{% static 'vendor/slick/slick.js' %}"></script>
 		<!-- Custom js -->
-		<script type="text/javascript" src="/static/js/script.js"></script>
+		<!-- Custom js -->
+		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 
+		<!-- {% block BSForms %}{% endblock BSForms %} -->
 		<!-- / Scripts -->
+
 
 	</body>
 

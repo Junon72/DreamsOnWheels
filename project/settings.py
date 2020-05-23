@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cart',
     'highlight',
     'posts',
+    'bootstrap_modal_forms',
 ]
 
 MIDDLEWARE = [

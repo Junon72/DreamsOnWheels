@@ -43,7 +43,7 @@
 			</div>
 			<div class="row no-gutters">
 				<div class="col pl-3 pb-2">
-					<a class="toBlog lato text-dark" href="{% url 'post_detail' pk=post.pk %}">Read more...</a>
+					<a class="toBlog lato text-dark" href="{% url 'posts:post_detail' pk=post.pk %}">Read more...</a>
 				</div>
 			</div>
 
@@ -62,4 +62,5 @@
 	</div>
 </div>
 {% endfor %}
+<!-- / Blogs card field-->
 {% endblock %}
