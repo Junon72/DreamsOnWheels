@@ -15,7 +15,7 @@
 			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'posts:get_posts' %}" class="btn btn-link back-button clearfix text-dark"
 					data-toggle="tooltip" data-placement="bottom" title="Take me back Home" data-delay="50"><i
-						class="align-bottom home-arrow fa fa-chevron-left"></i> Back to Blogs</a>
+						class="align-center home-arrow fa fa-chevron-left"></i> Back to Blogs</a>
 			</div>
 		</div>
 	</section>
@@ -139,7 +139,7 @@
 							{% if user.is_authenticated and user == comment.owner %}
 							<div class="editComment d-flex flex-row">
 								<div class="text-center">
-									<button class="update-comment btn btn-sm btn-warning" id="updateComment" type="button" data-id="{% url 'posts:update_comment' comment.pk %}" data-tooltip="tooltip" data-placement="bottom" title="Edit comment" data-delay="50" name="button"><span class="fas fa-user-edit text-color-dark"></span></button>
+									<button class="update-comment btn btn-sm btn-warning" id="updateComment" type="button" data-id="{% url 'posts:update_comment' pk=comment.pk %}" data-tooltip="tooltip" data-placement="bottom" title="Edit comment" data-delay="50" name="button"><span class="fas fa-user-edit text-color-dark"></span></button>
 								</div>
 								<div class="text-center ml-1">
 									<button class="delete-comment btn btn-sm btn-outline-danger" type="button"
