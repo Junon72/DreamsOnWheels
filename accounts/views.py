@@ -1,23 +1,24 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, UserForm, ProfileForm
+from .models import Profile
 
 
 @login_required
 def logout(request):
-    """
-    Logout the user
-    """
+    """Logout the user"""
+
     auth.logout(request)
     messages.success(request, 'You have successfully logged out!')
     return redirect(reverse('index'))
 
 def login(request):
-    """
-    Return a login page
-    """
+    """Return a login page"""
+
     if request.user.is_authenticated:
         return redirect(reverse('index'))
     if request.method == 'POST':
@@ -41,11 +42,9 @@ def login(request):
     }
     return render(request, 'login.html', context)
 
-
 def register(request):
-    """
-    A view that manages the registration form
-    """
+    """ A view that manages the registration form"""
+
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -72,14 +71,47 @@ def register(request):
 
 @login_required
 def user_profile(request):
-    """
-    Get the user profile page
-    """
+    """Fetch the user data and the linked profile data."""
+
     if not request.user.is_authenticated:
         return redirect('login')
-    user = User.objects.get(username=request.user.username)
-    context = {
-        'profile': user,
-        'profile_page': 'active'
-    }
+    else:
+        try:
+            if (request.user is not None):
+                user = User.objects.get(username=request.user.username)
+                context = {
+                    'user': user,
+                    'profile_page': 'active'
+                    }
+        except User.DoesNotExist:
+            return HttpResponseForbidden()
+
     return render(request, 'profile.html', context)
+
+@login_required
+@transaction.atomic
+def update_profile(request):
+    """ """
+
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        # user = get_object_or_404(User, pk=pk)
+        if request.method == 'POST':
+            user_form = UserForm(request.POST, instance=request.user)
+            profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profiles)
+            if user_form.is_valid() and profile_form.is_valid():
+                user_form.save()
+                profile_form.save()
+                messages.success(request, ('Your profile has been updated successfully!'))
+                return redirect('user_profile')
+            else:
+                messages.error(request, ('Please correct the error below.'))
+        else:
+            user_form = UserForm(instance=request.user)
+            profile_form = ProfileForm(instance=request.user.profiles)
+            context = {
+                'user_form': user_form,
+                'profile_form': profile_form
+            }
+            return render(request, 'update_profile.html', context)

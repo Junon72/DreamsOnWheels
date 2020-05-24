@@ -4,6 +4,7 @@ from django.contrib import auth, messages
 from django.views import generic
 from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 from .models import Post, Comment
 from .forms import CommentForm, UpdateCommentForm
 from bootstrap_modal_forms.generic import BSModalUpdateView
@@ -34,6 +35,7 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     comments = Comment.objects.order_by('-created_date')
+    users = User.objects.all().select_related('profiles')
     comment = None
     # Processing post requests
     if request.method == 'POST':
@@ -52,6 +54,7 @@ def post_detail(request, pk):
 
     context = {
         'comments': comments,
+        'users': users,
         'comment_form': comment_form,
         'post': post
     }

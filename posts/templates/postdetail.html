@@ -114,6 +114,7 @@
 		</div>
 		{% endif %}
 		<!-- / Comment form -->
+
 		{% for comment in post.comments.all|default_if_none:"No comments for this post yet" %}
 		{% if comment.status == 'p' %}
 		<!-- Comment -->
@@ -123,12 +124,12 @@
 					<div class="card-header p-0">
 						<div class="row mb-1 no-gutters">
 							<div class="col-md-1 col-sx-6 d-flex clearfix pl-3">
-								<!-- {% if user.profile %}
-									<img class="rounded-circle" width="40" height="40" src="#" alt="">
-									{% else %} -->
+								{% if comment.owner.profiles.image %}
+								<img class="rounded-circle" width="40" height="40" src="{{ MEDIA_URL }}{{ comment.owner.profiles.image }}" alt="User avatar">
+								{% else %}
 								<img class="rounded-circle align-self-center" width="40" height="40"
-									src="/static/img/avatars/driving.jpg" alt="">
-								<!-- {% endif %} -->
+									src="{% static 'img/avatars/avatardefault.png' %}" alt="">
+								{% endif %}
 							</div>
 							<div class="col-md-11 col-sx-6 clearfix pl-3">
 								<strong class="lato">{{ comment.owner }} {{ comment.pk }}</strong>
@@ -139,7 +140,11 @@
 							{% if user.is_authenticated and user == comment.owner %}
 							<div class="editComment d-flex flex-row">
 								<div class="text-center">
-									<button class="update-comment btn btn-sm btn-warning" id="updateComment" type="button" data-id="{% url 'posts:update_comment' pk=comment.pk %}" data-tooltip="tooltip" data-placement="bottom" title="Edit comment" data-delay="50" name="button"><span class="fas fa-user-edit text-color-dark"></span></button>
+									<button class="update-comment btn btn-sm btn-warning" id="updateComment"
+										type="button" data-id="{% url 'posts:update_comment' pk=comment.pk %}"
+										data-tooltip="tooltip" data-placement="bottom" title="Edit comment"
+										data-delay="50" name="button"><span
+											class="fas fa-user-edit text-color-dark"></span></button>
 								</div>
 								<div class="text-center ml-1">
 									<button class="delete-comment btn btn-sm btn-outline-danger" type="button"
@@ -174,7 +179,7 @@
 
 {% endblock %}
 
-		{% include '/templates/_modal.html' %}
+{% include '/templates/_modal.html' %}
 
 <script>
 	// Hide / Show Comments section in blog post

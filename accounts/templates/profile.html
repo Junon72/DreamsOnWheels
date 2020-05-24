@@ -1,9 +1,102 @@
 {% extends 'base.html' %}
 
-{% block page_title %}{{ users }}'s Profile{% endblock %}
-
-{% block page_heading %}{{ user }}{% endblock %}
+{% load static %}
+{% load bootstrap_tags %}
+{% load crispy_forms_tags%}
 
 {% block content %}
-<p>Hello {{ profile.username }}!</p>
+<!-- Profile page Header -->
+<div class="container main-wrapper-index px-0">
+	<section id="products-header">
+		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+			<div class="col">
+				<h1 class="section-title">Blogs</h1>
+			</div>
+			<div class="col headerRightElement backHome FyNorm clearfix">
+				<a href="{% url 'index' %}" class="btn btn-link back-button text-dark" data-toggle="tooltip"
+					data-placement="bottom" title="Take me back Home" data-delay="50"><i
+						class="align-center home-arrow fa fa-chevron-left"></i> Back Home</a>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- /Profile page Header -->
+
+<!-- Profile field-->
+<div class="container pt-0 mb-5">
+	<div class="row no-gutters m-0 p-0">
+		<div class="col-12 p-0 m-0">
+			<div class="row mt-2 justify-content-center no-gutters py-3 no-gutters">
+				<div class="col-md-6 col-sm-12 d-flex justify-content-center">
+					{% if user.profiles.image %}
+					<img class="profile-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}" alt="Profile image">
+					{% else %}
+					<img class="profile-image my-3" src="{% static 'img/avatars/avatardefault_big.png' %}"
+						alt="Profile default image">
+					{% endif %}
+				</div>
+			</div>
+			<div class="row my-3 no-gutters justify-content-center">
+				<div class="col-md-6 col-sm-12 d-flex justify-content-center">
+					<h5 class="lato">{{ user.username }}</h5>
+				</div>
+			</div>
+			<div class="row no-gutters justify-content-center">
+				<div class="col-md-6 col-sm-12 pl-3">
+					<h6 class="lato text-muted">Name</h6>
+					<p class="lato ml-3">
+						{% if user.first_name and not user.last_name %}
+						{{ user.first_name }}
+						{% elif user.first_name and user.last_name %}
+						{{ user.first_name }} {{ user.last_name }}
+						{% elif user.last_name and user.first_name %}
+						{{ user.last_name }}
+						{% else %}
+						<em class="lato text-muted">No name provided</em>
+						{% endif %}</p>
+					<h6 class="lato text-muted">Email</h6>
+					<p class="lato ml-3">
+						{% if user.email %}
+						{{ user.email }}
+						{% else %}
+						<p><em class="lato ml-3 text-muted">No email provided</em></p>
+						{% endif %}</p>
+					{% if user.profiles.address1 and not user.profiles.address2 %}
+					<h6 class="lato text-muted">Address</h6>
+					<p class="lato ml-3">{{ user.profiles.address1 }}</p>
+					<h6 class="lato text-muted">Zipcode</h6>
+					<p class="lato ml-3">{{ user.profiles.zipcode }}</p>
+					{% elif user.profiles.address1 and user.profiles.address2%}
+					<h6 class="lato text-muted">Address 1</h6>
+					<p class="lato ml-3">
+						{{ user.profiles.address1 }}</p>
+					{% elif user.profiles.address2 %}
+					<h6 class="lato text-muted">Address 2</h6>
+					<p class="lato ml-3">{{ user.profiles.address2 }}</p>
+					<h6 class="lato text-muted">Zipcode</h6>
+					<p class="lato ml-3">{{ user.profiles.zipcode }}</p>
+					{% else %}
+					<h6 class="lato text-muted">Address</h6>
+					<p><em class="lato ml-3 text-muted">No address provided</em></p>
+					{% endif %}
+					<h6 class="lato text-muted">Country</h6>
+					<p class="lato ml-3">
+						{% if user.profiles.country%}
+						{{ user.profiles.country}}
+						{% else %}
+						<p><em class="lato ml-3 text-muted">No country provided</em></p>
+						{% endif %}</p>
+				</div>
+			</div>
+			<div class="row mt-4 no-gutters justify-content-center">
+				<div class="col-md-6 col-sm-12 d-flex justify-content-center">
+					<a href="{% url 'update_profile' %}" class="btn btn-medium btn-outline-dark btn-block">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- /Profile field-->
+
 {% endblock %}
