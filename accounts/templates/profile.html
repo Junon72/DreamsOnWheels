@@ -26,10 +26,10 @@
 <div class="container pt-0 mb-5">
 	<div class="row no-gutters m-0 p-0">
 		<div class="col-12 p-0 m-0">
-			<div class="row mt-2 justify-content-center no-gutters py-3 no-gutters">
-				<div class="col-md-6 col-sm-12 d-flex justify-content-center">
+			<div class="row mt-2 justify-content-center w-100 no-gutters py-3 no-gutters">
+				<div class="col-md-6 col-sm-12 d-flex justify-content-center profile-image-container">
 					{% if user.profiles.image %}
-					<img class="profile-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}" alt="Profile image">
+					<img class="img-fluid rounded-circle profile-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}" alt="Profile image">
 					{% else %}
 					<img class="profile-image my-3" src="{% static 'img/avatars/avatardefault_big.png' %}"
 						alt="Profile default image">
@@ -70,6 +70,10 @@
 					<h6 class="lato text-muted">Address 1</h6>
 					<p class="lato ml-3">
 						{{ user.profiles.address1 }}</p>
+					<h6 class="lato text-muted">Address 2</h6>
+					<p class="lato ml-3">{{ user.profiles.address2 }}</p>
+					<h6 class="lato text-muted">Zipcode</h6>
+					<p class="lato ml-3">{{ user.profiles.zipcode }}</p>
 					{% elif user.profiles.address2 %}
 					<h6 class="lato text-muted">Address 2</h6>
 					<p class="lato ml-3">{{ user.profiles.address2 }}</p>
@@ -91,6 +95,13 @@
 			<div class="row mt-4 no-gutters justify-content-center">
 				<div class="col-md-6 col-sm-12 d-flex justify-content-center">
 					<a href="{% url 'update_profile' %}" class="btn btn-medium btn-outline-dark btn-block">Edit</a>
+				</div>
+			</div>
+			<div class="row mt-2 no-gutters justify-content-center">
+				<div class="col-md-6 col-sm-12 pl-3">
+					<p class="lato text-muted FySmall"><em>
+						You can edit your profile to add more information and a profile image. The information will be used to pre-fill your order form and image displayed in your comments.
+					</em></p>
 				</div>
 			</div>
 		</div>

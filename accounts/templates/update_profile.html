@@ -28,7 +28,7 @@
 			<div class="row mt-2 justify-content-center no-gutters py-3 no-gutters">
 				<div class="col-md-6 col-sm-12 d-flex justify-content-center">
 					<!-- Update Profile form -->
-					<form method="post" action="">
+					<form method="post" enctype="multipart/form-data">
 						{% csrf_token %}
 						{{ user_form|crispy }}
 						{{ profile_form|crispy }}

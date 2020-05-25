@@ -63,7 +63,7 @@ def post_detail(request, pk):
 
 class CommentUpdateView(BSModalUpdateView):
     model = Comment
-    template_name = '/posts/templates/edit_comment.html'
+    template_name = 'edit_comment.html'
     form_class = UpdateCommentForm
     success_message = 'Success! Comment was updated and is being reviewed'
     success_url = reverse_lazy('posts:post_detail')

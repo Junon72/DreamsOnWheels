@@ -24,12 +24,14 @@
 
 
 <!-- Post content  -->
-<div class="container main-wrapper-index bg-light mb-5 pb-5">
+<div class="container main-wrapper-index bg-light mb-5 py-5">
 	<section id="blogPost">
 		<div class="row d-flex justify-content-center no-gutters">
+			{% if post.image %}
 			<div class="col-lg-8 col-md-10 col-sx-12 hero-image d-block mx-auto pt-3">
 				<img class="hero-image img-fluid" src="{{ MEDIA_URL }}{{ post.image }}" alt="Hero image">
 			</div>
+			{% endif %}
 		</div>
 		<div class="row d-flex justify-content-center no-gutters">
 			<div class="text-center mt-lg-3 mb-lg-4 mb-md-4 w-100 pt-3">
@@ -39,18 +41,18 @@
 		<div class="row mt-2 no-gutters justify-content-center">
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<div class="row mb-1 no-gutters">
-					<div class="col-md-1 col-sx-6 clearfix pl-3">
-						{% if post.author_image %}
-						<img class="rounded-circle" width="50" height="50" src="{{ MEDIA_URL }}{{ post.author_image }}"
-							alt="Authors image">
+					<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
+						{% if post.author.profiles.image %}
+						<img class="img-fluid comment-owner-image" src="{{ MEDIA_URL }}{{ post.author.profiles.image }}"
+							alt="Authors avatar image">
 						{% else %}
-						<img class="rounded-circle" width="40" height="40" src="/static/img/avatars/steering.jpg"
-							alt="DOW avatar image">
+						<img class="rounded-circle comment-owner-image" src="/static/img/avatars/steering.jpg"
+							alt="Default avatar image">
 						{% endif %}
 					</div>
-					<div class="col-md-11 col-sx-6 clearfix pl-3">
-						<strong class="lato">{{ post.author }}</strong>
-						<p class="article-published"><i class="fa fa-clock pr-2"></i>{{ post.published_date }}
+					<div class="col-sx-10 clearfix d-flex flex-column pl-3">
+						<strong class="lato mt-auto">{{ post.author }}</strong>
+						<p class="article-published m-0"><i class="fa fa-clock pr-2"></i>{{ post.published_date }}
 						</p>
 					</div>
 				</div>
@@ -80,16 +82,16 @@
 		<div class="row mt-4 no-gutters justify-content-center">
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<div class="row mb-1 no-gutters">
-					<div class="col-md-1 col-sx-6 clearfix pl-3">
-						<!-- {% if user.profile %}
-							<img class="rounded-circle" width="40" height="40" src="#" alt="">
-							{% else %} -->
-						<img class="rounded-circle" width="40" height="40" src="/static/img/avatars/driving.jpg" alt="">
-						<!-- {% endif %} -->
+					<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
+						{% if user.profiles.image %}
+						<img class="img-fluid comment-owner-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}" alt="Commentator's avatar image">
+						{% else %}
+						<img class="img-fluid comment-owner-image" src="/static/img/avatars/driving.jpg" alt="">
+						{% endif %}
 					</div>
-					<div class="col-md-11 col-sx-6 clearfix pl-3">
-						<strong class="lato">{{ user }}</strong>
-						<p class="article-published"><i class="fa fa-clock pr-2"></i>{% now "DATETIME_FORMAT" %}
+					<div class="col-sx-10 clearfix d-flex flex-column pl-3">
+						<strong class="lato mt-auto">{{ user }}</strong>
+						<p class="article-published m-0"><i class="fa fa-clock pr-2"></i>{% now "DATETIME_FORMAT" %}
 						</p>
 					</div>
 				</div>
@@ -123,17 +125,18 @@
 				<div class="card border-light mb-3">
 					<div class="card-header p-0">
 						<div class="row mb-1 no-gutters">
-							<div class="col-md-1 col-sx-6 d-flex clearfix pl-3">
+							<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
 								{% if comment.owner.profiles.image %}
-								<img class="rounded-circle" width="40" height="40" src="{{ MEDIA_URL }}{{ comment.owner.profiles.image }}" alt="User avatar">
+								<img class="img-fluid comment-owner-image"
+									src="{{ MEDIA_URL }}{{ comment.owner.profiles.image }}" alt="User avatar">
 								{% else %}
-								<img class="rounded-circle align-self-center" width="40" height="40"
+								<img class="img-fluid comment-owner-image"
 									src="{% static 'img/avatars/avatardefault.png' %}" alt="">
 								{% endif %}
 							</div>
-							<div class="col-md-11 col-sx-6 clearfix pl-3">
-								<strong class="lato">{{ comment.owner }} {{ comment.pk }}</strong>
-								<p class="article-published mb-0 fs"><i
+							<div class="col-sx-10 clearfix d-flex flex-column pl-3">
+								<strong class="lato mt-auto">{{ comment.owner }} {{ comment.pk }}</strong>
+								<p class="article-published m-0"><i
 										class="fa fa-clock pr-2"></i>{{ comment.published_date }}
 								</p>
 							</div>

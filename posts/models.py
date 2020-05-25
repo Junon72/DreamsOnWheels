@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 POST_STATUS_CHOICES = [
     ('d', 'Draft'),
     ('r', 'Review'),
-    ('p', 'Published')
+    ('p', 'Published'),
+    ('x', 'Drawn')
 ]
 
 class Post(models.Model):
@@ -14,8 +15,7 @@ class Post(models.Model):
     """
     title = models.CharField(max_length=200)
     content = models.TextField()
-    author = models.CharField(max_length=20, default="DOW")
-    author_image = models.ImageField(upload_to="img", blank=True, null=True)
+    author = models.ForeignKey(User, max_length=20, on_delete=models.SET_NULL, null=True, default="DOWadmin", related_name='posts')
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     views = models.IntegerField(default=0)
@@ -26,7 +26,7 @@ class Post(models.Model):
         ordering = ['-created_date']
 
     def __str__(self):
-        return self.title
+        return 'Post {} by {}'.format(self.title, self.author)
 
 COMMENT_STATUS_CHOICES = [
     ('m', 'Moderate'),
@@ -45,7 +45,7 @@ class Comment(models.Model):
         on_delete=models.SET_DEFAULT,
         related_name='comments',
         null=False,
-		default=1
+		default='anonymous'
     )
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
@@ -56,4 +56,4 @@ class Comment(models.Model):
         ordering = ('-created_date',)
 
     def __str__(self):
-        return 'Comment {} by {}'.format(self.content, self.username)
+        return 'Comment {} by {}'.format(self.content, self.owner)
