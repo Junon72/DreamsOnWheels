@@ -2,6 +2,7 @@
 
 {% load static %}
 {% load bootstrap_tags %}
+{% load crispy_forms_tags%}
 
 
 {% block content %}
@@ -40,7 +41,12 @@
 	</section>
 </div>
 <!-- Search -->
-
+<div class="container main-wrapper px-0">
+	<form action="" method="get">
+		{{ filter.form|crispy }}
+		<input type="submit">
+	</form>
+</div>
 <!-- Products card field-->
 <div class="container main-wrapper-sales mb-5 pb-5 px-0 mx-auto">
 
@@ -48,11 +54,11 @@
 		<div class="row clearfix no-gutters">
 			<div class="col">
 				<p class="login-notice lato">To make use of our promotions you have to be logged in.</p>
-			</div> 
+			</div>
 		</div>
 		<div class="row clearfix no-gutters">
 			<!-- Products card1 (row start) -->
-			{% for product in products %}
+			{% for product in filter.qs %}
 			<div class="col-md-6 mb-4 no-p">
 				<div class="card sales-card pr-0 h-100">
 					{% if product.status == 'p' %}
@@ -69,8 +75,9 @@
 								<img class="img-fluid card-img product-image"
 									src="{{ MEDIA_URL }}{{ product.image_main }}"
 									alt="{{ product.make }} | {{ product.model }}">
-								<button class="btn btn-warning product-detail-button clearfix align-self-end" data-toggle="modal"
-									data-target="#productDetail{{ product.id }}">See details</button>
+								<button class="btn btn-warning product-detail-button clearfix align-self-end"
+									data-toggle="modal" data-target="#productDetail{{ product.id }}">See
+									details</button>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-12 col-xl-5 pl-sm-0 pl-lg-0">
@@ -101,7 +108,8 @@
 									</div>
 									<div class="row mb-0 no-gutters">
 										<div class="col d-flex about-original clearfix ml-2">
-											<a href="{% url 'products:get_original' id=product.original_key.pk %}" class="btn btn-link text-warning pl-0" data-toggle="tooltip"
+											<a href="{% url 'products:get_original' id=product.original_key.pk %}"
+												class="btn btn-link text-warning pl-0" data-toggle="tooltip"
 												data-placement="bottom" title="About original" data-delay="50">Read
 												about
 												original...</a>
@@ -160,10 +168,12 @@
 						</div>
 						<div class="view w-100 h-100">
 							{% if product.image_sec %}
-							<img class="img-fluid card-img modal-product-image" src="{{ MEDIA_URL }}{{ product.image_sec }}"
+							<img class="img-fluid card-img modal-product-image"
+								src="{{ MEDIA_URL }}{{ product.image_sec }}"
 								alt=" &nbsp; {{ product.make }} | {{ product.model }}">
 							{% else %}
-							<img class="img-fluid card-img modal-product-image" src="{{ MEDIA_URL }}{{ product.image_main }}"
+							<img class="img-fluid card-img modal-product-image"
+								src="{{ MEDIA_URL }}{{ product.image_main }}"
 								alt=" &nbsp; {{ product.make }} | {{ product.model }}">
 							{% endif %}
 						</div>
@@ -171,6 +181,12 @@
 							<p class="lato">{{ product.description }}</p>
 						</div>
 					</div>
+				</div>
+			</div>
+			{% empty %}
+			<div class="row clearfix no-gutters">
+				<div class="col">
+					<p class="login-notice lato">No products with the search terms.</p>
 				</div>
 			</div>
 			{% endfor %}

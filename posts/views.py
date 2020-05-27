@@ -67,3 +67,4 @@ class CommentUpdateView(BSModalUpdateView):
     form_class = UpdateCommentForm
     success_message = 'Success! Comment was updated and is being reviewed'
     success_url = reverse_lazy('posts:post_detail')
+

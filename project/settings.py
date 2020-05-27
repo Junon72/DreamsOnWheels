@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'highlight',
     'posts',
     'bootstrap_modal_forms',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

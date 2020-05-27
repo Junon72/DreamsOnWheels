@@ -96,7 +96,6 @@ def update_profile(request):
     if not request.user.is_authenticated:
         return redirect('login')
     else:
-        # user = get_object_or_404(User, pk=pk)
         if request.method == 'POST':
             user_form = UserForm(request.POST, instance=request.user)
             profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profiles)

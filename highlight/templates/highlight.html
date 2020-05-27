@@ -129,7 +129,12 @@
 				</div>
 				<div class="highlightRange">
 					<strong>Price range: </strong>
-					<em>{{ highlight.price_min }} - {{ highlight.price_max }}</em>
+					<em>{{ highlight.price_min | floatformat }}
+						<i class="fa fa-euro"></i>
+						-
+						{{ highlight.price_max | floatformat}}
+						<i class="fa fa-euro"></i>
+					</em>
 				</div>
 			</div>
 		</div>
