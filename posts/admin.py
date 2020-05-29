@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('status', 'author', 'created_date', 'tag')
@@ -10,9 +11,10 @@ class PostAdmin(admin.ModelAdmin):
 
     def publish_post(self, request, queryset):
         queryset.update(status='p')
-        
+
     def draw_post(self, request, queryset):
         queryset.update(status='x')
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
@@ -23,7 +25,6 @@ class CommentAdmin(admin.ModelAdmin):
 
     def approve_comments(self, request, queryset):
         queryset.update(status='p')
-        
+
     def suspend_comments(self, request, queryset):
         queryset.update(status='s')
-

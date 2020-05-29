@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from django.contrib import auth, messages
-from django.views import generic
+from django.contrib import messages
 from django.http import HttpResponseForbidden
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
@@ -12,12 +11,12 @@ from bootstrap_modal_forms.generic import BSModalUpdateView
 
 def get_posts(request):
     """
-    Create a view that will return a list 
+    Create a view that will return a list
     of posts that were published prior to 'now'
     and render them to the 'blogposts.html
     """
-    posts = Post.objects.filter(published_date__lte=timezone.now()
-        ).order_by('-published_date')
+    posts = Post.objects.filter(
+        published_date__lte=timezone.now()).order_by('-published_date')
 
     context = {
         'posts': posts,
@@ -47,7 +46,9 @@ def post_detail(request, pk):
             comment.post = post
             comment.owner = request.user
             comment.save()
-            messages.success(request, "Thank you for commenting! Your comment is being reviewed")
+            messages.success(
+            request, "Thank you for commenting! Your comment is being reviewed"
+            )
             return redirect('posts:post_detail', pk=post.pk)
     else:
         comment_form = CommentForm()
@@ -61,10 +62,14 @@ def post_detail(request, pk):
 
     return render(request, "postdetail.html", context)
 
+
 class CommentUpdateView(BSModalUpdateView):
     model = Comment
     template_name = 'edit_comment.html'
     form_class = UpdateCommentForm
     success_message = 'Success! Comment was updated and is being reviewed'
-    success_url = reverse_lazy('posts:update')
-
+    # success_url = reverse_lazy('posts:post_detail')
+    def form_valid(self,form):
+        instance = form.save()
+        self.success_url = reverse('posts:post_detail', kwargs={'pk': instance.id})
+        return super(CommentUpdateView, self).form_valid(form)
