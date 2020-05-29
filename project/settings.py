@@ -39,16 +39,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'simple_forms.apps.core',
+    
+    # Third party apps
     'crispy_forms',
     'django_forms_bootstrap',
+    'bootstrap_modal_forms',
+    'django_filters',
+    'widget_tweaks',
+    
+    # Project apps
     'accounts',
     'home',
     'products',
     'cart',
     'highlight',
     'posts',
-    'bootstrap_modal_forms',
-    'django_filters'
 ]
 
 MIDDLEWARE = [

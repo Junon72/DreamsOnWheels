@@ -1,7 +1,5 @@
 from django import forms
 from .models import Comment, User
-
-# from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
 from bootstrap_modal_forms.forms import BSModalForm
 
 
@@ -17,6 +15,6 @@ class UpdateCommentForm(BSModalForm):
     class Meta:
         model = Comment
         widgets = {
-            'content': forms.Textarea(attrs={'rows': 4}),
+            'content': forms.Textarea(attrs={'rows': 8}),
         }
         fields = ['content']

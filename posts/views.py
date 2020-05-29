@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib import auth, messages
 from django.views import generic
 from django.http import HttpResponseForbidden
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from .models import Post, Comment
 from .forms import CommentForm, UpdateCommentForm
@@ -66,5 +66,5 @@ class CommentUpdateView(BSModalUpdateView):
     template_name = 'edit_comment.html'
     form_class = UpdateCommentForm
     success_message = 'Success! Comment was updated and is being reviewed'
-    success_url = reverse_lazy('posts:post_detail')
+    success_url = reverse_lazy('posts:update')
 

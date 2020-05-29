@@ -84,7 +84,8 @@
 				<div class="row mb-1 no-gutters">
 					<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
 						{% if user.profiles.image %}
-						<img class="img-fluid comment-owner-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}" alt="Commentator's avatar image">
+						<img class="img-fluid comment-owner-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}"
+							alt="Commentator's avatar image">
 						{% else %}
 						<img class="img-fluid comment-owner-image" src="/static/img/avatars/driving.jpg" alt="">
 						{% endif %}
@@ -144,7 +145,7 @@
 							<div class="editComment d-flex flex-row">
 								<div class="text-center">
 									<button class="update-comment btn btn-sm btn-warning" id="updateComment"
-										type="button" data-id="{% url 'posts:update_comment' pk=comment.pk %}"
+										type="button" data-id="{% url 'posts:update' comment.pk %}"
 										data-tooltip="tooltip" data-placement="bottom" title="Edit comment"
 										data-delay="50" name="button"><span
 											class="fas fa-user-edit text-color-dark"></span></button>
@@ -168,35 +169,38 @@
 		<!-- / Comment -->
 		{% endif %}
 		{% endfor %}
-
 		<!-- Edit comment modal -->
-		<!-- <div class="modal fade" tabindex="-1" role="dialog" id="formsModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-				</div>
-			</div>
-		</div> -->
+		{% include '_modal.html' %}
 		<!-- / Edit comment modal -->
 	</div>
 </div>
-
 {% endblock %}
 
-{% include '/templates/_modal.html' %}
+{% block BSForms %}
 
-<script>
+<script type="text/javascript">
 	// Hide / Show Comments section in blog post
 	$(function () {
-		$('#commentsToggle').click(function () {
-			$('#commentSection').toggleClass('hidden');
-		});
-
 		// Edit / Delete Comment modal in blog post Comments
 		$(".update-comment").each(function () {
 			$(this).modalForm({
-				modalID: "#formsModal",
-				formUrl: $(this).data('id')
+				submitBtn: "#submitUpdate",
+				modalID: "#modal",
+				formURL: $(this).data('id')
 			});
 		});
+
+		// hide message
+		//$(".alert").fadeTo(2000, 500).slideUp(500, function () {
+		//	$(".alert").slideUp(500);
+		//});
+
+		// autofocus to first input field of a modal
+		//$('.modal').on('shown.bs.modal', function () {
+		//	$('form').find('input[type=text]').filter(':visible:first').focus();
+		//});
+
 	});
 </script>
+
+{% endblock BSForms %}
