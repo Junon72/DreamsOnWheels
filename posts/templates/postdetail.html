@@ -67,17 +67,18 @@
 	<!-- / Post content -->
 
 	<!-- Toggle comments -->
-	<!-- <div class="container">
+	<div class="container">
 		<div class="row d-flex justify-content-center no-gutters">
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<button id="commentsToggle" type="button" class="btn btn-outline-dark btn-default btn-block">Comments
 					&nbsp
 					{{ post.comments.count }}</button>
 			</div>
-		</div> -->
+		</div>
+	</div>
 	<!-- /Toggle comments -->
 	<!-- Comment form -->
-	<div id="commentSection" class="m-0 p-0">
+	<div id="commentSection" class="m-0 p-0 hidden">
 		{% if user.is_authenticated %}
 		<div class="row mt-4 no-gutters justify-content-center">
 			<div class="col-lg-8 col-md-10 col-sx-12">
@@ -151,8 +152,7 @@
 											class="fas fa-user-edit text-color-dark"></span></button>
 								</div>
 								<div class="text-center ml-1">
-									<button class="delete-comment btn btn-sm btn-outline-danger" type="button"
-										data-tooltip="tooltip" data-placement="bottom" title="Delete comment"
+									<button class="delete-comment btn btn-sm btn-outline-danger" type="button" data-id="{% url 'posts:delete' comment.pk %}" data-tooltip="tooltip" data-placement="bottom" title="Delete comment"
 										data-delay="50" data-id="#" name="button"><span
 											class="fas fa-trash text-color-dark"></span></button>
 								</div>
@@ -190,15 +190,16 @@
 			});
 		});
 
-		// hide message
-		//$(".alert").fadeTo(2000, 500).slideUp(500, function () {
-		//	$(".alert").slideUp(500);
-		//});
+		$(".delete-comment").each(function () {
+			$(this).modalForm({
+				formURL: $(this).data('id')
+			});
+		})
 
 		// autofocus to first input field of a modal
-		//$('.modal').on('shown.bs.modal', function () {
-		//	$('form').find('input[type=text]').filter(':visible:first').focus();
-		//});
+		$('.modal').on('shown.bs.modal', function () {
+			$('form').find('input[type=text]').filter(':visible:first').focus();
+		});
 
 	});
 </script>

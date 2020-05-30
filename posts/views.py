@@ -6,7 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from .models import Post, Comment
 from .forms import CommentForm, UpdateCommentForm
-from bootstrap_modal_forms.generic import BSModalUpdateView
+from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView
 
 
 def get_posts(request):
@@ -64,12 +64,34 @@ def post_detail(request, pk):
 
 
 class CommentUpdateView(BSModalUpdateView):
+    """ 
+    Update comment using django-bootstrap-modal-forms package.
+    The form_valid method is overdriven to get the correct success_url.
+    Instanse call is used to get the parent post id for the url path,
+    returning to the the postdetail page after update.
+    """
+
     model = Comment
     template_name = 'edit_comment.html'
     form_class = UpdateCommentForm
     success_message = 'Success! Comment was updated and is being reviewed'
-    # success_url = reverse_lazy('posts:post_detail')
     def form_valid(self,form):
         instance = form.save()
-        self.success_url = reverse('posts:post_detail', kwargs={'pk': instance.id})
+        self.success_url = reverse_lazy('posts:post_detail', kwargs={'pk': instance.post.id})
         return super(CommentUpdateView, self).form_valid(form)
+
+
+class CommentDeleteView(BSModalDeleteView):
+    """
+    Delete comment using django-bootstrap-modal-forms package.
+    The get_success_url method is used to get the correct path back
+    back to the postdetail page after delete. The method calls related
+    post object to get the correct parent post id.
+    """
+
+    model = Comment
+    template_name = 'delete_comment.html'
+    success_message = 'Success! Comment was delete.'
+    def get_success_url(self):
+        post = self.object.post
+        return reverse_lazy('posts:post_detail', kwargs={'pk': post.id})
