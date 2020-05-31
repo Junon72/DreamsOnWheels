@@ -70,13 +70,14 @@
 	<div class="container">
 		<div class="row d-flex justify-content-center no-gutters">
 			<div class="col-lg-8 col-md-10 col-sx-12">
-				<button id="commentsToggle" type="button" class="btn btn-outline-dark btn-default btn-block">Comments
+				<button id="commentsToggle" type="button" class="btn btn-outline-dark btn-block">Comments
 					&nbsp
 					{{ post.comments.count }}</button>
 			</div>
 		</div>
 	</div>
 	<!-- /Toggle comments -->
+	<!-- Comments section -->
 	<!-- Comment form -->
 	<div id="commentSection" class="m-0 p-0 hidden">
 		{% if user.is_authenticated %}
@@ -174,6 +175,7 @@
 		<!-- / Edit comment modal -->
 	</div>
 </div>
+<!-- /Comments section -->
 {% endblock %}
 
 {% block BSForms %}

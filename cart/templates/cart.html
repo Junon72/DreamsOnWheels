@@ -71,8 +71,8 @@
 									</div>
 									<div class="row mb-0 no-gutters">
 										<div class="col d-flex about-original clearfix ml-2">
-											<button class="btn btn-link text-warning p-0"
-												data-toggle="modal" data-target="#productDetail{{ item.id }}">View
+											<button class="btn btn-link text-warning p-0" data-toggle="modal"
+												data-target="#productDetail{{ item.id }}">View
 												details</button>
 										</div>
 									</div>
@@ -151,6 +151,19 @@
 							<div class="modal-body">
 								<p class="lato">{{ item.product.description }}</p>
 							</div>
+						</div>
+					</div>
+				</div>
+				{% empty %}
+				<div class="container">
+					<div class="row no-gutters h-100 justify-content-center">
+						<div class="col-12 text-center">
+							<h4><div class="jumbotron jumbotron-fluid">
+								<div class="container">
+									<h3 class="display-4 mb-3">Cart is empty</h3>
+									<a href="{% url 'products:all_products' %}" class="btn btn-warning btn-large" role="button">Take me to the shop</a>
+								</div>
+							</div></h4>
 						</div>
 					</div>
 				</div>
