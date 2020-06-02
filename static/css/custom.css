@@ -1,0 +1,559 @@
+/* The html views and css style development were started at https://github.com/Junon72/DOW-UI.
+/* I wanted to keep the UI development separate from the back end development workspace especially at the beginning.
+/* This allowed me to focus on one area of development at the time and test the visual features before
+/* implementing them to the project.
+
+
+
+/* Titles / Subtitles / Headers / Paragraphs */
+
+/* html {
+	background-color: rgb(52, 58, 64, .8);
+} */
+
+h4,
+p {
+	font-family: "Lato", serif;
+}
+
+.blockquote p {
+	font-family: "Lato", serif;
+}
+
+
+.section-title,
+.article-title {
+	font-size: 2.2rem;
+	font-family: "Jost", serif;
+	font-weight: 400;
+}
+
+.FyMed {
+	font-size: 1.2rem;
+}
+
+.FyNorm {
+	font-size: 1.6rem;
+}
+
+.FySmall {
+	font-size: .8rem;
+}
+
+.lato {
+	font-family: "Lato", serif;
+}
+
+/* .strong {
+	font-weight: 700;
+}
+
+.medium {
+	font-weight: 400;
+} */
+
+
+
+
+/* Highlight article */
+
+/* .article-title {
+
+} */
+
+/* Buttons */
+
+.back-button {
+	text-decoration: none !important;
+}
+
+.backHome a {
+	font-family: "Lato", serif;
+	margin-bottom: -8px;
+}
+
+.home-arrow {
+	padding-bottom: 2px;
+	padding-right: 10px;
+}
+
+.home-arrow:hover {
+	color: rgb(244, 167, 0);
+}
+
+/* Right align */
+
+.section-title {
+	color: black;
+}
+
+.autoRight {
+	margin-right: auto;
+}
+
+.autoLeft {
+	margin-left: auto;
+}
+
+.rightalign {
+	float: right;
+}
+
+/* Logo header section */
+.top-container {
+	background-color: rgb(216, 217, 219);
+	padding: 30px;
+	text-align: center;
+	min-width: 100vw;
+}
+
+
+.logo-title,
+.logo-sub {
+	margin: auto;
+	font-family: 'Arvo', serif;
+	color: #ffffff;
+}
+
+.logo-title {
+	font-size: 3.4rem;
+	font-weight: 500;
+	text-shadow: 0 1px 0 rgb(244, 195, 0), 0 2px 0 rgb(244, 195, 0), 0 3px 0 rgb(191, 185, 185), 0 4px 0 rgb(191, 185, 185), 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+		0 10px 0 #ccc, 0 11px 0 #ccc, 0 12px 0 #ccc, 0 3px 10px rgb(0, 0, 0, .8);
+}
+
+.logo-sub {
+	font-size: 1.3rem;
+	text-shadow: 2px 2px 5px rgb(0, 0, 0, .8);
+}
+
+/* ------------------------------------------------ Navbar */
+
+.nav-header {
+	margin: 0;
+	background: rgb(216, 217, 219);
+	color: #ffffff;
+	z-index: 1020;
+}
+
+.navbar {
+	height: 80px;
+}
+
+.navbar-collapse.show {
+	background-color: rgb(52, 58, 64, .8);
+	width: 100vw;
+	margin-right: -1rem;
+	margin-left: -1rem;
+}
+
+.navbar-collapse.show ul {
+	padding-left: 1rem;
+}
+
+a.nav-link {
+	font-family: 'Arvo', serif !important;
+	color: #ffffff;
+	font-size: larger !important;
+	font-weight: 900;
+}
+
+a.nav-link:hover {
+	color: rgb(244, 195, 0) !important;
+}
+
+.nav-dark {
+	color: #ffffff;
+}
+
+.nav-light {
+	color: #ffffff;
+}
+
+.nav-link {
+	margin-right: 1rem;
+}
+
+
+.content {
+	padding: 16px;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.sticky+.content {
+	padding-top: 102px;
+}
+
+/* ------------------------------------------------ Index.html */
+
+/* Hero */
+
+.topHeroWrap {
+	overflow: hidden;
+	z-index: 999;
+}
+
+.topHero {
+	position: relative;
+	left: 50%;
+	top: calc(100vw/ 6);
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transition-timing-function: ease-in-out;
+	z-index: -1;
+	/* margin-top: calc(100vw/ -6); */
+}
+
+/* Header title and nav */
+
+.headerRightElement {
+	text-align: right;
+}
+
+/* Main container */
+
+.main-wrapper-index {
+	z-index: 1;
+	margin-top: 2rem;
+}
+
+/* Carousel */
+
+.salesSlider {
+	min-width: 100vw;
+	height: 30vh;
+	overflow: hidden;
+	border: red;
+	clear: left;
+	display: flex;
+	margin-left: -15px;
+	margin-right: -15px;
+	padding: 0 !important;
+}
+
+.sliderItem {
+	overflow: hidden;
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	height: 30vh;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.sliderItem .slider-image {
+	position: relative;
+	padding-right: 1em;
+	height: 30vh;
+	width: 100%;
+	object-fit: cover;
+}
+
+.sliderItem .infoHidden {
+	position: absolute;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: absolute;
+}
+
+
+.arrow:hover {
+	color: rgb(244, 167, 0);
+}
+
+/* Highlight and Blogs */
+
+.article p {
+	font-size: 1.1rem;
+}
+
+/* .highlight-image,
+.blogs-teaser {
+
+} */
+
+/* .blogs-image,
+.highlight-teaser {
+
+} */
+
+#blogs {
+	margin-bottom: 5rem;
+}
+
+/* About */
+
+.article {
+	columns: 2 360px;
+	/* column-width: 45vw; */
+}
+
+.employee-image {
+	width: 160px;
+	height: 160px;
+}
+/* ------------------------------------------------ Products.html.html */
+
+.main-wrapper-sales {
+	z-index: 1;
+	margin-top: 2rem;
+}
+
+.promo-badge {
+	position: absolute;
+	margin-top: 6px;
+	margin-left: 6px;
+	z-index: 5;
+}
+
+.sales-card {
+	z-index: 0;
+	margin: 0 .5rem;
+}
+
+.sales-card-no-border {
+	border-color: transparent !important;
+}
+
+.view {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	/* width: auto; */
+	margin: auto;
+}
+
+.view .product-image {
+	position: relative;
+	height: calc(100% - 2rem);
+	width: 100%;
+	object-fit: cover;
+}
+
+.modal-product-image {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	object-fit: scale-down;
+}
+
+.view .product-detail-button {
+	position: absolute;
+	height: 2rem;
+	width: 50%;
+	font-family: "Lato", serif;
+	font-weight: 200;
+	font-size: .8rem !important;
+}
+
+.old-price {
+	text-decoration-line: line-through;
+	color: rgb(153, 156, 159);
+}
+
+
+.scale {
+	font-size: .8rem;
+	font-weight: 300;
+}
+
+.about-original a {
+	font-size: .8rem;
+	font-family: "Lato", serif;
+	font-weight: 200;
+}
+
+.no-p {
+	padding: 0 !important;
+}
+
+/* Search form */
+
+.search-form label {
+	font-family: lato;
+	font-weight: 300;
+	font-size: .9rem;
+}
+
+.search-form select {
+	height: 31px;
+	font-size: .9rem;
+}
+
+/* .search-form select option {
+	font-family: lato;
+	font-size: .9rem;
+} */
+
+/* ------------------------------------------------ Cart.html */
+
+.view .cart-product-image {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.amend {
+	height: 36px;
+}
+
+/* ------------------------------------------------ Highlight.html */
+
+/* .highlightItem {
+	display: flex;
+	overflow: hidden;
+	margin: auto;
+	padding-left: -15px;
+	align-items: center;
+	justify-content: center;
+}
+
+.highlight-image {
+	position: relative;
+	height: 60vh;
+	width: 100%;
+	object-fit: cover;
+} */
+
+.highlightItem {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: calc(100vh/ 2.5);
+	min-height: 540px;
+}
+
+.highlight-image {
+	content: "";
+	display: block;
+	padding-bottom: 56.25%;
+	height: auto;
+	width: 100%;
+}
+
+.highlightSpec {
+	text-align: center;
+	display: block;
+	padding-left: 0;
+	margin-top: .7rem;
+	font-family: "Lato", serif;
+	font-size: 1rem;
+}
+
+.highlightRange {
+	text-align: center;
+	display: block;
+	padding-left: 0;
+	margin-top: .7rem;
+	font-size: 1.2rem;
+	font-weight: 300;
+}
+
+.highlightArticle {
+	padding: 0 1em;
+}
+
+.article-published {
+	font-family: "Lato", serif;
+	font-size: 1rem;
+	font-weight: 200;
+}
+
+/* ------------------------------------------------ Blogposts.html */
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 1em;
+	justify-content: center;
+	margin: 1em;
+}
+
+
+.card-title {
+	margin: 1em 0;
+	text-align: center;
+}
+
+/* ------------------------------------------------ Blog.html */
+
+/* .blog-card {
+	max-width: 506px;
+} */
+/* .blog-author-image {
+	object-fit: cover;
+	width: 52px;
+	height: auto;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.blog-author-image-container {
+	height: 52px;
+} */
+
+.hero-image {
+	width: 100%;
+	height: auto;
+}
+
+/* Comments */
+
+/* #commentSection {
+	display: none;
+} */
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.editComment {
+	position: absolute;
+	right: 1rem;
+	top: 5px;
+	color: rgb(52, 58, 64);
+}
+
+.comment-owner-image-container {
+	height: 76px;
+}
+.comment-owner-image {
+	object-fit: cover;
+	width: 76px;
+	height: auto;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+/* ------------------------------------------------ Profile.html */
+.profile-image-container {
+	height: 200px;
+}
+
+.profile-image {
+	object-fit: cover;
+	width: 200px;
+	height: auto;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}

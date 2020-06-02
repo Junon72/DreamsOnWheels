@@ -1,5 +1,5 @@
 foo
-env.py
+# env.py
 documents
 documents/
 
@@ -15,9 +15,9 @@ documents/
 # Local History for Visual Studio Code
 .history/
 
-*.png
-static/
-media/
+# *.png
+# static/
+# media/
 
 # Created by https://www.gitignore.io/api/django
 # Edit at https://www.gitignore.io/?templates=django
