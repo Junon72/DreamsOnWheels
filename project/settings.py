@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from os import path
+
+if path.exists("env.py"):
+    import env
+    print('env imported')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
     'cart',
     'highlight',
     'posts',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +148,13 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+# Stripe payment platform settings
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -152,3 +165,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+# if os.path.exists('env.py'):
+#     EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
+#     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'accounts.backends.EmailAuth'
+# ]
+
+# GRAPH_MODELS = {
+#     'all_applications': True,
+#     'group_models': True,
+# }

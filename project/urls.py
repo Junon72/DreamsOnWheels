@@ -24,9 +24,10 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('accounts.url_reset')),
     path('highlight/', include('highlight.urls')),
+    path('posts/', include('posts.urls')),
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
-    path('posts/', include('posts.urls')),
+    path('checkout/', include('checkout.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
