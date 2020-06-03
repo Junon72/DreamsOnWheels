@@ -54,7 +54,7 @@
 				<div class="row w-100 no-gutters content-div mb-3 d-flex">
 					{% with highlights|first as highlight %}
 					<div class="col-md-6 mb-3">
-						<h1 class="section-title">Highlight</h1>
+						<h1 class="section-title">Highlights</h1>
 						<div class="blockquote text-muted pr-2 highlight-teaser">
 							<p class="mb-0 pt-3"><strong>{{ highlight.make }} | {{ highlight.model }}</strong>
 								-&nbsp;Lorem
@@ -63,7 +63,7 @@
 								adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 								aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
 								nisi ut aliquip...</p>
-							<div class="blockquote-footer">Highlight of the month {% now 'F' %}</div>
+							<div class="blockquote-footer">Highlights of the month {% now 'F' %}</div>
 						</div>
 
 						<a class="btn btn-warning" href="{% url 'highlight:get_highlight' %}">Read more</a>
@@ -107,22 +107,22 @@
 				<div class="row">
 					<div class="col mb-5">
 						<div class="article">
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptas harum dolorem
+							<p class="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptas harum dolorem
 								sit mollitia vero ducimus atque iste nisi ab, maiores nemo laboriosam impedit
 								dignissimos, amet error provident eligendi cupiditate? Lorem ipsum dolor sit amet
 								consectetur adipisicing elit. Voluptatem quisquam ut recusandae nulla provident tenetur
 								saepe ratione magni maiores. Voluptatum neque quia enim nihil qui aut illum omnis quam
 								recusandae!</p>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quidem sit et corrupti
+							<p class="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quidem sit et corrupti
 								temporibus ad a? Voluptates, blanditiis repudiandae non ut totam voluptate esse id
 								beatae nulla incidunt enim corporis.</p>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores, harum vel
+							<p class="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores, harum vel
 								saepe nesciunt dicta, facere error tenetur officiis fugiat quod, odit nulla voluptatibus
 								sit? Quas ea quae molestias voluptatibus. Lorem ipsum, dolor sit amet consectetur
 								adipisicing elit. Obcaecati molestias illo veniam! Error similique eum modi, officiis
 								nihil voluptates eius deleniti reprehenderit rem earum beatae labore, quos
 								exercitationem voluptas eligendi.</p>
-							<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis temporibus numquam saepe
+							<p class="px-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis temporibus numquam saepe
 								maxime molestiae mollitia, enim ipsum? Fuga veritatis a, saepe atque eius iste quibusdam
 								voluptate omnis non! Expedita, nostrum! Lorem ipsum dolor sit, amet consectetur
 								adipisicing elit. Eveniet ut molestiae deserunt consequuntur eius nam obcaecati
@@ -141,19 +141,19 @@
 						</div>
 					</div>
 					<div class="row d-flex justify-content-center">
-						<div class="col-lg-3 col-6 p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
+						<div class="col-lg-4 col-6 py-4 px-0"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
 								src="{% static 'img/employees/profile1.png' %}" 
 								alt="CEO profile image">
 							<h4> <b>B. W. Smith</b> </h4>
 							<p class="mb-0">CEO | Sales</p>
 						</div>
-						<div class="col-lg-3 col-6 p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
+						<div class="col-lg-4 col-6 py-4 px-0"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
 								src="{% static 'img/employees/profile3.jpg' %}"
 								alt="Co-founder profile image">
 							<h4> <b>J. G. Wolf</b> </h4>
 							<p class="mb-0">Co-founder | Contributor</p>
 						</div>
-						<div class="col-lg-3 col-6 p-4"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
+						<div class="col-lg-4 col-6 py-4 px-0"> <img class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
 								src="{% static 'img/employees/profile2.jpg' %}"
 								alt="Expert profile image">
 							<h4> <b>A. Gang</b> </h4>

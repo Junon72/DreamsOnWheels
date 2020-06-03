@@ -4,7 +4,11 @@ def view_cart(request):
     """
     A view that renders the cart contents page
     """
-    return render(request, "cart.html", {'cart_page': 'active'})
+    context = {
+        'cart_page': 'active',
+        'title': 'Cart'
+    }
+    return render(request, "cart.html", context)
 
 def add_to_cart(request, id):
     """

@@ -14,7 +14,8 @@ def get_highlight(request):
     highlight = get_list_or_404(Original, status='h')
     context = {
         'highlight': highlight,
-        'highlight_page': 'active'
+        'highlight_page': 'active',
+        'title': 'Highlights'
     }
     return render(request, "highlight.html", context)
 

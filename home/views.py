@@ -9,6 +9,7 @@ def index(request):
     context = {
         "index_page": "active",
         "products": products,
-        "highlights": highlights
+        "highlights": highlights,
+        "title": "Home"
     }
     return render(request, "index.html", context)

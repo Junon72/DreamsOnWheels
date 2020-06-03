@@ -88,7 +88,9 @@
 											</div>
 											{% else %}
 											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
-												<strong class="lato price medium">{{ item.product.price | floatformat:2 }} </strong>
+												<strong
+													class="lato price medium">{{ item.product.price | floatformat:2 }}
+												</strong>
 											</div>
 											{% endif %}
 										</div>
@@ -158,12 +160,15 @@
 				<div class="container">
 					<div class="row no-gutters h-100 justify-content-center">
 						<div class="col-12 text-center">
-							<h4><div class="jumbotron jumbotron-fluid">
-								<div class="container">
-									<h3 class="display-4 mb-3">Cart is empty</h3>
-									<a href="{% url 'products:all_products' %}" class="btn btn-warning btn-large" role="button">Take me to the shop</a>
+							<h4>
+								<div class="jumbotron jumbotron-fluid">
+									<div class="container">
+										<h3 class="display-4 mb-3">Cart is empty</h3>
+										<a href="{% url 'products:all_products' %}" class="btn btn-warning btn-large"
+											role="button">Take me to the shop</a>
+									</div>
 								</div>
-							</div></h4>
+							</h4>
 						</div>
 					</div>
 				</div>
@@ -183,11 +188,12 @@
 						{% else %}
 						<div class="row no-gutters">
 							<div class="col">
-								<div class="display-block mb-2"><strong class="lato price medium">
-										Login to use our promotions!</strong>
-								</div>
 								<a href="{% url 'login' %}" type="button"
 									class="btn btn-outline-dark btn-sm btn-block">Login</a>
+								<div class="display-block mb-2"><strong class="lato price medium">
+										Login to make purchases and use our promotions!
+									</strong>
+								</div>
 							</div>
 						</div>
 						{% endif %}
@@ -204,9 +210,8 @@
 						</div>
 						<div class="row no-gutters mt-3 mb-2">
 							<div class="col">
-								{% if totals == 0 %}
-								<a href="#" type="button"
-									class="btn btn-dark btn-default btn-block">Checkout</a>
+								{% if totals == 0 or not user.is_authenticated %}
+								<a href="#" type="button" class="btn btn-dark btn-default btn-block">Checkout</a>
 								{% else %}
 								<a href="{% url 'checkout' %}" type="button"
 									class="btn btn-dark btn-default btn-block">Checkout</a>

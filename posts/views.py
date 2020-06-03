@@ -20,7 +20,9 @@ def get_posts(request):
 
     context = {
         'posts': posts,
-        'blogs_page': 'active'}
+        'blogs_page': 'active',
+        'title': 'BLogs'
+        }
     return render(request, "blogposts.html", context)
 
 
@@ -57,7 +59,8 @@ def post_detail(request, pk):
         'comments': comments,
         'users': users,
         'comment_form': comment_form,
-        'post': post
+        'post': post,
+        'title': 'Blog'
     }
 
     return render(request, "postdetail.html", context)

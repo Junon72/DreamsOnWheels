@@ -19,7 +19,8 @@ def all_products(request):
     context = {
         # 'products': products,
         'filter': f,
-        'sales_page': 'active'
+        'sales_page': 'active',
+        'title': 'Sales'
     }
     return render(request, "products.html", context)
 
@@ -30,5 +31,9 @@ def get_original(request, id):
     """
 
     original = get_list_or_404(Original, id=id)
-    return render(request, "original.html", {'original': original})
+    context ={
+        'original': original,
+        'title': 'Original'
+    }
+    return render(request, "original.html", context)
 

@@ -81,7 +81,8 @@ def user_profile(request):
                 user = User.objects.get(username=request.user.username)
                 context = {
                     'user': user,
-                    'profile_page': 'active'
+                    'profile_page': 'active',
+                    'title': 'Profile'
                     }
         except User.DoesNotExist:
             return HttpResponseForbidden()
@@ -111,6 +112,7 @@ def update_profile(request):
             profile_form = ProfileForm(instance=request.user.profiles)
             context = {
                 'user_form': user_form,
-                'profile_form': profile_form
+                'profile_form': profile_form,
+                'title': 'Update'
             }
             return render(request, 'update_profile.html', context)

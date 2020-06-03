@@ -67,6 +67,7 @@ def checkout(request):
     context ={
         "order_form": order_form, 
         "payment_form": payment_form, 
-        "publishable": settings.STRIPE_PUBLISHABLE
+        "publishable": settings.STRIPE_PUBLISHABLE,
+        "title": "Checkout"
     }
     return render(request, "checkout.html", context)
