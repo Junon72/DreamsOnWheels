@@ -84,11 +84,11 @@
 											{% if item.product.old_price > 0 %}
 											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
 												<span class="old-price">{{ item.product.old_price }} </span><strong
-													class="lato price medium">&nbsp{{ item.product.price }}</strong>
+													class="lato price medium">&nbsp{{ item.product.price | floatformat:2 }}</strong>
 											</div>
 											{% else %}
 											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
-												<strong class="lato price medium">{{ item.product.price }} </strong>
+												<strong class="lato price medium">{{ item.product.price | floatformat:2 }} </strong>
 											</div>
 											{% endif %}
 										</div>
@@ -125,7 +125,7 @@
 											data-delay="50"><strong>Total</strong></button>
 									</span>
 									<div class="autoLeft my-auto"><i class="fa fa-euro"></i><strong
-											class="lato price medium"> &nbsp{{ item.total }}</strong>
+											class="lato price medium"> &nbsp{{ item.total | floatformat:2 }}</strong>
 									</div>
 								</div>
 							</div>
@@ -179,15 +179,18 @@
 								Your shopping cart
 							</strong>
 						</h5>
+						{% if user.is_authenticated %}
+						{% else %}
 						<div class="row no-gutters">
 							<div class="col">
 								<div class="display-block mb-2"><strong class="lato price medium">
 										Login to use our promotions!</strong>
 								</div>
-								<button href="{% url 'login' %}" type="button"
-									class="btn btn-outline-dark btn-sm btn-block">Login</button>
+								<a href="{% url 'login' %}" type="button"
+									class="btn btn-outline-dark btn-sm btn-block">Login</a>
 							</div>
 						</div>
+						{% endif %}
 						<div class="row no-gutters mt-4">
 							<div class="col d-flex">
 								<div class="autoRight my-auto"><strong class="lato price">
@@ -195,14 +198,19 @@
 								</div>
 								<div class="autoLeft my-auto pr-3"><i class="fa fa-euro"></i><strong
 										class="lato price medium">
-										&nbsp {{ totals }}</strong>
+										&nbsp {{ totals | floatformat:2 }}</strong>
 								</div>
 							</div>
 						</div>
 						<div class="row no-gutters mt-3 mb-2">
 							<div class="col">
-								<button href="{% url 'checkout:checkout' %}" type="button"
-									class="btn btn-dark btn-default btn-block">Checkout</button>
+								{% if totals == 0 %}
+								<a href="#" type="button"
+									class="btn btn-dark btn-default btn-block">Checkout</a>
+								{% else %}
+								<a href="{% url 'checkout' %}" type="button"
+									class="btn btn-dark btn-default btn-block">Checkout</a>
+								{% endif %}
 							</div>
 						</div>
 					</div>

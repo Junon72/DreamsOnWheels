@@ -19,7 +19,7 @@ class TestAccountsLoginViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'login.html')
 
-    def UserLoginCase(self):
+class TestUserLoginCase(TestCase):
         """ 
         Test if user can log in
         """
@@ -37,12 +37,12 @@ class TestAccountsLoginViews(TestCase):
             self.assertEqual(response.context['user'].AnonymousUser())
             response = self.client.get('/accounts/login')
             
-    # def test_user_does_not_exist(self):
-    #     response = self.client.post("/accounts/login", {
-    #         'username': 'testuser',
-    #         'password': 'secret0'
-    #     })
-    #     self.assertFormError(response.context['user'], None, 'Incorrect Username or Password!')
+        def test_user_does_not_exist(self):
+            response = self.client.post("/accounts/login", {
+                'username': 'testuser',
+                'password': 'secret0'
+            })
+            self.assertFormError(response.context['user'], None, 'Incorrect Username or Password!')
             
             
 class TestAccountsRegisterUserViews(TestCase):
