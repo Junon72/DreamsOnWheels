@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import MakePaymentForm, OrderForm
 from django.contrib import messages
@@ -13,7 +13,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 publishable = settings.STRIPE_PUBLISHABLE
 
-
+@login_required()
 def checkout(request):
     if request.method=="POST":
         order_form = OrderForm(request.POST)
@@ -38,11 +38,12 @@ def checkout(request):
 
             try:
                 customer = stripe.Charge.create(
-                    amount=int(total * 100),
-                    currency="EUR",
-                    description=request.user.email,
-                    card=payment_form.cleaned_data['stripe_id'],
+                    amount = int(total * 100),
+                    currency = "EUR",
+                    description = request.user.email,
+                    card = payment_form.cleaned_data['stripe_id'],
                 )
+
             except stripe.error.CardError:
                 messages.error(
                     request, "Your card was declined!")
@@ -50,10 +51,9 @@ def checkout(request):
             if customer.paid:
                 messages.error(
                     request, "You have successfully paid")
-                
-                # Send a confirmation email
+
                 request.session['cart'] = {}
-                return redirect(reverse('all_products'))
+                return redirect(reverse('products:all_products'))
             else:
                 messages.error(request, "Unable to take payment")
         else:
@@ -64,8 +64,9 @@ def checkout(request):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
 
-    return render(request, "checkout.html", {
+    context ={
         "order_form": order_form, 
         "payment_form": payment_form, 
         "publishable": settings.STRIPE_PUBLISHABLE
-        })
+    }
+    return render(request, "checkout.html", context)
