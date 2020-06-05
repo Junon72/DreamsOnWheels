@@ -16,15 +16,15 @@
 				<li class="nav-item {{ highlight_page }}">
 					<a class="nav-link" href="{% url 'highlight:get_highlight' %}">Highlights</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link {{ blogs_page }}" href="{% url 'posts:get_posts' %}">Blogs</a>
+				<li class="nav-item {{ blogs_page }}">
+					<a class="nav-link" href="{% url 'posts:get_posts' %}">Blogs</a>
 				</li>
 				{% if user.is_authenticated %}
+				<li class="nav-item {{ profile_page }}">
+					<a class="nav-link" href="{% url 'user_profile' %}">Profile</a>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-				</li>
-				<li class="nav-item {{ profile_page }">
-					<a class="nav-link" href="{% url 'user_profile' %}">Profile</a>
 				</li>
 				{% else %}
 				<li class="nav-item {{ login_page }}">

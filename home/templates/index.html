@@ -38,6 +38,9 @@
 				<img src="{{ MEDIA_URL }}{{ item.image_main }}" class="slider-image"
 					alt="{{ product.make }} | {{ product.model }}">
 				<a href="{% url 'products:all_products' %}" class="stretched-link"></a>
+				<div class="overlay">
+					<div class="invite FyMed lato">TO SALES ></div>
+				</div>
 			</div>
 			{% endfor %}
 		</div>
@@ -49,7 +52,7 @@
 <!-- Highlight & Blogs -->
 <div class="container-fluid">
 	<div class="row no-gutters justify-content-center">
-		<div class="col-sm-12 col-md-10 col-lg-8">
+		<div class="col-xs-12 col-sm-10">
 			<section id="highlights">
 				<div class="row w-100 no-gutters content-div mb-3 d-flex">
 					{% with highlights|first as highlight %}
@@ -68,8 +71,8 @@
 
 						<a class="btn btn-warning" href="{% url 'highlight:get_highlight' %}">Read more</a>
 					</div>
-					<div class="col-md-6 pl-4">
-						<img class="img-fluid img-responsive d-block highlight-image pb-0"
+					<div class="col-md-6 pl-md-4">
+						<img class="img-fluid img-responsive d-block pb-0"
 							src="{{ MEDIA_URL }}{{ highlight.image_main }}">
 					</div>
 					{% endwith %}
@@ -81,7 +84,7 @@
 						<img class="img-fluid d-block img-responsive blogs-image"
 							src="{% static 'img/index/1938_talbot_1.jpg' %}">
 					</div>
-					<div class="col-md-6 pl-4">
+					<div class="col-md-6 pl-md-4">
 						<h1 class="section-title">Blogs</h1>
 						<div class="blockquote text-muted blogs-teaser">
 							<p class="mb-0"><strong>Contributor posts</strong> -&nbsp;Lorem ipsum dolor sit amet,
@@ -107,22 +110,22 @@
 				<div class="row">
 					<div class="col mb-5">
 						<div class="article">
-							<p class="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptas harum dolorem
+							<p class="mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptas harum dolorem
 								sit mollitia vero ducimus atque iste nisi ab, maiores nemo laboriosam impedit
 								dignissimos, amet error provident eligendi cupiditate? Lorem ipsum dolor sit amet
 								consectetur adipisicing elit. Voluptatem quisquam ut recusandae nulla provident tenetur
 								saepe ratione magni maiores. Voluptatum neque quia enim nihil qui aut illum omnis quam
 								recusandae!</p>
-							<p class="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quidem sit et corrupti
+							<p class="mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quidem sit et corrupti
 								temporibus ad a? Voluptates, blanditiis repudiandae non ut totam voluptate esse id
 								beatae nulla incidunt enim corporis.</p>
-							<p class="px-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores, harum vel
+							<p class="mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores, harum vel
 								saepe nesciunt dicta, facere error tenetur officiis fugiat quod, odit nulla voluptatibus
 								sit? Quas ea quae molestias voluptatibus. Lorem ipsum, dolor sit amet consectetur
 								adipisicing elit. Obcaecati molestias illo veniam! Error similique eum modi, officiis
 								nihil voluptates eius deleniti reprehenderit rem earum beatae labore, quos
 								exercitationem voluptas eligendi.</p>
-							<p class="px-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis temporibus numquam saepe
+							<p class="mr-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis temporibus numquam saepe
 								maxime molestiae mollitia, enim ipsum? Fuga veritatis a, saepe atque eius iste quibusdam
 								voluptate omnis non! Expedita, nostrum! Lorem ipsum dolor sit, amet consectetur
 								adipisicing elit. Eveniet ut molestiae deserunt consequuntur eius nam obcaecati

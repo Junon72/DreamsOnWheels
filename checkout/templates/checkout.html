@@ -16,6 +16,24 @@
 {% endblock head_js %}
 
 {% block content %}
+<!-- Checkout Header -->
+<div class="container main-wrapper-index">
+	<section id="products-header">
+		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
+			<div class="col">
+				<h1 class="section-title">Checkout</h1>
+			</div>
+			<div class="col headerRightElement backHome FyNorm clearfix">
+				<a href="{% url 'view_cart' %}" class="btn btn-link back-button text-dark" data-toggle="tooltip"
+					data-placement="bottom" title="Take me back Home" data-delay="50"><i
+						class="align-center home-arrow fa fa-chevron-left"></i> Back to Cart</a>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- /Checkout Header -->
+
+<!-- Checkout form -->
 <div class="container-md main-wrapper-index">
 	<div class="row row-flex">
 		<div class="col-xs-12 col-sm-7">
@@ -36,7 +54,7 @@
 				</div>
 
 				<div class="form-group mt-5">
-					<input class=" btn btn-dark btn-sm" id="submit_payment_btn" name="commit" type="submit"
+					<input class="btn btn-dark" id="submit_payment_btn" name="commit" type="submit"
 						value="Submit Payment">
 				</div>
 			</form>
@@ -102,5 +120,5 @@
 		</div>
 	</div>
 </div>
-
+<!-- /Checkout form -->
 {% endblock %}

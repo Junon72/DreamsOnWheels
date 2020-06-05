@@ -30,7 +30,7 @@ $(document).ready(function () {
 		prevArrow: $('.prev'),
 		mobileFirst: true,
 		responsive: [{
-				breakpoint: 1224,
+				breakpoint: 1400,
 				settings: {
 					slidesToShow: 4,
 					slidesToScroll: 4,

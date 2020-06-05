@@ -38,7 +38,8 @@ def login(request):
         login_form = UserLoginForm()
     context = {
         'login_form': login_form,
-        'login_page': 'active'
+        'login_page': 'active',
+        'title': 'Login'
     }
     return render(request, 'login.html', context)
 
@@ -66,7 +67,9 @@ def register(request):
         user_form = UserRegistrationForm()
     context = {
         'user_form': user_form,
-        'register_page': 'active'}
+        'register_page': 'active',
+        'title': 'Register'
+    }
     return render(request, 'register.html', context)
 
 @login_required
@@ -79,14 +82,13 @@ def user_profile(request):
         try:
             if (request.user is not None):
                 user = User.objects.get(username=request.user.username)
-                context = {
-                    'user': user,
-                    'profile_page': 'active',
-                    'title': 'Profile'
-                    }
         except User.DoesNotExist:
             return HttpResponseForbidden()
-
+    context = {
+        'user': user,
+        'profile_page': 'active',
+        'title': 'Profile'
+    }
     return render(request, 'profile.html', context)
 
 @login_required
