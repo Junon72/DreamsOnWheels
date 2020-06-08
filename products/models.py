@@ -52,7 +52,7 @@ class Product(models.Model):
     status = models.CharField(max_length=1, choices=PRODUCT_STATUS_CHOICES, default='y')
     in_stock = models.PositiveIntegerField(default=0)
     original_key = models.ForeignKey(Original, null=True, related_name='products', on_delete=models.SET_NULL)
-    
+
     def __str__(self):
         return self.model
 

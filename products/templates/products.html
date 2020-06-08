@@ -15,7 +15,7 @@
 				<h1 class="section-title">Sales</h1>
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
-				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-toggle="tooltip"
+				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-tooltip="tooltip"
 					data-placement="bottom" title="Take me back Home" data-delay="50"><i
 						class="align-center home-arrow fa fa-chevron-left"></i>Back Home</a>
 			</div>
@@ -57,8 +57,9 @@
 			</div>
 			<div class="col-lg-12 col-xl-1 p-0 m-0 align-self-end">
 				<div class="form-group d-flex">
-					<button type="submit" class="btn btn-sm btn-dark ml-auto"><i class="fa fa-search mr-1"
-							aria-hidden="true"></i>search</button>
+					<button type="submit" class="btn btn-sm btn-dark ml-auto" data-tooltip="tooltip"
+						data-placement="bottom" title="Search product"><i class="fa fa-search mr-1" aria-hidden="true"
+							data-delay="50"></i>search</button>
 				</div>
 			</div>
 		</div>
@@ -71,7 +72,7 @@
 
 	<section id="products-sales-field">
 		<div class="row clearfix no-gutters">
-			<!-- Products card1 (row start) -->
+			<!-- Product card (row start) -->
 			{% for product in filter.qs %}
 			<div class="col-md-6 mb-4 no-p">
 				<div class="card sales-card pr-0 h-100">
@@ -84,87 +85,79 @@
 					{% else %}
 					{% endif %}
 					<div class="row pr-0 no-gutters">
-						<div class="col-sm-6 col-md-12 col-xl-7 d-flex align-items-center no-p">
-							<div class="view w-100 h-100 d-flex">
-								<img class="img-fluid card-img product-image"
-									src="{{ MEDIA_URL }}{{ product.image_main }}"
+						<div class="col-sm-7 col-md-12 col-xl-7 d-flex align-items-center no-p">
+							<div class="view product-detail h-100 d-flex">
+								<img class="img-fluid product-image" src="{{ MEDIA_URL }}{{ product.image_main }}"
 									alt="{{ product.make }} | {{ product.model }}">
-								<button class="btn btn-warning product-detail-button clearfix align-self-end"
-									data-toggle="modal" data-target="#productDetail{{ product.id }}">See
-									details</button>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-12 col-xl-5 pl-sm-0 pl-lg-0">
-							<div class="card sales-card-no-border">
-								<div class="card-body pb-2 px-2">
-									<h5 class="card-title text-left mb-2 my-0 ml-2">
-										<strong class="lato">
-											{{ product.make }} | {{ product.model }}
-										</strong>
-									</h5>
-									<div class="row mb-1 no-gutters">
-										<div class="col-12 d-flex ml-2">
-											<span class="lato scale mr-2"><strong>Mfr. </strong></span>
-											<span class="lato scale mr-2">{{ product.manufacturer }}</span>
-										</div>
-										<div class="col-12 d-flex ml-2">
-											<span class="lato scale mr-2"><strong>Year: </strong></span>
-											<span class="lato scale mr-2">{{ product.build_year }}</span>
-										</div>
-										<div class="col-12 d-flex ml-2">
-											<span class="lato scale mr-2"><strong>Color: </strong></span>
-											<span class="lato scale mr-2">{{ product.color }}</span>
-										</div>
-										<div class="col-12 d-flex ml-2">
-											<span class="lato scale mr-2"><strong>Scale: </strong></span>
-											<span class="lato scale mr-2">{{ product.scale }}</span>
-										</div>
-									</div>
-									<div class="row mb-0 no-gutters">
-										<div class="col d-flex about-original clearfix ml-2">
-											<a href="{% url 'products:get_original' id=product.original_key.pk %}"
-												class="btn btn-link text-warning pl-0" data-toggle="tooltip"
-												data-placement="bottom" title="About original" data-delay="50">Read
-												about
-												original...</a>
-										</div>
-									</div>
-									<div class="card-footer p-2">
-										<div class="row mb-0 clearfix no-gutters">
-											<div class="col d-flex clearfix">
-												{% if product.old_price > 0 %}
-												<div class="autoRight"><i class="fa fa-euro"></i>
-													<span class="old-price">{{ product.old_price }} </span><strong
-														class="lato price medium">&nbsp{{ product.price }}</strong>
-												</div>
-												{% else %}
-												<div class="autoRight"><i class="fa fa-euro"></i>
-													<strong class="lato price medium">{{ product.price }} </strong>
-												</div>
-												{% endif %}
-											</div>
-											<form class="product-form m-0 p-0" method="POST"
-												action="{% url 'add_to_cart' product.id %}">
-												{% csrf_token %}
-												<input name="quantity" type="hidden" value="1" class="form-control">
-												<span class="autoLeft">
-													{% if product.status == 's' or product.status == 'o' or product.in_stock == 0 %}
-													<button class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
-														disabled aria-disabled="true" data-toggle="tooltip"
-														data-placement="bottom" title="Product not available currently"
-														data-delay="50">add</button>
-													{% else %}
-													<button type="submit"
-														class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
-														data-toggle="tooltip" data-placement="bottom"
-														title="Add to cart" data-delay="50">add</button>
-													{% endif %}
-												</span>
-											</form>
-										</div>
-									</div>
+								<a data-toggle="modal" href="#productDetail{{ product.id }}" class="stretched-link"></a>
+								<div class="overlay">
+									<div class="invite FyMed lato">SEE MORE...</div>
 								</div>
 							</div>
+						</div>
+						<div class="col-sm-5 col-md-12 col-xl-5 pl-sm-0 pl-lg-0">
+							<div class="card-body pb-2 h-100 px-3">
+								<h5 class="card-title text-left m-0">
+									<strong class="lato">
+										{{ product.make }} | {{ product.model }}
+									</strong>
+								</h5>
+								<div class="col-12 d-flex p-0 mt-2">
+									<span class="lato scale mr-2"><strong>Mfr. </strong></span>
+									<span class="lato scale mr-2">{{ product.manufacturer }}</span>
+								</div>
+								<div class="col-12 d-flex p-0">
+									<span class="lato scale mr-2"><strong>Year: </strong></span>
+									<span class="lato scale mr-2">{{ product.build_year }}</span>
+								</div>
+								<div class="col-12 d-flex p-0">
+									<span class="lato scale mr-2"><strong>Color: </strong></span>
+									<span class="lato scale mr-2">{{ product.color }}</span>
+								</div>
+								<div class="col-12 d-flex p-0">
+									<span class="lato scale mr-2 mb-4"><strong>Scale: </strong></span>
+									<span class="lato scale mr-2">{{ product.scale }}</span>
+								</div>
+								<a href="{% url 'products:get_original' id=product.original_key.pk %}"
+									class="btn btn-link text-warning mt-auto mt-auto pl-0 about-original"
+									data-tooltip="tooltip" data-placement="bottom" title="About original"
+									data-delay="50">Read
+									about
+									original...</a>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer d-flex px-2 py-2">
+						<div class="row w-100 h-100 mb-0 no-gutters">
+							<div class="col d-flex clearfix align-items-center">
+								<span class="lato pl-2"><strong class="lato price medium">Price: </strong></span>
+								{% if product.old_price > 0 %}
+								<div class="autoRight pl-2"><i class="fa fa-euro"></i>
+									<span class="old-price">{{ product.old_price }} </span><strong
+										class="lato price medium">&nbsp{{ product.price }}</strong>
+								</div>
+								{% else %}
+								<div class="autoRight pl-2"><i class="fa fa-euro"></i>
+									<strong class="lato price medium">{{ product.price }} </strong>
+								</div>
+								{% endif %}
+							</div>
+							<form class="product-form m-0 p-0" method="POST"
+								action="{% url 'add_to_cart' product.id %}">
+								{% csrf_token %}
+								<input name="quantity" type="hidden" value="1" class="form-control">
+								<span class="autoLeft">
+									{% if product.status == 's' or product.status == 'o' or product.in_stock == 0 %}
+									<button class="btn btn-outline-dark btn-sm pl-0 add-to-cart px-2" disabled
+										aria-disabled="true" data-tooltip="tooltip" data-placement="bottom"
+										title="Product not available currently" data-delay="50">add</button>
+									{% else %}
+									<button type="submit" class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
+										data-tooltip="tooltip" data-placement="bottom" title="Add to cart"
+										data-delay="50">add</button>
+									{% endif %}
+								</span>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -182,12 +175,10 @@
 						</div>
 						<div class="view w-100 h-100">
 							{% if product.image_sec %}
-							<img class="img-fluid card-img modal-product-image"
-								src="{{ MEDIA_URL }}{{ product.image_sec }}"
+							<img class="img-fluid modal-product-image" src="{{ MEDIA_URL }}{{ product.image_sec }}"
 								alt=" &nbsp; {{ product.make }} | {{ product.model }}">
 							{% else %}
-							<img class="img-fluid card-img modal-product-image"
-								src="{{ MEDIA_URL }}{{ product.image_main }}"
+							<img class="img-fluid modal-product-image" src="{{ MEDIA_URL }}{{ product.image_main }}"
 								alt=" &nbsp; {{ product.make }} | {{ product.model }}">
 							{% endif %}
 						</div>
@@ -204,7 +195,7 @@
 				</div>
 			</div>
 			{% endfor %}
-			<!-- /Products card1 -->
+			<!-- /Product card -->
 		</div>
 	</section>
 	{% if not user.is_authenticated %}
