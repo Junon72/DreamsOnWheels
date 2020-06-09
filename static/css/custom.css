@@ -610,3 +610,24 @@ a.footer-nav .fa:hover {
 	border-radius: 50%;
 	-webkit-border-radius: 50%;
 }
+
+/* ------------------------------------------------ 404.html */
+
+.page-wrap {
+	min-height: 100vh;
+}
+
+.error-code {
+	color: #ffc107;
+	font-size: 4em;
+	font-weight: 900;
+	font-family: 'Lato'
+}
+
+.error-link {
+	text-decoration: none;
+}
+
+.error-text {
+	color: #ffffff;
+}

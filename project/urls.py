@@ -22,13 +22,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('accounts/', include('accounts.urls')),
-    path('accounts/', include('accounts.url_reset')),
+    path('accounts/', include('accounts.urls_reset')),
     path('highlight/', include('highlight.urls')),
     path('posts/', include('posts.urls')),
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
 ]
+handler404 = 'project.views.handler404'
+handler500 = 'project.views.handler500'
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

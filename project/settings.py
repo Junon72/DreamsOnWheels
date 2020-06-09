@@ -15,7 +15,10 @@ from os import path
 
 if path.exists("env.py"):
     import env
+    DEBUG = True
     print('env imported')
+# else:
+#     DEBUG = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +31,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9ggtpgba6wzs6=e5e#3(**f!tbc0cjv9_^9bcdesw9gjz1#n=('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1'
@@ -168,20 +171,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
-# if os.path.exists('env.py'):
-#     EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
-#     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+if os.path.exists('env.py'):
+    EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
+    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
 
-# AUTHENTICATION_BACKENDS = [
-#     'django.contrib.auth.backends.ModelBackend',
-#     'accounts.backends.EmailAuth'
-# ]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuth'
+]
 
-# GRAPH_MODELS = {
-#     'all_applications': True,
-#     'group_models': True,
-# }
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+}
