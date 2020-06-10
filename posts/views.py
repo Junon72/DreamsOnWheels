@@ -70,7 +70,7 @@ class CommentUpdateView(BSModalUpdateView):
     """ 
     Update comment using django-bootstrap-modal-forms package.
     The form_valid method is overdriven to get the correct success_url.
-    Instanse call is used to get the parent post id for the url path,
+    Instance call is used to get the parent post id for the url path,
     returning to the the postdetail page after update.
     """
 
