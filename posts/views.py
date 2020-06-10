@@ -77,7 +77,7 @@ class CommentUpdateView(BSModalUpdateView):
     model = Comment
     template_name = 'edit_comment.html'
     form_class = UpdateCommentForm
-    success_message = 'Success! Comment was updated and is being reviewed'
+    # success_message = 'Success! Comment was updated and is being reviewed'
     def form_valid(self,form):
         instance = form.save()
         self.success_url = reverse_lazy('posts:post_detail', kwargs={'pk': instance.post.id})

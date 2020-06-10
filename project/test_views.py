@@ -5,18 +5,6 @@ from django.urls import path, reverse
 from django.test import SimpleTestCase, TestCase, override_settings, Client
 
 
-def response_error_handler(request, exception=None):
-    return HttpResponse('Page not found.', status=404)
-
-def handler404(request):
-    raise HttpResponseNotFound
-
-urlpatterns = [
-    path('404/', handler404),
-]
-
-handler404 = handler404
-
 @override_settings(ROOT_URLCONF='project.urls')
 class TestCustomErrorHandlers(SimpleTestCase):
 

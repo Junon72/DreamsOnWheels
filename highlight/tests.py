@@ -4,7 +4,7 @@ from products.models import Original, Vote
 from django.contrib.auth.models import User
 
 
-class HighlightViewsTest(TestCase):
+class TestHighlightViews(TestCase):
 
 	def setUp(self):
 		self.highlight_url = reverse('highlight:get_highlight')
@@ -19,7 +19,7 @@ class HighlightViewsTest(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed(response, 'highlight.html')
 
-class VoteViewTest(TestCase):
+class TestVoteView(TestCase):
 
 	def setUp(self):
 		self.highlight_url_to_vote = reverse('highlight:up_vote', args=[1])

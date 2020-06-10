@@ -11,18 +11,18 @@ class TestUrls(SimpleTestCase):
         print(resolve(url))
         self.assertEquals(resolve(url).func, get_posts)
 
-    def test_post_detail_url_is_resolved(self):
-        post = Post.objects.create(title='Test post detail title',
-                                    content = 'Test post detail content')
-        self.assertEqual(Post.objects.count(), 1)
+    # def test_post_detail_url_is_resolved(self):
+    #     post = Post.objects.create(title='Test post detail title',
+    #                                 content = 'Test post detail content')
+    #     self.assertEqual(Post.objects.count(), 1)
         
-        url = reverse(
-            'posts:post_detail', 
-            args={
-                'pk': 1
-                })
-        print(resolve(url))
-        self.assertEquals(resolve(url).func, post_detail)
+    #     url = reverse(
+    #         'posts:post_detail', 
+    #         args={
+    #             'pk': 1
+    #             })
+    #     print(resolve(url))
+    #     self.assertEquals(resolve(url).func, post_detail)
 
     # def test_update_comment_url_is_resolved(self):
     #     url = reverse('posts:update', args=[pk])
