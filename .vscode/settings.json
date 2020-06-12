@@ -1,6 +1,0 @@
-{
-	"liveServer.settings.port": 5501,
-	  // cornflakes.path
-  "cornflakes.linter.executablePath": "path/to/venvs/foo/bin/flake8",
-
-}
