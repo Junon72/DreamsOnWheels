@@ -4,6 +4,8 @@ documents
 documents/
 
 # development folders
+*.vscode
+vscode
 .vscode
 .vscode/*
 !.vscode/settings.json
