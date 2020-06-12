@@ -19,7 +19,7 @@ def get_highlight(request):
     }
     return render(request, "highlight.html", context)
 
-@login_required
+# @login_required
 def up_vote(request, id):
     """
     Check if the user is logged in, and prevent user not
@@ -29,7 +29,7 @@ def up_vote(request, id):
     specific entry yet.
     """
     if not request.user.is_authenticated:
-        messages.danger(request, "You have to login to vote.")
+        messages.warning(request, "You have to login to vote.")
         return redirect('highlight:get_highlight')
     else:
         # Processing post requests

@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 
 
 class EmailAuth(object):
-    """Authenticate a user by an exact match on the email and password using authenticate method. """
+    """Authenticate a user by an exact match on the username and password using authenticate method. """
 
     def authenticate(self, request, username, password):
         """

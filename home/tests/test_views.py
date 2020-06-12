@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.http import Http404
 from django.shortcuts import get_list_or_404, render, redirect, reverse
-from .views import *
+from home.views import *
 from products.models import Product, Original
 
 
@@ -18,7 +18,7 @@ class TestIndexViews(TestCase):
     def setUp(self):
         self.client = Client()
         self.index_url = reverse('index')
-        self.product_url = reverse('products:all_products', args[1])
+        self.product_url = reverse('products:all_products', args=[1])
         self.product1 = Product.objects.create(pk=1)
         self.original_url = reverse('products:get_original', args=[1])
         self.original1 = Original.objects.create(pk=1)
