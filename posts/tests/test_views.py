@@ -17,9 +17,14 @@ class TestViews(TestCase):
             content = 'Test post content',
             author = self.user
         )
-        self.comment1 = 
+        self.comment1 = Comment.objects.create(
+            post = self.post1,
+            owner = self.user,
+            content = 'Test comment'
+        )
         print(self.post1)
         print(self.detail_url)
+        print(self.comment1)
 
     def test_get_posts(self):
         response = self.client.get(self.posts_url)
