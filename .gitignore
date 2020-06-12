@@ -1,10 +1,10 @@
 foo
-# env.py
+env.py
 documents
 documents/
 
 # development folders
-
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
