@@ -15,6 +15,9 @@ p {
 	font-family: "Lato", serif;
 }
 
+a, a:hover, a:focus {
+    text-decoration: none;
+}
 
 .FyNorm {
 	font-size: 1.6rem;
@@ -389,7 +392,7 @@ a.footer-nav .fa:hover {
 .about-original {
 	font-size: .8rem !important;
 	font-family: "Lato", serif;
-	font-weight: 200;
+	font-weight: 400;
 	text-transform: uppercase;
 	position: absolute;
 	bottom: 0;
@@ -428,6 +431,10 @@ a.footer-nav .fa:hover {
 
 .amend {
 	height: 36px;
+}
+
+.sales-card-no-border {
+	border: none;
 }
 
 
@@ -533,6 +540,18 @@ a.footer-nav .fa:hover {
 .card-title {
 	margin: 1em 0;
 	text-align: center;
+}
+
+.pagin-anchor {
+	color: black;
+}
+
+.pagin-anchor:hover {
+	color: rgb(244, 195, 0);
+}
+
+.pagin-text {
+
 }
 
 /* ------------------------------------------------ Blog.html */

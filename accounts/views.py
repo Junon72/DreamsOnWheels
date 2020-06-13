@@ -36,6 +36,7 @@ def login(request):
                 login_form.add_error(None, 'Your username or password is incorrect!')
     else:
         login_form = UserLoginForm()
+
     context = {
         'login_form': login_form,
         'login_page': 'active',
@@ -72,7 +73,6 @@ def register(request):
     }
     return render(request, 'register.html', context)
 
-@login_required
 def user_profile(request):
     """Fetch the user data and the linked profile data."""
 
@@ -91,7 +91,6 @@ def user_profile(request):
     }
     return render(request, 'profile.html', context)
 
-@login_required
 @transaction.atomic
 def update_profile(request):
     """ """

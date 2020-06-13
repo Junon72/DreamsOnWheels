@@ -49,7 +49,7 @@ def checkout(request):
                     request, "Your card was declined!")
 
             if customer.paid:
-                messages.error(
+                messages.success(
                     request, "You have successfully paid")
                 for id, quantity in cart.items():
                     product = get_object_or_404(Product, pk=id)

@@ -51,7 +51,7 @@
 											{{ item.product.make }} | {{ item.product.model }}
 										</strong>
 									</h5>
-									<div class="row mb-1 no-gutters">
+									<div class="row no-gutters">
 										<div class="col-12 d-flex ml-2">
 											<span class="lato scale mr-2"><strong>Mfr. </strong></span>
 											<span class="lato scale mr-2">{{ item.product.manufacturer }}</span>
@@ -70,15 +70,15 @@
 										</div>
 									</div>
 									<div class="row mb-0 no-gutters">
-										<div class="col d-flex about-original clearfix ml-2">
-											<button class="btn btn-link text-warning p-0" data-toggle="modal"
+										<div class="col d-flex about-original ml-2 clearfix">
+											<button class="btn btn-link text-warning p-0 about-original" data-toggle="modal"
 												data-target="#productDetail{{ item.id }}">View
 												details</button>
 										</div>
 									</div>
 									<div class="row no-gutters">
-										<div class="col d-flex pt-5">
-											<div class="autoRight ml-1 my-auto"><strong class="lato price medium">
+										<div class="col d-flex">
+											<div class="autoRight ml-2 my-auto"><strong class="lato price medium">
 													Price:</strong>
 											</div>
 											{% if item.product.old_price > 0 %}
@@ -103,7 +103,7 @@
 						{% csrf_token %}
 						<div class="card-footer p-2">
 							<div class="row my-1 no-gutters">
-								<div class="col-md-6 d-flex clearfix mt-2 pl-2">
+								<div class="col-md-6 d-flex clearfix pl-2">
 									<span class="autoRight my-auto">
 										<button class="btn btn-dark btn-sm amend text-light pl-0 add-to-cart px-2"
 											data-tooltip="tooltip" data-placement="bottom" title="Amend quantity"
@@ -146,9 +146,15 @@
 								</button>
 							</div>
 							<div class="view w-100 h-100">
+								{% if product.image_sec %}
 								<img class="img-fluid card-img modal-product-image"
 									src="{{ MEDIA_URL }}{{ item.product.image_sec }}"
 									alt="{{ item.product.make }} | {{ item.product.model }}">
+								{% else %}
+								<img class="img-fluid card-img modal-product-image"
+									src="{{ MEDIA_URL }}{{ item.product.image_main }}"
+									alt="{{ item.product.make }} | {{ item.product.model }}">
+								{% endif %}
 							</div>
 							<div class="modal-body">
 								<p class="lato">{{ item.product.description }}</p>

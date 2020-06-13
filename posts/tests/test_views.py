@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from posts.models import Post, Comment
 from django.contrib.auth.models import User
-import json
+# import json
 
 
 class TestViews(TestCase):
@@ -12,19 +12,19 @@ class TestViews(TestCase):
         self.user = User.objects.create_user(username='testUser', email='testUser@mail.com', password='Apassword0')
         self.posts_url = reverse('posts:get_posts')
         self.detail_url = reverse('posts:post_detail', kwargs={'pk': 1})
-        self.post1 = Post.objects.create(
+        self.post = Post.objects.create(
             title = 'Test post 1',
             content = 'Test post content',
             author = self.user
         )
-        self.comment1 = Comment.objects.create(
-            post = self.post1,
+        self.comment = Comment.objects.create(
+            post = self.post,
             owner = self.user,
             content = 'Test comment'
         )
-        print(self.post1)
+        print(self.post)
         print(self.detail_url)
-        print(self.comment1)
+        print(self.comment)
 
     def test_get_posts(self):
         response = self.client.get(self.posts_url)
@@ -38,3 +38,25 @@ class TestViews(TestCase):
         print(response)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'postdetail.html')
+
+    # def test_add_new_comment(self):
+    #     post = Post.objects.get(pk=1)
+    #     self.assertEqual(Comment.objects.count(), 1)
+    #     response = self.client.post('/posts/post/')
+
+    #     self.assertEqual(response.status_code, 302)
+    #     self.assertEqual(post.title, 'Test post 1')
+
+    # def test_edit_comment(self):
+    #     post = Post.objects.get(pk=1)
+    #     response = self.client.get('/posts/update/{0}/'.format(post.pk))
+
+    #     self.assertEqual(response.status_code, 302)
+    #     self.assertTemplateUsed('edit_comment.html')
+
+    # def test_delete_comment(self):
+    #     post = Post.objects.get(pk=1)
+    #     response = self.client.get('/posts/delete/{0}/'.format(post.pk))
+
+    #     self.assertEqual(response.status_code, 302)
+    #     self.assertTemplateUsed('delete_comment.html')

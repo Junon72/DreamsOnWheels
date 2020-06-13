@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib import messages
@@ -15,9 +16,12 @@ def get_posts(request):
     of posts that were published prior to 'now'
     and render them to the 'blogposts.html
     """
-    posts = Post.objects.filter(
+    post_list = Post.objects.filter(
         published_date__lte=timezone.now()).order_by('-published_date')
+    paginator = Paginator(post_list, 6)
 
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
     context = {
         'posts': posts,
         'blogs_page': 'active',

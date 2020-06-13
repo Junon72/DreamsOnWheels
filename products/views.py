@@ -11,7 +11,6 @@ def all_products(request):
     f = ProductFilter(request.GET, queryset=products)
 
     context = {
-        # 'products': products,
         'filter': f,
         'sales_page': 'active',
         'title': 'Sales'
