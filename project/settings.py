@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'highlight',
     'posts',
     'checkout',
+    'contact'
 ]
 
 MIDDLEWARE = [
@@ -171,13 +172,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
-if os.path.exists('env.py'):
-    EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
-    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+# if os.path.exists('env.py'):
+#     EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
+#     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -188,3 +189,10 @@ GRAPH_MODELS = {
     'all_applications': True,
     'group_models': True,
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'admin@dow.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_PORT = 1025

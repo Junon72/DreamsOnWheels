@@ -4,8 +4,8 @@
 {% load crispy_forms_tags%}
 
 {% block content %}
+<!-- Login Header -->
 <div class="container main-wrapper-index">
-    <!-- Login Header -->
     <section id="generic-header">
         <div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
             <div class="col">
@@ -19,9 +19,10 @@
         </div>
     </section>
 </div>
-
+<!-- /Login Header -->
+<!-- Login form -->
 <div class="container main-wrapper-index bg-light mb-5 py-5">
-    <section id="register">
+    <section id="login">
         <div class="row d-flex justify-content-center no-gutters">
             <div class="col-lg-8 col-md-10 col-sx-12 d-block mx-auto pt-3">
                 <p>If you don't yet have an account, you can register <a href="{% url 'register' %}">here.</a></p>
@@ -34,4 +35,5 @@
         </div>
     </section>
 </div>
+<!-- /Login form -->
 {% endblock %}

@@ -14,19 +14,19 @@ The project was created as Milestone project for the Full Stack Development modu
 
 ## Index
 
-1. ['Project brief'](#Project-brief)
-2. ['UX](#UX)
-3. ['User stories'](#User-stories)
-4. ['Planning](#Planning)
-5. ['Database schema'](#Database-schema)
-6. ['Functional flow and Features'](#Functional-Flow-And-Features)
-7. ['Accessing the app'](#Accessing-the-app)
-8. ['Technologies Used'](#Technologies-Used)
-9. ['Project Setup'](#Project-Setup)
-10. ['Testing](#Testing)
-11. ['Media and Content Origin](#Media-and-Content-Origin)
-12. ['References'](#References)
-13. ['Special Thanks'](#Special-Thanks)
+1. [Project brief](#Project-brief)
+2. [UX](#UX)
+3. [User stories](#User-stories)
+4. [Planning](#Planning)
+5. [Database schema](#Database-schema)
+6. [Functional flow and Features](#Functional-Flow-And-Features)
+7. [Accessing the app](#Accessing-the-app)
+8. [Technologies Used](#Technologies-Used)
+9. [Project Setup](#Project-Setup)
+10. [Testing](#Testing)
+11. [Media and Content Origin](#Media-and-Content-Origin)
+12. [References](#References)
+13. [Special Thanks](#Special-Thanks)
 
 ## Project brief
 
@@ -366,11 +366,11 @@ To check if and which version of Python you have installed (Mac comes Python2 pr
 
 `$ python --version`  # this will normally give you the version of python2 unless you have Python3 already installed.
 
- To see if you have Python3 installed, type:
+To see if you have Python3 installed, type:
 
- `$ python3 --version`
+`$ python3 --version`
 
- I wrote the application using Python3.7.6.
+I wrote the application using Python3.7.6.
 
 ### Setting up git for version control and connecting to GitHub
 
@@ -516,8 +516,6 @@ Then run the project:
 `cmd` + click the link provided in terminal to open the project in a browser:
 
 `Starting development server at http://127.0.0.1:8000/`
-
-Alternatively, you can set
 
 In browser you'll see the Django welcome page which confirms everything is configured properly.
 

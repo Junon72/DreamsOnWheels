@@ -5,9 +5,9 @@
 				<div class="px-0 col-lg-4 col-md-6">
 					<div class="col align-self-center pt-4">
 						<h4 class="text-white arvo">DOW</h4>
-						<p class="text-white">Kosterverloren 5 
-							<br>Amstelland, AK 1234 
-							<br>+31 (020) 123 45 678 
+						<p class="text-white">Kosterverloren 5
+							<br>Amstelland, AK 1234
+							<br>+31 (020) 123 45 678
 						</p>
 					</div>
 				</div>
@@ -25,15 +25,18 @@
 						<div class="col-md-2 col-3">
 							<i class="fas fa-grip-lines-vertical text-warning fa-2x"></i>
 						</div>
-						<div class="col-md-2 col-3">
-							<a href="#" target="_blank" class="footer-nav"><i class="fa fa-envelope fa-2x"></i></a>
+						<div class="col-md-2 col-5">
+							<a href="{% url 'contact:contact' %}" class="footer-nav" data-tooltip="tooltip"
+								data-placement="bottom" title="Contact us" data-delay="50"><i
+									class="fa fa-envelope fa-2x"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 pl-0">
-					<p class="text-secondary text-md-right">Copyright {% now 'Y' %} @ Jussi Nousiainen</p>
+					<p class="text-secondary text-md-right">{% now 'Y' %} @ Jussi Nousiainen</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </footer>
+

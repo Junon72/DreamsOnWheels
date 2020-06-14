@@ -192,11 +192,16 @@ a.nav-link:hover {
 
 /* ------------------------------------------------ _footer.html */
 
+.footer-nav {
+	color: black;
+}
+
 a.footer-nav .fa {
 	color: #ffffff;
 }
 
-a.footer-nav .fa:hover {
+a.footer-nav .fa:hover,
+.footer-nav:hover {
 	color: rgb(244, 195, 0);
 }
 
