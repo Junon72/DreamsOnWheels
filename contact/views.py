@@ -39,5 +39,8 @@ def contact(request):
         else:
             messages.error(request, "Your message was not sent. Please try again.")
             return redirect(reverse('contact'))
-
-    return render(request, "contact.html", {'contact_form': contact_request})
+    context = {
+        'title': 'Contact',
+        'contact_form': contact_request
+    }
+    return render(request, "contact.html", context)

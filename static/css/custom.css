@@ -46,10 +46,15 @@ a, a:hover, a:focus {
 /* .strong {
 	font-weight: 700;
 }
+*/
 
 .medium {
 	font-weight: 400;
-} */
+}
+
+.thin {
+	font-weight: 200;
+}
 
 .section-title,
 .article-title {
@@ -556,7 +561,17 @@ a.footer-nav .fa:hover,
 }
 
 .pagin-text {
+	font-family: "Lato", serif;
+	text-transform: uppercase;
+}
 
+.read-more {
+	font-size: .8rem !important;
+	font-family: "Lato", serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 50px;
 }
 
 /* ------------------------------------------------ Blog.html */

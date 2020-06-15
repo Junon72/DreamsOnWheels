@@ -10,7 +10,7 @@
 	<section id="generic-header">
 		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 			<div class="col">
-				<h1 class="section-title">Cart</h1>
+				<h2 class="section-title">Cart</h2>
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'products:all_products' %}" class="btn btn-link back-button clearfix text-dark"
@@ -71,8 +71,8 @@
 									</div>
 									<div class="row mb-0 no-gutters">
 										<div class="col d-flex about-original ml-2 clearfix">
-											<button class="btn btn-link text-warning p-0 about-original" data-toggle="modal"
-												data-target="#productDetail{{ item.id }}">View
+											<button class="btn btn-link text-warning p-0 about-original"
+												data-toggle="modal" data-target="#productDetail{{ item.id }}">View
 												details</button>
 										</div>
 									</div>
@@ -84,7 +84,8 @@
 											{% if item.product.old_price > 0 %}
 											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
 												<span class="old-price">{{ item.product.old_price }} </span><strong
-													class="lato price medium">&nbsp{{ item.product.price | floatformat:2 }}</strong>
+													class="lato price medium">&nbsp;
+													{{ item.product.price | floatformat:2 }}</strong>
 											</div>
 											{% else %}
 											<div class="autoRight mr-0"><i class="fa fa-euro"></i>
@@ -127,7 +128,7 @@
 											data-delay="50"><strong>Total</strong></button>
 									</span>
 									<div class="autoLeft my-auto"><i class="fa fa-euro"></i><strong
-											class="lato price medium"> &nbsp{{ item.total | floatformat:2 }}</strong>
+											class="lato price medium"> &nbsp; {{ item.total | floatformat:2 }}</strong>
 									</div>
 								</div>
 							</div>
@@ -166,15 +167,13 @@
 				<div class="container">
 					<div class="row no-gutters h-100 justify-content-center">
 						<div class="col-12 text-center">
-							<h4>
-								<div class="jumbotron jumbotron-fluid">
-									<div class="container">
-										<h3 class="display-4 mb-3">Cart is empty</h3>
-										<a href="{% url 'products:all_products' %}" class="btn btn-warning btn-large"
-											role="button">Take me to the shop</a>
-									</div>
+							<div class="jumbotron jumbotron-fluid">
+								<div class="container">
+									<h3 class="display-4 mb-3 thin">Cart is empty</h3>
+									<a href="{% url 'products:all_products' %}" class="btn btn-warning btn-large"
+										role="button">Take me to the shop</a>
 								</div>
-							</h4>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -194,9 +193,8 @@
 						{% else %}
 						<div class="row no-gutters">
 							<div class="col">
-								<a href="{% url 'login' %}" type="button"
-									class="btn btn-outline-dark btn-sm btn-block">Login</a>
-								<div class="display-block mb-2"><strong class="lato price medium">
+								<a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm btn-block">Login</a>
+								<div class="display-block mb-2"><strong class="lato price FySmall">
 										Login to make purchases and use our promotions!
 									</strong>
 								</div>
@@ -210,17 +208,16 @@
 								</div>
 								<div class="autoLeft my-auto pr-3"><i class="fa fa-euro"></i><strong
 										class="lato price medium">
-										&nbsp {{ totals | floatformat:2 }}</strong>
+										&nbsp; {{ totals | floatformat:2 }}</strong>
 								</div>
 							</div>
 						</div>
 						<div class="row no-gutters mt-3 mb-2">
 							<div class="col">
 								{% if totals == 0 or not user.is_authenticated %}
-								<a href="#" type="button" class="btn btn-dark btn-default btn-block">Checkout</a>
+								<a href="#" class="btn btn-dark btn-default btn-block">Checkout</a>
 								{% else %}
-								<a href="{% url 'checkout' %}" type="button"
-									class="btn btn-dark btn-default btn-block">Checkout</a>
+								<a href="{% url 'checkout' %}" class="btn btn-dark btn-default btn-block">Checkout</a>
 								{% endif %}
 							</div>
 						</div>

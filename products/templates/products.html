@@ -12,7 +12,7 @@
 	<section id="generic-header">
 		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 			<div class="col">
-				<h1 class="section-title">Sales</h1>
+				<h2 class="section-title">Sales</h2>
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-tooltip="tooltip"
@@ -27,7 +27,7 @@
 
 <!-- Search -->
 <div class="container main-wrapper px-0">
-	<form class="px-2 search-form" action="" method="get">
+	<form class="px-2 search-form" method="get">
 		{% csrf_token %}
 		{{ filter.form.non_field_errors }}
 		{% for hidden in filter.form.hidden_fields %}
@@ -134,11 +134,11 @@
 								{% if product.old_price > 0 %}
 								<div class="autoRight pl-2"><i class="fa fa-euro"></i>
 									<span class="old-price">{{ product.old_price }} </span><strong
-										class="lato price medium">&nbsp{{ product.price }}</strong>
+										class="lato price medium">&nbsp; {{ product.price }}</strong>
 								</div>
 								{% else %}
 								<div class="autoRight pl-2"><i class="fa fa-euro"></i>
-									<strong class="lato price medium">{{ product.price }} </strong>
+									<strong class="lato price">{{ product.price }} </strong>
 								</div>
 								{% endif %}
 							</div>
@@ -148,9 +148,7 @@
 								<input name="quantity" type="hidden" value="1" class="form-control">
 								<span class="autoLeft">
 									{% if product.status == 's' or product.status == 'o' or product.in_stock == 0 %}
-									<button class="btn btn-outline-dark btn-sm pl-0 add-to-cart px-2" disabled
-										aria-disabled="true" data-tooltip="tooltip" data-placement="bottom"
-										title="Product not available currently" data-delay="50">add</button>
+									<button class="btn btn-outline-dark btn-sm pl-0 add-to-cart px-2" data-tooltip="tooltip" data-placement="bottom" title="Product not available currently" data-delay="50" disabled>add</button>
 									{% else %}
 									<button type="submit" class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
 										data-tooltip="tooltip" data-placement="bottom" title="Add to cart"
@@ -163,12 +161,11 @@
 				</div>
 			</div>
 			<!-- Modal -->
-			<div class="modal fade" id="productDetail{{ product.id }}" tabindex="-1" role="dialog"
-				aria-labelledby="productDetailTitle" aria-hidden="true">
+			<div class="modal fade" id="productDetail{{ product.id }}" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-scrollable" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="productDetailTitle">Description</h5>
+							<h5 class="modal-title">Description</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>

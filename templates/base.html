@@ -30,7 +30,7 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="/static/css/custom.css">
 		
-		<style type="text/css">
+		<style>
 			.top-container {
 				background-image: url("{% static 'img/boiler-1.jpg' %}");
 				background-repeat: no-repeat;
@@ -94,12 +94,12 @@
 			integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
 		</script>
 		<!-- Bootstrap modal forms-->
-		<script type="text/javascript" src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+		<script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
 		{% block BSForms %}{% endblock BSForms %}
 		<!-- Slick carousel js -->
-		<script type="text/javascript" src="{% static 'vendor/slick/slick.js' %}"></script>
+		<script src="{% static 'vendor/slick/slick.js' %}"></script>
 		<!-- Custom js -->
-		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+		<script src="{% static 'js/script.js' %}"></script>
 		<!-- Stripe js -->
 		{% block head_js %} {% endblock head_js %}
 

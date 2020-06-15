@@ -10,7 +10,7 @@
     <section id="generic-header">
         <div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
             <div class="col">
-                <h1 class="section-title">Register</h1>
+                <h2 class="section-title">Register</h2>
             </div>
             <div class="col headerRightElement backHome FyNorm clearfix">
                 <a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-tooltip="tooltip"
@@ -21,16 +21,14 @@
     </section>
 </div>
 <div class="container main-wrapper-index bg-light mb-5 py-5">
-    <section id="register">
-        <div class="row d-flex justify-content-center no-gutters">
-            <div class="col-lg-8 col-md-10 col-sx-12 d-block mx-auto pt-3">
-                <p>If you already have an account, you can <a href="{% url 'login' %}">sign in </a></p>
-                <form method="POST">
-                    {% csrf_token %} {{ user_form | crispy }}
-                    <button type="submit" class="btn btn-dark">Register</button>
-                </form>
-            </div>
+    <div class="row d-flex justify-content-center no-gutters">
+        <div class="col-lg-8 col-md-10 col-sx-12 d-block mx-auto pt-3">
+            <p>If you already have an account, you can <a href="{% url 'login' %}">sign in </a></p>
+            <form method="POST">
+                {% csrf_token %} {{ user_form | crispy }}
+                <button type="submit" class="btn btn-dark">Register</button>
+            </form>
         </div>
-    </section>
+    </div>
 </div>
 {% endblock %}

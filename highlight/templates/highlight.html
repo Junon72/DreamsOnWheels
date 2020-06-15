@@ -10,7 +10,7 @@
 	<section id="generic-header">
 		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 			<div class="col">
-				<h1 class="section-title">Highlights</h1>
+				<h2 class="section-title">Highlights</h2>
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'index' %}" class="btn btn-link back-button clearfix text-dark" data-tooltip="tooltip"
@@ -28,10 +28,10 @@
 
 <!-- Highlight Headline -->
 <div class="container main-wrapper-index bg-light mb-5 pb-5">
-	<section id="highlightArticle">
+	<section>
 		<div class="row d-flex w-100 justify-content-center no-gutters">
 			<div class="col text-center mt-lg-3 mb-lg-4 w-100 pt-5">
-				<h1 class="article-title">{{ highlight.make }} | {{ highlight.model }}</h1>
+				<h2 class="article-title">{{ highlight.make }} | {{ highlight.model }}</h2>
 				<h4 class="article-sub">Highlight of month {% now 'F' %}</h4>
 			</div>
 		</div>
@@ -49,16 +49,13 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active img-fluid"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
-							alt="First slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');">
 						</div>
 						<div class="carousel-item highlightItem img-fluid"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_two }}');"
-							alt="Second slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_two }}');">
 						</div>
 						<div class="carousel-item highlightItem img-fluid"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_three }}');"
-							alt="Third slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_three }}');">
 						</div>
 					</div>
 					{% elif highlight.image_main and highlight.image_two and not highlight.image_three %}
@@ -68,12 +65,10 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
-							alt="First slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');">
 						</div>
 						<div class="carousel-item highlightItem"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_two }}');"
-							alt="Second slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_two }}');">
 						</div>
 					</div>
 					{% elif highlight.image_main and highlight.image_three and not highlight.image_two %}
@@ -83,19 +78,16 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
-							alt="First slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');">
 						</div>
 						<div class="carousel-item highlightItem"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_three }}');"
-							alt="Second slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_three }}');">
 						</div>
 					</div>
 					{% else %}
 					<div class="carousel-inner">
 						<div class="carousel-item highlightItem active"
-							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');"
-							alt="First slide">
+							style="background-image: url('{{ MEDIA_URL }}{{ highlight.image_main }}');">
 						</div>
 					</div>
 					{% endif %}

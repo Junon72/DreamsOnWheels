@@ -17,7 +17,7 @@
 		<div class="container p-0">
 			<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 				<div class="col">
-					<h1 class="section-title">Sales</h1>
+					<h2 class="section-title">Sales</h2>
 				</div>
 				<div class="col carousel-control headerRightElement clearfix">
 					<i class="align-center FyMed arrow fa fa-chevron-left prev mr-1"></i>
@@ -57,7 +57,7 @@
 				<div class="row w-100 no-gutters content-div mb-3 d-flex">
 					{% with highlights|first as highlight %}
 					<div class="col-md-6 mb-3">
-						<h1 class="section-title">Highlights</h1>
+						<h2 class="section-title">Highlights</h2>
 						<div class="blockquote text-muted pr-2 highlight-teaser">
 							<p class="mb-0 pt-3"><strong>{{ highlight.make }} | {{ highlight.model }}</strong>
 								-&nbsp;Lorem
@@ -73,7 +73,7 @@
 					</div>
 					<div class="col-md-6 pl-md-4">
 						<img class="img-fluid img-responsive d-block pb-0"
-							src="{{ MEDIA_URL }}{{ highlight.image_main }}">
+							src="{{ MEDIA_URL }}{{ highlight.image_main }}" alt="Highlight of the month">
 					</div>
 					{% endwith %}
 				</div>
@@ -82,10 +82,10 @@
 				<div class="row w-100 justify-content-right no-gutters content-div mt-5 mb-5 d-flex clearfix">
 					<div class="col-md-6 mb-4">
 						<img class="img-fluid d-block img-responsive blogs-image"
-							src="{% static 'img/index/1938_talbot_1.jpg' %}">
+							src="{% static 'img/index/1938_talbot_1.jpg' %}" alt="Image of a car">
 					</div>
 					<div class="col-md-6 pl-md-4">
-						<h1 class="section-title">Blogs</h1>
+						<h2 class="section-title">Blogs</h2>
 						<div class="blockquote text-muted blogs-teaser">
 							<p class="mb-0"><strong>Contributor posts</strong> -&nbsp;Lorem ipsum dolor sit amet,
 								consectetur
@@ -104,7 +104,7 @@
 			<section id="about">
 				<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 
-					<h1 class="section-title">About</h1>
+					<h2 class="section-title">About</h2>
 
 				</div>
 				<div class="row">
@@ -144,7 +144,7 @@
 				<div class="mt-5 py-5 text-center">
 					<div class="row">
 						<div class="mx-auto col-md-12">
-							<h1 class="mb-3 section-title">Contributors</h1>
+							<h2 class="mb-3 section-title">Contributors</h2>
 						</div>
 					</div>
 					<div class="row d-flex justify-content-center">

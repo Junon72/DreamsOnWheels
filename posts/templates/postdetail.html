@@ -10,7 +10,7 @@
 	<section id="blog-header">
 		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
 			<div class="col">
-				<h1 class="section-title">Blog</h1>
+				<h2 class="section-title">Blog</h2>
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'posts:get_posts' %}" class="btn btn-link back-button clearfix text-dark"
@@ -35,7 +35,7 @@
 		</div>
 		<div class="row d-flex justify-content-center no-gutters">
 			<div class="text-center mt-lg-3 mb-lg-4 mb-md-4 w-100 pt-3">
-				<h1 class="article-title">{{ post.title }}</h1>
+				<h2 class="article-title">{{ post.title }}</h2>
 			</div>
 		</div>
 		<div class="row mt-2 no-gutters justify-content-center">
@@ -71,7 +71,7 @@
 		<div class="row d-flex justify-content-center no-gutters">
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<button id="commentsToggle" type="button" class="btn btn-outline-dark btn-block">Comments
-					&nbsp
+					&nbsp;
 					{{ post.comments.count }}</button>
 			</div>
 		</div>
@@ -101,13 +101,13 @@
 			</div>
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<form method="POST" class="mt-2 w-100">
-					<div class="form-group">
-						<label for="comment_form">Comment:</label>
-						{{ comment_form | as_bootstrap }}
+					<fieldset class="form-group">
+						<!-- <label for="comment_form">Comment:</label> -->
+						{{ comment_form | crispy }}
 						{% csrf_token %}
 						<input type="hidden" name="owner" value="{{ user }}">
 						<button class="btn btn-sm btn-dark float-right mt-1" type="submit">submit</button>
-					</div>
+					</fieldset>
 				</form>
 			</div>
 		</div>
@@ -153,15 +153,16 @@
 											class="fas fa-user-edit text-color-dark"></span></button>
 								</div>
 								<div class="text-center ml-1">
-									<button class="delete-comment btn btn-sm btn-outline-danger" type="button" data-id="{% url 'posts:delete' comment.pk %}" data-tooltip="tooltip" data-placement="bottom" title="Delete comment"
-										data-delay="50" data-id="#" name="button"><span
-											class="fas fa-trash text-color-dark"></span></button>
+									<button class="delete-comment btn btn-sm btn-outline-danger" type="button"
+										data-id="{% url 'posts:delete' comment.pk %}" data-tooltip="tooltip"
+										data-placement="bottom" title="Delete comment" data-delay="50"
+										name="button"><span class="fas fa-trash text-color-dark"></span></button>
 								</div>
 							</div>
 							{% endif %}
 						</div>
-						<div class="card-body bg-light pt-1">
-							<p class="card-text pt-0">{{ comment.content|linebreaks }}</p>
+						<div class="card-body bg-light pt-3">
+							{{ comment.content|striptags|safe|linebreaks }}
 						</div>
 					</div>
 				</div>
@@ -171,7 +172,13 @@
 		{% endif %}
 		{% endfor %}
 		<!-- Edit comment modal -->
-		{% include '_modal.html' %}
+		<!-- {% include '_modal.html' %} -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="modal{{comment.pk}}">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				</div>
+			</div>
+		</div>
 		<!-- / Edit comment modal -->
 	</div>
 </div>
@@ -180,14 +187,14 @@
 
 {% block BSForms %}
 
-<script type="text/javascript">
+<script>
 	// Hide / Show Comments section in blog post
 	$(function () {
 		// Edit / Delete Comment modal in blog post Comments
 		$(".update-comment").each(function () {
 			$(this).modalForm({
 				submitBtn: "#submitUpdate",
-				modalID: "#modal",
+				modalID: "#modal{{comment.pk}}",
 				formURL: $(this).data('id')
 			});
 		});

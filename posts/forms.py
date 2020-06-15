@@ -10,6 +10,9 @@ class CommentForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'rows': 4}),
         }
         fields = ['content']
+        labels = {
+            'content': 'Comment:',
+        }
 
 
 class UpdateCommentForm(BSModalForm):
