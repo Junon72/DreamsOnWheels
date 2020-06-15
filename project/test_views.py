@@ -1,7 +1,6 @@
-from django.http import HttpResponse, HttpResponseNotFound
 from unittest import mock
 from django.contrib.auth import get_user_model
-from django.urls import path, reverse
+from django.urls import reverse
 from django.test import SimpleTestCase, TestCase, override_settings, Client
 
 
@@ -11,6 +10,7 @@ class TestCustomErrorHandlers(SimpleTestCase):
     def test_handler_renders_template_response_404(self):
         response = self.client.get('/404/')
         self.assertContains(response, 'Page not found.', status_code=404)
+
 
 class TestErrors(TestCase):
     """Test Error handling"""
@@ -48,6 +48,8 @@ class TestErrors(TestCase):
             self.assertNotIn('admin/', str(response.content))
 
         with self.subTest("Internal server error (500)"):
-            response = self.client.get(self.internal_server_error_url, 
+            response = self.client.get(self.internal_server_error_url,
                                        follow=True)
             self.assertNotIn('TypeError', str(response.content))
+
+

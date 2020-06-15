@@ -47,15 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'simple_forms.apps.core',
-
+    'simple_forms.apps.core',
     # Third party apps
     'crispy_forms',
     'django_forms_bootstrap',
     'bootstrap_modal_forms',
     'django_filters',
     'widget_tweaks',
-
     # Project apps
     'accounts',
     'home',
@@ -156,10 +154,8 @@ USE_TZ = True
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -167,8 +163,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 
 # if os.path.exists('env.py'):
 #     EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
@@ -194,3 +188,4 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
+
