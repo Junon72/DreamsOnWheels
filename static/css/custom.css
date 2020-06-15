@@ -225,9 +225,7 @@ a.footer-nav .fa:hover,
 	top: calc(100vw/ 6);
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
 	transition-timing-function: ease-in-out;
 	z-index: -1;
 	margin-bottom: calc(100vw/ -6);
@@ -299,8 +297,6 @@ a.footer-nav .fa:hover,
 	height: 100%;
 	opacity: 0;
 	transition: .5s ease;
-	;
-	-webkit-transition: .5s ease;
 	background-color: rgb(244, 195, 0);
 }
 
@@ -311,6 +307,7 @@ a.footer-nav .fa:hover,
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
 	text-align: center;
 }
 
@@ -350,10 +347,6 @@ a.footer-nav .fa:hover,
 
 .badge {
 	border-radius: 3px !important;
-	-webkit-border-radius: 3px !important;
-	-moz-border-radius: 3px !important;
-	-ms-border-radius: 3px !important;
-	-o-border-radius: 3px !important;
 }
 
 .promo-badge {
@@ -452,10 +445,7 @@ a.footer-nav .fa:hover,
 .badge {
 	padding-left: 9px;
 	padding-right: 9px;
-	-webkit-border-radius: 9px;
 	border-radius: 9px;
-	-ms-border-radius: 9px;
-	-o-border-radius: 9px;
 }
 
 .label-warning[href],
@@ -500,13 +490,13 @@ a.footer-nav .fa:hover,
 	min-height: 540px;
 }
 
-.highlight-image {
+/* .highlight-image {
 	content: "";
 	display: block;
-	/* padding-bottom: 56.25%; */
+	padding-bottom: 56.25%;
 	height: auto;
 	width: 100%;
-}
+} */
 
 .highlightSpec {
 	text-align: center;
@@ -611,7 +601,6 @@ a.footer-nav .fa:hover,
 	width: 76px;
 	height: auto;
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
 }
 
 .card-columns {
@@ -647,7 +636,6 @@ a.footer-nav .fa:hover,
 	width: 200px;
 	height: auto;
 	border-radius: 50%;
-	-webkit-border-radius: 50%;
 }
 
 /* ------------------------------------------------ 404.html */

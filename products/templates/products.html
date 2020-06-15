@@ -118,16 +118,17 @@
 									<span class="lato scale mr-2 mb-4"><strong>Scale: </strong></span>
 									<span class="lato scale mr-2">{{ product.scale }}</span>
 								</div>
-								<a href="{% url 'products:get_original' id=product.original_key.pk %}"
-									class="btn btn-link text-warning mt-auto mt-auto pl-0 about-original"
-									data-tooltip="tooltip" data-placement="bottom" title="About original"
-									data-delay="50">Read
-									about
-									original...</a>
+								<div class="d-flex p-0 w-100">
+									<a href="{% url 'products:get_original' id=product.original_key.pk %}"
+										class="btn btn-link text-warning  pl-0 about-original" data-tooltip="tooltip"
+										data-placement="bottom" title="About original" data-delay="50">Read
+										about
+										original...</a>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="card-footer d-flex px-2 py-2">
+					<div class="card-footer d-flex px-2 py-2 mt-auto">
 						<div class="row w-100 h-100 mb-0 no-gutters">
 							<div class="col d-flex clearfix align-items-center">
 								<span class="lato pl-2"><strong class="lato price medium">Price: </strong></span>
@@ -148,7 +149,9 @@
 								<input name="quantity" type="hidden" value="1" class="form-control">
 								<span class="autoLeft">
 									{% if product.status == 's' or product.status == 'o' or product.in_stock == 0 %}
-									<button class="btn btn-outline-dark btn-sm pl-0 add-to-cart px-2" data-tooltip="tooltip" data-placement="bottom" title="Product not available currently" data-delay="50" disabled>add</button>
+									<button class="btn btn-outline-dark btn-sm pl-0 add-to-cart px-2"
+										data-tooltip="tooltip" data-placement="bottom"
+										title="Product not available currently" data-delay="50" disabled>add</button>
 									{% else %}
 									<button type="submit" class="btn btn-dark btn-sm text-light pl-0 add-to-cart px-2"
 										data-tooltip="tooltip" data-placement="bottom" title="Add to cart"
@@ -170,7 +173,7 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div class="view w-100 h-100">
+						<div class="w-100">
 							{% if product.image_sec %}
 							<img class="img-fluid modal-product-image" src="{{ MEDIA_URL }}{{ product.image_sec }}"
 								alt=" &nbsp; {{ product.make }} | {{ product.model }}">

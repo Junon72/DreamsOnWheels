@@ -37,10 +37,14 @@
 					{% endif %}
 					<div class="row pr-0 no-gutters">
 						<div class="col-12 col-sm-7 col-md-12 col-lg-7 d-flex align-items-center no-p">
-							<div class="view h-100">
+							<div class="view product-detail h-100">
 								<img class="img-fluid card-img cart-product-image"
 									src="{{ MEDIA_URL }}{{ item.product.image_main }}"
 									alt="{{ item.product.make }} | {{ item.product.model }}">
+								<a data-toggle="modal" href="#productDetail{{ item.id }}" class="stretched-link"></a>
+								<div class="overlay m-0 p-0">
+									<div class="invite FyMed lato">SEE DETAILS...</div>
+								</div>
 							</div>
 						</div>
 						<div class="col-12 col-sm-5 col-md-12 col-lg-5 px-md-3 pl-sm-0 pl-lg-0 pr-0">
@@ -67,13 +71,6 @@
 										<div class="col-12 d-flex ml-2">
 											<span class="lato scale mr-2"><strong>Scale: </strong></span>
 											<span class="lato scale mr-2">{{ item.product.scale }}</span>
-										</div>
-									</div>
-									<div class="row mb-0 no-gutters">
-										<div class="col d-flex about-original ml-2 clearfix">
-											<button class="btn btn-link text-warning p-0 about-original"
-												data-toggle="modal" data-target="#productDetail{{ item.id }}">View
-												details</button>
 										</div>
 									</div>
 									<div class="row no-gutters">
@@ -146,7 +143,7 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="view w-100 h-100">
+							<div class="w-100">
 								{% if product.image_sec %}
 								<img class="img-fluid card-img modal-product-image"
 									src="{{ MEDIA_URL }}{{ item.product.image_sec }}"
