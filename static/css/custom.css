@@ -457,7 +457,7 @@ a.footer-nav .fa:hover,
 }
 
 .checkout-product {
-	background-size: contain;
+	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
 	width: 100%;
@@ -641,7 +641,7 @@ a.footer-nav .fa:hover,
 	border-radius: 50%;
 }
 
-/* ------------------------------------------------ 404.html */
+/* ------------------------------------------------ 404.html and 500.html*/
 
 .page-wrap {
 	min-height: 100vh;

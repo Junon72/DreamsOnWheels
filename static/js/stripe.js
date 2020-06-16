@@ -1,4 +1,5 @@
-$(function () {
+jQuery(function ($) {
+  console.log('accessed');
   $('#payment-form').submit(function () {
     var form = this;
     var card = {
@@ -22,6 +23,8 @@ $(function () {
 
         form.submit();
       } else {
+        console.log('errors');
+        console.log(response.error.message);
         $('#stripe-error-message').text(response.error.message);
         $('#credit-card-errors').show();
         $('#validate_card_btn').attr('disabled', false);

@@ -30,8 +30,10 @@ def login(request):
         login_form = UserLoginForm(request.POST)
         
         if login_form.is_valid():
-            user = auth.authenticate(username=request.POST['username'],
-                                password=request.POST['password'])
+            user = auth.authenticate(
+                username=request.POST['username'],
+                password=request.POST['password']
+            )
 
             if user:
                 auth.login(user=user, request=request)
@@ -98,7 +100,10 @@ def user_profile(request):
 
 @transaction.atomic
 def update_profile(request):
-    """ """
+    """
+    Fetch data from user and user profile and render it on the form.
+    Update both models.
+    """
 
     if not request.user.is_authenticated:
         return redirect('login')
