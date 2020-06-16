@@ -1,5 +1,5 @@
 from django.core.mail import EmailMessage
-from django.template.loader import get_template
+from django.template.loader import get_template, render_to_string
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from .forms import ContactForm
@@ -9,13 +9,13 @@ def contact(request):
     contact_request = ContactForm
 
     if request.method == 'POST':
-        contact_form = contact_request(request.POST)
+        form = contact_request(request.POST)
 
-        if contact_form.is_valid():
-            name = request.POST.get('name', '')
-            from_email = request.POST.get('from_email', '')
-            subject = request.POST.get('subject', '')
-            message = request.POST.get('message', '')
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            from_email = form.cleaned_data['from_email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
 
             template = get_template('message_template.txt')
             context = {
@@ -24,20 +24,23 @@ def contact(request):
                 'subject': subject,
                 'message': message,
             }
+            print(context)
             content = template.render(context)
+            print(content)
 
             email = EmailMessage(
-                "New message",
+                "New contact form submission",
                 content,
-                "DOW" + '',
-                ['admin@dow.com'],
-                reply_to=[from_email]
+                "DOW" +'',
+                ['adminDOW@dow.com'],
+                headers = {'Reply-To': from_email}
             )
             email.send()
+            form.save()
 
             messages.success(
                 request,
-                "Your message was sent successfully!"
+                "Thank you for contacting us! We will get back to you in short."
             )
             return redirect('contact:contact')
         else:

@@ -48,6 +48,7 @@ def post_detail(request, pk):
             return HttpResponseForbidden()
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
+            comment = comment_form.cleaned_data['content']
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.owner = request.user
@@ -84,6 +85,7 @@ class CommentUpdateView(BSModalUpdateView):
     form_class = UpdateCommentForm
 
     def form_valid(self, form):
+        instance = form.cleaned_data['content']
         instance = form.save()
         self.success_url = reverse_lazy(
             'posts:post_detail',

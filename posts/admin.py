@@ -4,7 +4,7 @@ from .models import Post, Comment
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('status', 'author', 'created_date', 'tag')
+    list_display = ('status', 'author', 'title', 'created_date', 'tag')
     list_filter = ('status', 'published_date', 'tag')
     search_fields = ('status', 'author')
     actions = ['publish_post', 'draw_post']
@@ -18,7 +18,13 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('status', 'owner', 'content', 'post', 'created_date')
+    list_display = (
+        'status',
+        'owner',
+        'content',
+        'post',
+        'created_date'
+    )
     list_filter = ('status', 'created_date')
     search_fields = ('owner', 'content')
     actions = ['approve_comments', 'suspend_comments']
