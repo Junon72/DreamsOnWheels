@@ -31,8 +31,9 @@
 			{% endif %}
 			<div class="card-body pt-2">
 				<h5 class="card-title lato">{{ post.title }}</h5>
-				<strong class="lato mt-auto">{{ post.author }}</strong>
-				<p class="article-published m-0"><i class="fa fa-clock pr-2"></i>{{ post.published_date }}
+				<p class="my-0"><strong class="lato mt-auto">{{ post.author }}</strong>
+				{% if post.author.profiles.contributor == True %}<small> | (Guest contributor)</small>{% endif %}</p>
+				<p class="article-published m-0"><i class="fa fa-clock pr-2 text-secondary"></i><small class="thin">{{ post.published_date }}</small>
 				</p>
 				<p class="card-text pt-2">{{ post.content | truncatewords:50 }}</p>
 				<a class="toBlog lato text-dark read-more" href="{% url 'posts:post_detail' pk=post.pk %}">Read

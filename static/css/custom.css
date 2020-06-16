@@ -63,6 +63,9 @@ a, a:hover, a:focus {
 	font-weight: 400;
 }
 
+.warning-clr {
+	color: rgb(244, 195, 0);
+}
 
 /* Buttons */
 

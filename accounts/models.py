@@ -7,7 +7,11 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     """Profile model for user to create a user profile."""
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None, related_name="profiles")
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE,
+        default=None,
+        related_name="profiles"
+    )
     contributor = models.BooleanField(default=False)
     image = models.ImageField(upload_to="avatars/", blank=True, null=True)
     address1 = models.CharField(max_length=95, blank=False)
@@ -17,12 +21,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-    
+
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
-    
+
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profiles.save()

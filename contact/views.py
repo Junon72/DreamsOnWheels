@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from .forms import ContactForm
 
+
 def contact(request):
     contact_request = ContactForm
 
@@ -28,16 +29,22 @@ def contact(request):
             email = EmailMessage(
                 "New message",
                 content,
-                "DOW" +'',
+                "DOW" + '',
                 ['admin@dow.com'],
                 reply_to=[from_email]
             )
             email.send()
 
-            messages.success(request, "Your message was sent successfully!")
+            messages.success(
+                request,
+                "Your message was sent successfully!"
+            )
             return redirect('contact:contact')
         else:
-            messages.error(request, "Your message was not sent. Please try again.")
+            messages.error(
+                request,
+                "Your message was not sent. Please try again."
+            )
             return redirect(reverse('contact'))
     context = {
         'title': 'Contact',

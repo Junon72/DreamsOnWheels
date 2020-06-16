@@ -51,5 +51,3 @@ class TestErrors(TestCase):
             response = self.client.get(self.internal_server_error_url,
                                        follow=True)
             self.assertNotIn('TypeError', str(response.content))
-
-

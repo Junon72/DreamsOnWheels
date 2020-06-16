@@ -20,7 +20,12 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False, on_delete=models.CASCADE, related_name="lineitems")
+    order = models.ForeignKey(
+        Order,
+        null=False,
+        on_delete=models.CASCADE,
+        related_name="lineitems"
+    )
     product = models.ForeignKey(Product, null=False, on_delete=models.PROTECT)
     quantity = models.IntegerField(blank=False)
 

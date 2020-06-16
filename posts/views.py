@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib import messages
 from django.http import HttpResponseForbidden
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from .models import Post, Comment
 from .forms import CommentForm, UpdateCommentForm
@@ -53,7 +53,8 @@ def post_detail(request, pk):
             comment.owner = request.user
             comment.save()
             messages.success(
-            request, "Thank you for commenting! Your comment is being reviewed"
+                request,
+                "Thank you for commenting! Your comment is being reviewed"
             )
             return redirect('posts:post_detail', pk=post.pk)
     else:
@@ -71,7 +72,7 @@ def post_detail(request, pk):
 
 
 class CommentUpdateView(BSModalUpdateView):
-    """ 
+    """
     Update comment using django-bootstrap-modal-forms package.
     The form_valid method is overdriven to get the correct success_url.
     Instance call is used to get the parent post id for the url path,
@@ -81,10 +82,13 @@ class CommentUpdateView(BSModalUpdateView):
     model = Comment
     template_name = 'edit_comment.html'
     form_class = UpdateCommentForm
-    # success_message = 'Success! Comment was updated and is being reviewed'
-    def form_valid(self,form):
+
+    def form_valid(self, form):
         instance = form.save()
-        self.success_url = reverse_lazy('posts:post_detail', kwargs={'pk': instance.post.id})
+        self.success_url = reverse_lazy(
+            'posts:post_detail',
+            kwargs={'pk': instance.post.id}
+        )
         return super(CommentUpdateView, self).form_valid(form)
 
 
@@ -99,6 +103,7 @@ class CommentDeleteView(BSModalDeleteView):
     model = Comment
     template_name = 'delete_comment.html'
     success_message = 'Success! Comment was delete.'
+
     def get_success_url(self):
         post = self.object.post
         post_id = self.object.post.id

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import MakePaymentForm, OrderForm
+from accounts.forms import UserForm
 from django.contrib import messages
 from .models import OrderLineItem
 from django.conf import settings
@@ -13,9 +14,12 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 publishable = settings.STRIPE_PUBLISHABLE
 
+
 @login_required()
 def checkout(request):
-    if request.method=="POST":
+    user_form = UserForm(request.GET, instance=request.user)
+    print(user_form)
+    if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
 
@@ -30,18 +34,18 @@ def checkout(request):
                 product = get_object_or_404(Product, pk=id)
                 total += quantity * product.price
                 order_line_item = OrderLineItem(
-                    order = order,
-                    product = product,
-                    quantity = quantity
+                    order=order,
+                    product=product,
+                    quantity=quantity
                     )
                 order_line_item.save()
 
             try:
                 customer = stripe.Charge.create(
-                    amount = int(total * 100),
-                    currency = "EUR",
-                    description = request.user.email,
-                    card = payment_form.cleaned_data['stripe_id'],
+                    amount=int(total * 100),
+                    currency="EUR",
+                    description=request.user.email,
+                    card=payment_form.cleaned_data['stripe_id'],
                 )
 
             except stripe.error.CardError:
@@ -68,9 +72,9 @@ def checkout(request):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
 
-    context ={
-        "order_form": order_form, 
-        "payment_form": payment_form, 
+    context = {
+        "order_form": order_form,
+        "payment_form": payment_form,
         "publishable": settings.STRIPE_PUBLISHABLE,
         "title": "Checkout"
     }

@@ -1,11 +1,16 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponseForbidden, HttpResponse
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponseForbidden
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.contrib.auth.models import User
-from accounts.forms import UserLoginForm, UserRegistrationForm, UserForm, ProfileForm
 from .models import Profile
+from accounts.forms import (
+    UserLoginForm,
+    UserRegistrationForm,
+    UserForm,
+    ProfileForm
+)
 
 
 @login_required

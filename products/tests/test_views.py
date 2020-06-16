@@ -1,5 +1,4 @@
-from django.test import TestCase, Client
-from django.urls import reverse
+from django.test import TestCase
 from products.models import Product, Original
 
 
@@ -31,7 +30,6 @@ class TestProductViews(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('products.html')
-
 
     def test_get_original_template(self):
         original = Original.objects.get(id=1)

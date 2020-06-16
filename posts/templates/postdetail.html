@@ -38,7 +38,7 @@
 				<h2 class="article-title">{{ post.title }}</h2>
 			</div>
 		</div>
-		<div class="row mt-2 no-gutters justify-content-center">
+		<div class="row mt-2 no-gutters justify-content-center bg-transparent">
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<div class="row mb-1 no-gutters">
 					<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
@@ -52,7 +52,7 @@
 					</div>
 					<div class="col-sx-10 clearfix d-flex flex-column pl-3">
 						<strong class="lato mt-auto">{{ post.author }}</strong>
-						<p class="article-published m-0"><i class="fa fa-clock pr-2"></i>{{ post.published_date }}
+						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small class="thin">{{ post.published_date }}</small>
 						</p>
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 		{% if user.is_authenticated %}
 		<div class="row mt-4 no-gutters justify-content-center">
 			<div class="col-lg-8 col-md-10 col-sx-12">
-				<div class="row mb-1 no-gutters">
+				<div class="row mb-1 no-gutters bg-transparent">
 					<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
 						{% if user.profiles.image %}
 						<img class="img-fluid comment-owner-image" src="{{ MEDIA_URL }}{{ user.profiles.image }}"
@@ -94,7 +94,7 @@
 					</div>
 					<div class="col-sx-10 clearfix d-flex flex-column pl-3">
 						<strong class="lato mt-auto">{{ user }}</strong>
-						<p class="article-published m-0"><i class="fa fa-clock pr-2"></i>{% now "DATETIME_FORMAT" %}
+						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small class="thin">{% now "DATETIME_FORMAT" %}</small>
 						</p>
 					</div>
 				</div>
@@ -127,20 +127,20 @@
 			<div class="col-lg-8 col-md-10 col-sx-12 mt-2">
 				<div class="card border-light mb-3">
 					<div class="card-header p-0">
-						<div class="row mb-1 no-gutters">
+						<div class="row mb-1 no-gutters bg-transparent">
 							<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
 								{% if comment.owner.profiles.image %}
 								<img class="img-fluid comment-owner-image"
-									src="{{ MEDIA_URL }}{{ comment.owner.profiles.image }}" alt="User avatar">
+									src="{{ MEDIA_URL }}{{ comment.owner.profiles.image }}" alt="Avatar">
 								{% else %}
 								<img class="img-fluid comment-owner-image"
-									src="{% static 'img/avatars/avatardefault.png' %}" alt="">
+									src="{% static 'img/avatars/avatardefault.png' %}" alt="Avatar">
 								{% endif %}
 							</div>
-							<div class="col-sx-10 clearfix d-flex flex-column pl-3">
-								<strong class="lato mt-auto">{{ comment.owner }} {{ comment.pk }}</strong>
+							<div class="col-sx-10 clearfix d-flex flex-column pl-3 mt-auto">
+								<p class="lato my-0"><strong>{{ comment.owner }} </strong>| {{ comment.owner.profiles.country.name }}</p>
 								<p class="article-published m-0"><i
-										class="fa fa-clock pr-2"></i>{{ comment.published_date }}
+										class="fa fa-clock warning-clr pr-2"></i><small class="thin">{{ comment.published_date }}</small>
 								</p>
 							</div>
 							{% if user.is_authenticated and user == comment.owner %}

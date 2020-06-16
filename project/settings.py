@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'simple_forms.apps.core',
+    # 'simple_forms.apps.core',
     # Third party apps
     'crispy_forms',
     'django_forms_bootstrap',
@@ -177,10 +177,10 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailAuth'
 ]
 
-GRAPH_MODELS = {
-    'all_applications': True,
-    'group_models': True,
-}
+# GRAPH_MODELS = {
+#     'all_applications': True,
+#     'group_models': True,
+# }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'admin@dow.com'
@@ -188,4 +188,3 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
-

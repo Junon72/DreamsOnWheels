@@ -3,7 +3,7 @@ from contact.forms import ContactForm
 
 
 class TestContactForms(TestCase):
-	
+
     def test_valid_contact_form(self):
         form = ContactForm({
             'name': 'Larry Lentel',
