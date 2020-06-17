@@ -5,7 +5,6 @@
 
 # class TestUrls(SimpleTestCase):
 
-
 #     def test_index_url_is_resolved(self):
 #         url = reverse('index')
 #         print(resolve(url))

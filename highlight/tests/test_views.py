@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.shortcuts import redirect
 from django.urls import reverse, resolve
 from products.models import Original, Vote
@@ -9,7 +9,12 @@ class TestHighlightViews(TestCase):
 
     def setUp(self):
         self.highlight_url = reverse('highlight:get_highlight')
-        highlight = Original.objects.create(status='h')
+        self.highlight_url_to_vote = reverse('highlight:get_vote', args=[id])
+        highlight = Original.objects.create(
+            id=1,
+            status='h',
+            votes=0
+        )
         highlight.save()
 
     def test_highlight_GET_original_list(self):
@@ -19,17 +24,8 @@ class TestHighlightViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'highlight.html')
 
-
-class TestVoteView(TestCase):
-
-    def setUp(self):
-        self.highlight_url_to_vote = reverse('highlight:up_vote', args=[id])
-        highlight = Original.objects.create(id=1)
-        highlight.save()
-
-    def test_user_not_logged_in_is_redirected(self):
-        response = self.client.get(redirect('highlight:get_highlight'))
-        print(resolve(response))
+    def test_user_voting_not_logged_in_is_redirected(self):
+        response = self.client.get(redirect('/highlight/highlight/'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'highlight.html')
 
@@ -40,7 +36,6 @@ class TestVoteView(TestCase):
 
     def test_user_logged_in_can_vote(self):
         response = self.client.get(self.highlight_url_to_vote)
-        print(resolve(response))
         self.assertEqual(response.status_code, 302)
         self.assertTemplateUsed(response, 'highlight.html')
 
