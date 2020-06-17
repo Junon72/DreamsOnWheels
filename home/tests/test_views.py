@@ -1,31 +1,27 @@
-from django.test import TestCase, Client
-from django.http import Http404
-from django.shortcuts import get_list_or_404, render, redirect, reverse
-from home.views import *
-from products.models import Product, Original
+from django.http import Http404, HttpRequest
+from django.shortcuts import get_list_or_404
+from django.test import TestCase
+from products.models import Original, Product
 
 
-class TestGetListOfProductsOr404(TestCase):
-    def test_get_list_or_404(self):
-        p1 = Product.objects.create(make="Ford")
-        p2 = Product.objects.create(make="Mustang")
-        
-        with self.assertRaises(Http404):
-            get_list_or_404(Product.objects.all(), make__contains="Ford")
-            get_list_or_404(Product.objects.all(), make__contains="Monkey")
+class GetObjectsOr404Tests(TestCase):
 
-# class TestIndexViews(TestCase):
+    def test_get_product_or_404(self):
+        o1 = Original.objects.create(make="Original", status='h')
+        o2 = Original.objects.create(make="Automobile", status='a')
+        highlight = Original.objects.filter(status='h')
 
-#     def setUp(self):
-#         self.client = Client()
-#         self.index_url = reverse('index')
-#         self.product_url = reverse('products:all_products', args=[1])
-#         self.product1 = Product.objects.create(pk=1)
-#         self.original_url = reverse('products:get_original', args=[1])
-#         self.original1 = Original.objects.create(pk=1)
+        self.assertRaises(Http404, get_list_or_404, Product, make="Auto")
+        self.assertEqual(highlight.count(), 1)
 
-#     def test_get_index_page(self):
-#         response = self.client.get(reverse('index'))
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'index.html')
+        p1 = Product.objects.create(make="Auto")
+        p2 = Product.objects.create(make="Mobile")
+        products = get_list_or_404(Product)
 
+        self.assertEqual(products.count(p1), 1)
+        self.assertEqual(
+            get_list_or_404(
+                Product.objects.all(),
+                make__contains="Mobile"),
+                [p2]
+            )

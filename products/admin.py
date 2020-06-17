@@ -10,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
         'status',
         'make',
         'model',
-        'votes'
+        'votes',
     )
     list_filter = (
         'status',

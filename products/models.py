@@ -65,7 +65,7 @@ class Product(models.Model):
     original_key = models.ForeignKey(
         Original, null=True,
         related_name='products',
-        on_delete=models.SET_NULL
+        on_delete=models.PROTECT
     )
 
     def __str__(self):

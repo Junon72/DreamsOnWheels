@@ -1,11 +1,14 @@
-# from django.test import SimpleTestCase
-# from django.urls import path, reverse, resolve
-# from home.views import index
+from django.test import SimpleTestCase, TestCase, Client
+from django.urls import path, reverse, resolve
+from products.models import Product, Original
+from home.views import index
 
 
-# class TestUrls(SimpleTestCase):
+class TestIndexViews(TestCase):
 
-#     def test_index_url_is_resolved(self):
-#         url = reverse('index')
-#         print(resolve(url))
-#         self.assertEquals(resolve(url).func, index)
+    def test_get_index_page(self):
+        self.original1 = Original.objects.create(pk=1, status='h')
+        self.product1 = Product.objects.create(pk=1)
+        response = self.client.get(reverse('index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'index.html')

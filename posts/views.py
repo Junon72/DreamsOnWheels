@@ -45,7 +45,7 @@ def post_detail(request, pk):
     # Processing post requests
     if request.method == 'POST':
         if not request.user.is_authenticated:
-            return HttpResponseForbidden()
+            return redirect('accounts:login')
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.cleaned_data['content']

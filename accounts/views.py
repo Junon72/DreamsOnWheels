@@ -90,7 +90,7 @@ def user_profile(request):
             if (request.user is not None):
                 user = User.objects.get(username=request.user.username)
         except User.DoesNotExist:
-            return HttpResponseForbidden()
+            return redirect('accounts:register')
     context = {
         'user': user,
         'profile_page': 'active',

@@ -25,6 +25,7 @@ def get_original(request, id):
     """
 
     original = get_list_or_404(Original, id=id)
+
     context = {
         'original': original,
         'title': 'Original'

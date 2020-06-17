@@ -38,10 +38,11 @@ class TestViews(TestCase):
     def test_get_post_detail(self):
         self.assertEqual(Post.objects.count(), 1)
         response = self.client.get(self.detail_url)
-        print(response)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'postdetail.html')
 
+    def test_posts_post_method(self):
+        
     # def test_add_new_comment(self):
     #     post = Post.objects.get(pk=1)
     #     self.assertEqual(Comment.objects.count(), 1)
