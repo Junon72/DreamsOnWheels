@@ -15,8 +15,6 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 publishable = settings.STRIPE_PUBLISHABLE
-print(stripe.api_key)
-print(publishable)
 
 @login_required()
 def checkout(request):
@@ -64,7 +62,9 @@ def checkout(request):
 
         else:
             messages.error(
-                request, "We were unable to take a payment with that card!")
+                request,
+                "Sorry, there seems to be something wrong with your payment. Please, check the form is filled correctly!"
+            )
 
     else:
         payment_form = MakePaymentForm()

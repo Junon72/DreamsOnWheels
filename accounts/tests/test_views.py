@@ -1,6 +1,8 @@
 from django.test import TestCase, TransactionTestCase
 from django.contrib.auth.models import User
+from accounts.models import Profile
 from accounts.views import logout, login, register, user_profile, update_profile
+from django.contrib.messages import get_messages
 
 class TestRegisterUserView(TestCase):
 
@@ -34,7 +36,7 @@ class TestRegisterUserView(TestCase):
 class TestLoginView(TestCase):
 
     @classmethod
-    def setUpTestData(cls):
+    def setUp(cls):
         User.objects.create_user(
             email='testUser@example.com',
             username='testUser',
@@ -55,11 +57,14 @@ class TestLoginView(TestCase):
 
         response = self.client.post("/accounts/login/")
 
-        # user = User.objects.get(email='testUser@example.com')
         user = User.objects.get(username='testUser')
 
         self.assertEqual(response.status_code, 200)
         self.assertTrue(user.is_authenticated)
+
+        for message in get_messages(response.wsgi_request):
+            self.assertEqual(message.tags, "success")
+            self.assertTrue('You have successfully logged in!' in message.message)
 
     def test_response_not_valid_credentials(self):
         """
@@ -77,8 +82,10 @@ class TestLoginView(TestCase):
         self.assertFormError(response, 'form', None,
                             'Your username or password is incorrect!')
 
-
     def test_get_profile_template(self):
+        """
+        Test logged in user can access profile page
+        """
         response = self.client.get('/accounts/profile/')
 
         self.assertEqual(response.status_code, 302)
@@ -87,32 +94,46 @@ class TestLoginView(TestCase):
         response = self.client.get('/accounts/update-profile/')
 
         self.assertEqual(response.status_code, 302)
+        for message in get_messages(response.wsgi_request):
+            self.assertEqual(message.tags, "success")
+            self.assertTrue('Your profile has been updated successfully!' in message.message)
 
 
 class TestLogoutView(TestCase):
+
     def test_logout(self):
         User.objects.create_user(username='testUser', email='testUser@email.com', password='passW0rd')
-        response = self.client.post("/accounts/login/")
-        user = User.objects.get(username='testUser')
-        response = self.client.get('/accounts/logout/')
+        self.client.login(username='testUser', password='passW0rd') 
+        response = self.client.get("/accounts/logout/")
+
         self.assertEqual(response.status_code, 302)
+        for message in get_messages(response.wsgi_request):
+            self.assertEqual(message.tags, "success")
+            self.assertTrue('You have successfully logged out!' in message.message)
 
 
-class TestProfileView(TestCase):
+# class TestUpdateProfileView(TestCase):
 
-    @classmethod
-    def setUpTestData(cls):
-        User.objects.create_user(
-            email='testUser@example.com',
-            username='testUser',
-            password='passw0rd',
-            first_name='Larry',
-            last_name='Lentel'
-        )
+#     @classmethod
+#     def setUp(cls):
+#         test_user = User.objects.create_user(
+#             email='testUser@example.com',
+#             username='testUser',
+#             password='passw0rd',
+#             first_name='Larry',
+#             last_name='Lentel'
+#         )
+#         test_profile = Profile.objects.create(
+#             address1 = 'Sesamistreet',
+#             zipcode = 'zipit6',
+#             country = 'LaLaLand',
+#             user_id=test_user
+#         )
 
-    def test_profile_template(self):
-        user = User.objects.get(id=1)
-        page = self.client.get('/accounts/profile/')
+#     def test_profile_template(self):
+#         self.user = User.objects.get(username='testUser')
+#         self.assertTrue(self.user.is_authenticated)
+#         page = self.client.get('/accounts/update_profile/')
 
-        self.assertEqual(page.status_code, 302)
-        self.assertTemplateUsed('index.html')
+#         self.assertEqual(page.status_code, 302)
+#         self.assertTemplateUsed('update_profile.html')

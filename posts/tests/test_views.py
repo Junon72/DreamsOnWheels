@@ -41,26 +41,28 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'postdetail.html')
 
-    def test_posts_post_method(self):
-        
-    # def test_add_new_comment(self):
-    #     post = Post.objects.get(pk=1)
-    #     self.assertEqual(Comment.objects.count(), 1)
-    #     response = self.client.post('/posts/post/')
 
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertEqual(post.title, 'Test post 1')
+    def test_add_new_comment(self):
+        self.client.force_login(user=self.user)
+        post = Post.objects.get(pk=1)
+        self.assertEqual(Comment.objects.count(), 1)
+        response = self.client.post('/posts/post/')
 
-    # def test_edit_comment(self):
-    #     post = Post.objects.get(pk=1)
-    #     response = self.client.get('/posts/update/{0}/'.format(post.pk))
+        # self.assertEqual(response.status_code, 302)
+        self.assertEqual(post.title, 'Test post 1')
 
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertTemplateUsed('edit_comment.html')
+    def test_edit_comment(self):
+        self.client.force_login(user=self.user)
+        post = Post.objects.get(pk=1)
+        response = self.client.get('/posts/update/{0}/'.format(post.pk))
 
-    # def test_delete_comment(self):
-    #     post = Post.objects.get(pk=1)
-    #     response = self.client.get('/posts/delete/{0}/'.format(post.pk))
+        # self.assertEqual(response.status_code, 302)
+        self.assertTemplateUsed('edit_comment.html')
 
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertTemplateUsed('delete_comment.html')
+    def test_delete_comment(self):
+        self.client.force_login(user=self.user)
+        post = Post.objects.get(pk=1)
+        response = self.client.get('/posts/delete/{0}/'.format(post.pk))
+
+        # self.assertEqual(response.status_code, 302)
+        self.assertTemplateUsed('delete_comment.html')

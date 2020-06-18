@@ -16,7 +16,7 @@ class Order(models.Model):
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.id}-{self.date}-{self.full_name}"
+        return f"{self.date} by {self.full_name} / {self.email}"
 
 
 class OrderLineItem(models.Model):
@@ -30,4 +30,4 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return f"{self.quantity} {self.product.make} @ {self.product.price}"
+        return f"{self.quantity} / {self.product.make} / {self.product.model} @ {self.product.price}"

@@ -85,4 +85,4 @@ class Vote(models.Model):
         ]
 
     def __str__(self):
-        return self.highlight
+        return self.highlight.model

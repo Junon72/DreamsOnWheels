@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('make', models.CharField(default='', max_length=200)),
                 ('model', models.CharField(default='', max_length=300)),
                 ('description', models.TextField()),
-                ('build_year', models.PositiveIntegerField(default='')),
+                ('build_year', models.PositiveIntegerField(default='0')),
                 ('image_main', models.ImageField(upload_to='original_images')),
                 ('image_two', models.ImageField(upload_to='original_images')),
                 ('image_three', models.ImageField(upload_to='original_images')),
