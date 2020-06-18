@@ -189,9 +189,15 @@
 				</div>
 			</div>
 			{% empty %}
-			<div class="row clearfix no-gutters">
-				<div class="col">
-					<p class="login-notice lato px-2">No products with these search terms.</p>
+			<div class="container">
+				<div class="row no-gutters justify-content-center">
+					<div class="col-12 text-center">
+						<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<h4 class="display-4 mb-3 thin">No products found with theses search terms.</h4>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			{% endfor %}

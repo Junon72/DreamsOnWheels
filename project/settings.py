@@ -115,6 +115,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # }
 
 if "DATABASE_URL" in os.environ:
+    print("Postgres in use")
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }

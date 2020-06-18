@@ -14,7 +14,7 @@ def get_highlight(request):
     render them.
     """
 
-    highlight = get_list_or_404(Original, status='h')
+    highlight = Original.objects.filter(status='h')
     context = {
         'highlight': highlight,
         'highlight_page': 'active',

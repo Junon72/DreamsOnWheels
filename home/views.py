@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render
 from products.models import Product, Original
 
 
 def index(request):
     """Return the index.html file"""
-    products = get_list_or_404(Product)
+    products = Product.objects.all()
     highlights = Original.objects.filter(status='h')
     context = {
         "index_page": "active",
