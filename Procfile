@@ -1,1 +1,1 @@
-web: gunicorn dreamsonwheels.wsgi:application
+web: gunicorn project.wsgi:application
