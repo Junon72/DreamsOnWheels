@@ -93,11 +93,10 @@ DOW - DreamsOnWheels user is able to:
 - Sign-in with a registered username and password
 - Reset password
 - Create a profile
-- Search models cars by name (and perhaps other search terms, like brand, style, color, price)
+- Search models cars by make, model and other terms, and order them by price or build year.
 - View details about the car models
-- Vote for a monthly highlighted dream car to be promoted or taken in to the collection - and/or
-- Comment on highlighted cars
-- Read about the original dream cars
+- Vote for a monthly highlighted dream car to be promoted or taken in to the collection
+- Read about the original cars behind the models
 - Read blogs
 - Comment on blogs
 - Add collectables in a shopping cart

@@ -178,7 +178,7 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 
-if path.exists('env.py'):
+if 'USE_CONSOLE_EMAIL' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'admin@dow.com'
     EMAIL_HOST_USER = ''
