@@ -107,7 +107,6 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailAuth',
 ]
 
-
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
@@ -201,7 +200,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if path.exists('env.py'):
+if 'USE_AWS' in os.environ:
     print("AWS S3 Static File in use.")
     # AWS Settings
     AWS_S3_OBJECT_PARAMETERS = {
@@ -218,18 +217,11 @@ if path.exists('env.py'):
     STATICFILES_LOCATION = 'static'
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-
     MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE ='custom_storage.MediaStorage'
-    
+    DEFAULT_FILE_STORAGE ='custom_storages.MediaStorage'
+
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.EmailAuth'
-]
 
 GRAPH_MODELS = {
     'all_applications': True,

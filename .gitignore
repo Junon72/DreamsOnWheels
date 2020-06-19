@@ -17,8 +17,8 @@ vscode
 # Local History for Visual Studio Code
 .history/
 
-*.png
-static/
+# *.png
+# static/
 media/
 
 # Created by https://www.gitignore.io/api/django
