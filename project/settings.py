@@ -177,33 +177,22 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if path.exists('env.py'):
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'admin@dow.com'
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
+    EMAIL_PORT = 1025
+else:
+    EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
+    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
 
-# if path.exists('env.py'):
-#     EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
-#     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
-#     EMAIL_USE_TLS = True
-#     EMAIL_HOST = 'smtp.gmail.com'
-#     EMAIL_PORT = 587
-# else:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     DEFAULT_FROM_EMAIL = 'admin@dow.com'
-#     EMAIL_HOST_USER = ''
-#     EMAIL_HOST_PASSWORD = ''
-#     EMAIL_USE_TLS = False
-#     EMAIL_PORT = 1025
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'admin@dow.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-EMAIL_PORT = 1025
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
@@ -234,13 +223,6 @@ if path.exists('env.py'):
     
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-    ## if env.py does not exist, use AWS S3 Static and Media Files
-# else:
-#     print("Local Static Files in use")
-#     MEDIA_URL = '/media/'
-#     STATIC_URL = '/static/'
-#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
