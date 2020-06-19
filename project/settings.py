@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'simple_forms.apps.core',
+    'django.contrib.sites',
     # Third party apps
     'crispy_forms',
     'django_forms_bootstrap',
@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     'highlight',
     'posts',
     'checkout',
-    'contact'
+    'contact',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -92,6 +93,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'cart.contexts.cart_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -100,6 +105,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.EmailAuth',
 ]
+
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -171,12 +177,12 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # if path.exists('env.py'):
 #     EMAIL_HOST_USER = os.getenv("EMAIL_ADDRESS")
@@ -199,8 +205,49 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if path.exists('env.py'):
+    print("AWS S3 Static File in use.")
+    # AWS Settings
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+    AWS_STORAGE_BUCKET_NAME = 'dreams-on-wheels'
+    AWS_S3_REGION_NAME = 'eu-central-1'
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE ='custom_storage.MediaStorage'
+    
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    ## if env.py does not exist, use AWS S3 Static and Media Files
+# else:
+#     print("Local Static Files in use")
+#     MEDIA_URL = '/media/'
+#     STATIC_URL = '/static/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.EmailAuth'
 ]
+
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+}

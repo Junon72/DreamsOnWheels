@@ -6,7 +6,7 @@
 {% block content %}
 <!-- Hero image -->
 <section id="hero-image">
-	<div class="topHeroWrap"><img src="/static/img/master-img.jpg" class="img-fluid mx-auto topHero"
+	<div class="topHeroWrap"><img src="{% static 'img/master-img.jpg' %}" class="img-fluid mx-auto topHero"
 			alt="Responsive image"></div>
 </section>
 <!-- / Hero image -->
@@ -32,6 +32,7 @@
 <!-- Sales Carousel -->
 <section id="sales-carousel">
 	<div class="container-fluid main-wrapper-index">
+		{% if product %}
 		<div class="responsive slider salesSlider clearfix" data-slick="{'slidesToShow': 4, 'slidesToScroll': 4}">
 			{% for item in products %}
 			<div class="sliderItem ml-1 media position-relative">
@@ -44,6 +45,19 @@
 			</div>
 			{% endfor %}
 		</div>
+		{% else %}
+		<div class="container">
+			<div class="row no-gutters justify-content-center">
+				<div class="col-12 text-center">
+					<div class="jumbotron jumbotron-fluid">
+						<div class="container">
+							<h3 class="display-4 mb-3 thin">This joyride is currently empty.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
 	</div>
 </section>
 <br><br><br>
@@ -59,13 +73,16 @@
 					<div class="col-md-6 mb-3">
 						<h2 class="section-title">Highlights</h2>
 						<div class="blockquote text-muted pr-2 highlight-teaser">
-							<p class="mb-0 pt-3"><strong>{{ highlight.make }} | {{ highlight.model }}</strong>
-								-&nbsp;Lorem
-								ipsum dolor sit amet,
-								consectetur
-								adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-								aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-								nisi ut aliquip...</p>
+							<p class="mb-0 pt-3 pb-2">In this months highlights we present you
+								<strong>{{ highlight.make }} | {{ highlight.model }}</strong>
+								<br>
+								-&nbsp; with another awesome contender(s) competing for our readers appreciation.
+								Our monthly highlights are about the original cars behind the models.
+								Each month we present you originals of the models we have in our shop or which we are
+								planning to bring in.
+								This is a race! Only the winner will be promoted, and you are behind the wheel.
+								Cast your vote for a dream car you would like to see in our catalogue or in promotion.
+							</p>
 							<div class="blockquote-footer">Highlights of the month {% now 'F' %}</div>
 						</div>
 
@@ -87,11 +104,16 @@
 					<div class="col-md-6 pl-md-4">
 						<h2 class="section-title">Blogs</h2>
 						<div class="blockquote text-muted blogs-teaser">
-							<p class="mb-0"><strong>Contributor posts</strong> -&nbsp;Lorem ipsum dolor sit amet,
-								consectetur
-								adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-								aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-								nisi ut aliquip.</p>
+							<p class="mb-0"><strong>Contributor posts</strong> -&nbsp;
+								From the days models were mere duplicates of production vehicles, 
+								and their role in promoting car makers offerings, making and
+								collecting model cars has become a cultural phenomena on its own right. Today the culture is as
+								vibrant, diverse and strong as ever. This is not surprising, considering the fascinating story of cars in
+								pivotal historic moments, as part of our cultural heritage, aesthetics, economy and technological
+								evolution. Cars and models continue to appeal to our desires and dreams of adventure and freedom
+								they represent. Something we we can share over generational or cultural boundaries.
+								There are so many stories to tell...
+							</p>
 							<div class="blockquote-footer">Someone famous in My memories</div>
 						</div>
 						<a class="btn btn-warning" href="{% url 'posts:get_posts' %}">Read more</a>
@@ -110,31 +132,55 @@
 				<div class="row">
 					<div class="col mb-5">
 						<div class="article">
-							<p class="mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptas
-								harum dolorem
-								sit mollitia vero ducimus atque iste nisi ab, maiores nemo laboriosam impedit
-								dignissimos, amet error provident eligendi cupiditate? Lorem ipsum dolor sit amet
-								consectetur adipisicing elit. Voluptatem quisquam ut recusandae nulla provident tenetur
-								saepe ratione magni maiores. Voluptatum neque quia enim nihil qui aut illum omnis quam
-								recusandae!</p>
-							<p class="mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quidem sit
-								et corrupti
-								temporibus ad a? Voluptates, blanditiis repudiandae non ut totam voluptate esse id
-								beatae nulla incidunt enim corporis.</p>
-							<p class="mr-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio asperiores,
-								harum vel
-								saepe nesciunt dicta, facere error tenetur officiis fugiat quod, odit nulla voluptatibus
-								sit? Quas ea quae molestias voluptatibus. Lorem ipsum, dolor sit amet consectetur
-								adipisicing elit. Obcaecati molestias illo veniam! Error similique eum modi, officiis
-								nihil voluptates eius deleniti reprehenderit rem earum beatae labore, quos
-								exercitationem voluptas eligendi.</p>
-							<p class="mr-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis temporibus
-								numquam saepe
-								maxime molestiae mollitia, enim ipsum? Fuga veritatis a, saepe atque eius iste quibusdam
-								voluptate omnis non! Expedita, nostrum! Lorem ipsum dolor sit, amet consectetur
-								adipisicing elit. Eveniet ut molestiae deserunt consequuntur eius nam obcaecati
-								consectetur, beatae dolor nesciunt ea culpa accusamus ipsa, iusto ab autem fuga.
-								Corporis, quis.</p>
+							<p class="mr-2">We at DOW are passionate about cars and models.
+								And when we say passionate… we mean it.
+								The driving force behind Dow is B.W. Smith. A true petrolhead.
+								During his studies he started participating in historic rallies with an old Lancia
+								Fulvia in 1998.
+								Nowadays he owns an Alfa Romeo Giulia and a MGB.
+								True timeless beauties form different eras and generations of pure automobile greatness.
+							</p>
+							<p class="mr-2">In 2012 the Dow’s Model Car Workshop opened its virtual doors to offer its
+								services. Today our customers of the commissioned customized model cars are located all
+								around the globe. It is a truly international market we proudly serve. Dow are B.W.
+								Smith, J.G.Wold and A. Roberts Sharing our love for anything motor related brought us
+								together at University. Our different areas of expertise made us realise that a business
+								venture together would set us apart from what was already out there. We bring you the
+								highest of quality products and deep knowledge in the field, together with a a forward
+								thinking attitude to manage the best deals for the most sought out items in the market.
+							</p>
+							<p class="mr-2">At DOW we are enthusiasts as much as retailers. We don’t just want to
+								sell you a model, we want you to love what you purchase! When you purchase a model
+								from DOW you know that you are dealing with people who share your passion and take a
+								pride in providing impeccable customer service.
+							</p>
+							<p class="mr-2">We specialise in 1/43 and 1/18 scale model cars by manufacturers including
+								C.A.R.S, Modelthat, Nr.one, Wheels, Precious and many others.
+								As enthusiasts, our interests are mainly in European classics with
+								French cars being particularly prominent. This enthusiasm stems from owning a long
+								line of French cars and having a keen interest in all things automotive. But surely,
+								we do not discriminate, and bring interesting additions to our collection from all
+								corners of the car world. What matters to us is the quality.
+								The models we stock are those which we like and offer good value.
+								We are continually expanding our product range as we believe that
+								it is important to not only offer great service and value for money,
+								but also to offer the widest possible choice to our customers.
+								The models we stock are those which we like and offer good value with affordable
+								pricing.
+							</p>
+							<p class="mr-2"> If you do not find what you are looking for, stay tuned.
+								There are many well-loved models in the pipeline which we will add to our catalog
+								as they are released. Meanwhile, get to know our highlights contenders for this month.
+								And don't forget our blog section for stories, intrigue and tidbits from our expert
+								A. Roberts and other contributors.
+							</p>
+							<p class="mr-2">New to this site?
+								<a class="lato text-warning text-uppercase mx-2" href="{% url 'register' %}" data-tooltip="tooltip"
+							data-placement="bottom" title="Register" data-delay="50">Sign in
+									now</a>
+								and join us on a journey of collectibles with ever growing community of all models and
+								cars enthusiasts.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -163,12 +209,14 @@
 						<div class="col-lg-4 col-6 py-4 px-0"> <img
 								class="img-fluid d-block mb-3 mx-auto rounded-circle employee-image"
 								src="{% static 'img/employees/profile2.jpg' %}" alt="Expert profile image">
-							<h4> <b>A. Gang</b> </h4>
+							<h4> <b>A. Roberts</b> </h4>
 							<p class="mb-0">Expert | Contributor</p>
 						</div>
 					</div>
 					<div class="row d-flex justify-content-center">
-						<a href="{% url 'contact:contact' %}" class="footer-nav mt-3" data-tooltip="tooltip" data-placement="bottom" title="Contact us" data-delay="50">We are always looking for interesting contributors to our team. Interested of joining?</a>
+						<a href="{% url 'contact:contact' %}" class="lato text-warning FyMed mt-3" data-tooltip="tooltip"
+							data-placement="bottom" title="Contact us" data-delay="50">We are always looking for
+							contributors to our team. Interested of joining?</a>
 					</div>
 				</div>
 			</section>
