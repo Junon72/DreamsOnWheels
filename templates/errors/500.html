@@ -18,7 +18,7 @@
 			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href="/static/css/custom.css">
+		<link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
 	</head>
 
@@ -29,7 +29,7 @@
 					<div class="col-12 text-center error-page my-auto">
 						<p class="error-code text-warning FyNorm lato">500</p>
 						<h1 class="error-text text-white lato">Oops! Nothing to see here.</h1>
-						<h3 class="mb-5 error-text text-white">Page does not exist.</h3>
+						<h3 class="mb-5 error-text lato text-white">Page does not exist.</h3>
 						<a href="{% url 'index' %}" class="error-link btn btn-large btn-warning">Take a U turn back home!</a>
 					</div>
 				</div>
