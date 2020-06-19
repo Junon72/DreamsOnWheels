@@ -179,7 +179,7 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 58
+EMAIL_PORT = 587
     
 # if 'USE_CONSOLE_EMAIL' in os.environ:
 #     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
