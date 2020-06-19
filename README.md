@@ -1,5 +1,9 @@
 # DreamsOnWheels
 
+## Travis
+
+[![Build Status](https://travis-ci.com/Junon72/DreamsOnWheels.svg?branch=master)](https://travis-ci.com/Junon72/DreamsOnWheels)
+
 ## Exclusive model cars e-commerce site
 
 Heroku App:
