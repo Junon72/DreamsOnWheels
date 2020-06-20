@@ -1,9 +1,6 @@
 Contact Name:
 {{ name }}
 
-Email:
-{{ from_email }}
-
 Subject:
 {{ subject }}
 

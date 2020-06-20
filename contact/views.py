@@ -20,15 +20,14 @@ def contact(request):
             template = get_template('message_template.txt')
             context = {
                 'name': name,
-                'from_email': from_email,
                 'subject': subject,
                 'message': message,
             }
-
+            content = template.render(context)
             email = EmailMessage(
                 "New contact form submission",
                 content,
-                "DOW" +'',
+                from_email,
                 ['adminDOW@dow.com'],
                 headers = {'Reply-To': from_email}
             )
