@@ -43,6 +43,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,6 @@ INSTALLED_APPS = [
     'django_filters',
     'widget_tweaks',
     # Project apps
-    'accounts',
     'home',
     'products',
     'cart',
@@ -109,16 +109,9 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 if "DATABASE_URL" in os.environ:
     print("Postgres in use")
@@ -177,12 +170,18 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
-    
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'admin@dow.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_PORT = 1025
+
 # if 'USE_CONSOLE_EMAIL' in os.environ:
 #     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #     DEFAULT_FROM_EMAIL = 'admin@dow.com'
@@ -228,25 +227,3 @@ if 'USE_AWS' in os.environ:
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
-# print("AWS S3 Static File in use.")
-# # AWS Settings
-# AWS_S3_OBJECT_PARAMETERS = {
-#     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-#     'CacheControl': 'max-age=94608000',
-# }
-# AWS_STORAGE_BUCKET_NAME = 'dreams-on-wheels'
-# AWS_S3_REGION_NAME = 'eu-central-1'
-# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-# AWS_DEFAULT_ACL = None
-
-# STATICFILES_LOCATION = 'static'
-# STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-
-# MEDIAFILES_LOCATION = 'media'
-# DEFAULT_FILE_STORAGE ='custom_storages.MediaStorage'
-
-# STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-# MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'

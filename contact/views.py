@@ -24,9 +24,6 @@ def contact(request):
                 'subject': subject,
                 'message': message,
             }
-            print(context)
-            content = template.render(context)
-            print(content)
 
             email = EmailMessage(
                 "New contact form submission",
