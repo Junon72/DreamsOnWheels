@@ -273,12 +273,15 @@ a.footer-nav .fa:hover,
 }
 
 .sliderItem .slider-image {
-	position: relative;
-	padding-right: .25em;
-	height: 27vh;
+	object-fit: cover;
+	position: absolute;
+	top: 0px;
+	bottom: 0;
+	height: 100%;
 	width: 100%;
 	object-fit: cover;
-}
+	margin-left: 3px;
+	}
 
 /* Overlay Sales carousel in index.html */
 .sliderItem:hover .overlay {
@@ -295,12 +298,16 @@ a.footer-nav .fa:hover,
 	top: 0;
 	bottom: 0;
 	right: 0;
-	left: -3px;
 	width: 100%;
 	height: 100%;
 	opacity: 0;
 	transition: .5s ease;
 	background-color: rgb(244, 195, 0);
+}
+
+.carousel-overlay {
+	right: -3px;
+	left: 3px;
 }
 
 .invite {
@@ -373,8 +380,8 @@ a.footer-nav .fa:hover,
 
 .view .product-image {
 	position: relative;
-	height: 100%;
-	width: auto;
+	height: auto;
+	width: 100%;
 	object-fit: cover;
 }
 

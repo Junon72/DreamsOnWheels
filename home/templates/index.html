@@ -16,10 +16,10 @@
 	<section id="generic-header">
 		<div class="container p-0">
 			<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
-				<div class="col">
+				<div class="col-6">
 					<h2 class="section-title">Sales</h2>
 				</div>
-				<div class="col carousel-control headerRightElement clearfix my-auto">
+				<div class="col-6 carousel-control headerRightElement clearfix my-auto">
 					<i class="FyMed arrow fa fa-chevron-left prev mr-1"></i>
 					<i class="align-center FyMed arrow fa fa-chevron-right next"></i>
 				</div>
@@ -30,36 +30,36 @@
 <!-- / Login Header -->
 
 <!-- Sales Carousel -->
+{% if products.all %}
 <section id="sales-carousel">
 	<div class="container-fluid main-wrapper-index">
-		{% if product %}
 		<div class="responsive slider salesSlider clearfix" data-slick="{'slidesToShow': 4, 'slidesToScroll': 4}">
 			{% for item in products %}
-			<div class="sliderItem ml-1 media position-relative">
+			<div class="sliderItem media position-relative">
 				<img src="{{ MEDIA_URL }}{{ item.image_main }}" class="slider-image"
-					alt="{{ product.make }} | {{ product.model }}">
+					alt="{{ item.make }} | {{ item.model }}">
 				<a href="{% url 'products:all_products' %}" class="stretched-link"></a>
-				<div class="overlay">
+				<div class="carousel-overlay">
 					<div class="invite FyMed lato">TO SALES ></div>
 				</div>
 			</div>
 			{% endfor %}
 		</div>
-		{% else %}
-		<div class="container">
-			<div class="row no-gutters justify-content-center">
-				<div class="col-12 text-center">
-					<div class="jumbotron jumbotron-fluid">
-						<div class="container">
-							<h3 class="display-4 mb-3 thin">This joyride is currently empty.</h3>
-						</div>
-					</div>
+	</div>
+</section>
+{% else %}
+<div class="container-fluid">
+	<div class="row no-gutters justify-content-center">
+		<div class="col-12 text-center">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h3 class="display-4 mb-3 thin">This joyride is currently empty.</h3>
 				</div>
 			</div>
 		</div>
-		{% endif %}
 	</div>
-</section>
+</div>
+{% endif %}
 <br><br><br>
 <!-- / Sales Carousel -->
 

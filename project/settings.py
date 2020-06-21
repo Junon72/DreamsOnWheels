@@ -19,7 +19,7 @@ if path.exists("env.py"):
     DEBUG = True
     print('env imported')
 else:
-    DEBUG = True
+    DEBUG = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -198,6 +198,7 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailAuth',
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
