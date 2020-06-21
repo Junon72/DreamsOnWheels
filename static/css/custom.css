@@ -43,11 +43,6 @@ a, a:hover, a:focus {
 	font-family: 'Arvo', serif !important;
 }
 
-/* .strong {
-	font-weight: 700;
-}
-*/
-
 .medium {
 	font-weight: 400;
 }
@@ -571,7 +566,7 @@ a.footer-nav .fa:hover,
 	font-weight: 400;
 	text-transform: uppercase;
 	position: absolute;
-	bottom: 50px;
+	bottom: 55px;
 }
 
 /* ------------------------------------------------ Blog.html */
@@ -580,12 +575,6 @@ a.footer-nav .fa:hover,
 	width: 100%;
 	height: auto;
 }
-
-/* Comments */
-
-/* #commentSection {
-	display: none;
-} */
 
 .hidden {
 	display: none;

@@ -28,6 +28,6 @@ def get_original(request, id):
 
     context = {
         'original': original,
-        'title': 'Original'
+        'title': 'Original',
     }
     return render(request, "original.html", context)

@@ -74,6 +74,7 @@ def checkout(request):
         "order_form": order_form,
         "payment_form": payment_form,
         "publishable": publishable,
-        "title": "Checkout"
+        "title": "Checkout",
+        "cart": "cart",
     }
     return render(request, "checkout.html", context)

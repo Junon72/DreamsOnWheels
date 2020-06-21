@@ -14,8 +14,8 @@
 			</div>
 			<div class="col headerRightElement backHome FyNorm clearfix">
 				<a href="{% url 'products:all_products' %}" class="btn btn-link back-button clearfix text-dark"
-					data-tooltip="tooltip" data-placement="bottom" title="Take me back Home" data-delay="50"><i
-						class="align-center home-arrow fa fa-chevron-left"></i>Back to sales</a>
+					data-tooltip="tooltip" data-placement="bottom" title="Back to sales" data-delay="50"><i
+						class="align-center home-arrow fa fa-chevron-left"></i>Sales</a>
 			</div>
 		</div>
 	</section>
@@ -214,7 +214,7 @@
 								{% if totals == 0 or not user.is_authenticated %}
 								<a href="#" class="btn btn-dark btn-default btn-block">Checkout</a>
 								{% else %}
-								<a href="{% url 'checkout' %}" class="btn btn-dark btn-default btn-block">Checkout</a>
+								<a href="{% url 'checkout' as cart %}" class="btn btn-dark btn-default btn-block">Checkout</a>
 								{% endif %}
 							</div>
 						</div>

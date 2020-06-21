@@ -106,7 +106,7 @@
 						{{ comment_form | crispy }}
 						{% csrf_token %}
 						<input type="hidden" name="owner" value="{{ user }}">
-						<button class="btn btn-sm btn-dark float-right mt-1" type="submit">submit</button>
+						<button class="btn btn-sm btn-dark float-right mt-1" type="submit" ata-tooltip="tooltip" data-placement="bottom" title="Submit comment" data-delay="50">submit</button>
 					</fieldset>
 				</form>
 			</div>

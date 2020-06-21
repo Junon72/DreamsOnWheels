@@ -6,17 +6,8 @@
 {% block content %}
 <!-- Blog posts Header -->
 <div class="container main-wrapper-index">
-	<section id="products-header">
-		<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
-			<div class="col-4">
-				<h2 class="section-title">Blogs</h2>
-			</div>
-			<div class="col-8 headerRightElement backHome FyNorm clearfix">
-				<a href="{% url 'index' %}" class="btn btn-link back-button text-dark" data-tooltip="tooltip"
-					data-placement="bottom" title="Take me back Home" data-delay="50"><i
-						class="align-center home-arrow fa fa-chevron-left"></i> Back Home</a>
-			</div>
-		</div>
+	<section id="blogs-header">
+	{% include '_home_header.html' %}
 	</section>
 </div>
 <!-- /Blog posts Header -->
@@ -32,17 +23,20 @@
 			<div class="card-body pt-2">
 				<h5 class="card-title lato">{{ post.title }}</h5>
 				<p class="my-0"><strong class="lato mt-auto">{{ post.author }}</strong>
-					{% if post.author.profiles.contributor == True %}<small> | (Guest contributor)</small>{% endif %}
+					{% if post.author.profiles.contributor == True %}
+					<small> | Guest</small>
+					{% else %}
+					<small> | DOW</small>
+					{% endif %}
 				</p>
 				<p class="article-published m-0"><i class="fa fa-clock pr-2 text-secondary"></i><small
 						class="thin">{{ post.published_date }}</small>
 				</p>
-				<p class="card-text pt-2">{{ post.content | truncatewords:50 }}</p>
-				<a class="toBlog lato text-dark read-more" href="{% url 'posts:post_detail' pk=post.pk %}">Read
-					more...</a>
+				<p class="card-text pt-2 mb-5">{{ post.content | truncatewords:50 }}</p>
+				<a class="btn btn-lin toBlog lato text-muted read-more p-0" href="{% url 'posts:post_detail' pk=post.pk %}" data-tooltip="tooltip" data-placement="bottom" title="About original" data-delay="50">Read more ></a>
 			</div>
 			<div class="card-footer d-flex align-items-end">
-				<small class="text-muted">Comments {{ post.comments.count }}</small>
+				<small class="text-muted">Views {{ post.views }} | Comments {{ post.comments.count }}</small>
 			</div>
 		</div>
 		{% empty %}

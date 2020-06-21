@@ -124,6 +124,7 @@ def update_profile(request):
             context = {
                 'user_form': user_form,
                 'profile_form': profile_form,
-                'title': 'Update'
+                'title': 'Update',
+                'profile': 'profile'
             }
             return render(request, 'update_profile.html', context)
