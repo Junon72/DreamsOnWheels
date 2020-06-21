@@ -293,7 +293,8 @@ a.footer-nav .fa:hover,
 	opacity: 1;
 }
 
-.overlay {
+.overlay,
+.carousel-overlay {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -380,7 +381,6 @@ a.footer-nav .fa:hover,
 
 .view .product-image {
 	position: relative;
-	height: auto;
 	width: 100%;
 	object-fit: cover;
 }
