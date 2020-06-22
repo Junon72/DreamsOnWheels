@@ -285,7 +285,8 @@ a.footer-nav .fa:hover,
 	opacity: 1;
 }
 
-.overlay {
+.overlay,
+.carousel-overlay {
 	position: absolute;
 	top: 0;
 	bottom: 0;
