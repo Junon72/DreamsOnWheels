@@ -373,6 +373,7 @@ a.footer-nav .fa:hover,
 
 .view .product-image {
 	position: relative;
+	height: auto;
 	width: 100%;
 	object-fit: cover;
 }

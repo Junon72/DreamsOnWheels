@@ -40,7 +40,7 @@
 		</div>
 		<div class="row mt-2 no-gutters justify-content-center bg-transparent">
 			<div class="col-lg-8 col-md-10 col-sx-12">
-				<div class="row mb-1 no-gutters">
+				<div class="row mb-1 no-gutters align-items-end">
 					<div class="col-sx-2 clearfix pl-3 comment-owner-image-container d-flex">
 						{% if post.author.profiles.image %}
 						<img class="img-fluid comment-owner-image" src="{{ MEDIA_URL }}{{ post.author.profiles.image }}"
@@ -50,9 +50,16 @@
 							alt="Default avatar image">
 						{% endif %}
 					</div>
-					<div class="col-sx-10 clearfix d-flex flex-column pl-3">
-						<strong class="lato mt-auto">{{ post.author }}</strong>
-						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small class="thin">{{ post.published_date }}</small>
+					<div class="col-sx-10 clearfix d-flex flex-column pl-3 pt-auto">
+						<p class="my-0"><strong class="lato">{{ post.author }}</strong>
+						{% if post.author.profiles.contributor == True %}
+						<small> | Guest</small>
+						{% else %}
+						<small> | DOW</small>
+						{% endif %}
+						</p>
+						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small
+								class="thin">{{ post.published_date }}</small>
 						</p>
 					</div>
 				</div>
@@ -94,7 +101,8 @@
 					</div>
 					<div class="col-sx-10 clearfix d-flex flex-column pl-3">
 						<strong class="lato mt-auto">{{ user }}</strong>
-						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small class="thin">{% now "DATETIME_FORMAT" %}</small>
+						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small
+								class="thin">{% now "DATETIME_FORMAT" %}</small>
 						</p>
 					</div>
 				</div>
@@ -106,7 +114,8 @@
 						{{ comment_form | crispy }}
 						{% csrf_token %}
 						<input type="hidden" name="owner" value="{{ user }}">
-						<button class="btn btn-sm btn-dark float-right mt-1" type="submit" ata-tooltip="tooltip" data-placement="bottom" title="Submit comment" data-delay="50">submit</button>
+						<button class="btn btn-sm btn-dark float-right mt-1" type="submit" ata-tooltip="tooltip"
+							data-placement="bottom" title="Submit comment" data-delay="50">submit</button>
 					</fieldset>
 				</form>
 			</div>
@@ -138,22 +147,24 @@
 								{% endif %}
 							</div>
 							<div class="col-sx-10 clearfix d-flex flex-column pl-3 mt-auto">
-								<p class="lato my-0"><strong>{{ comment.owner }} </strong>| {{ comment.owner.profiles.country.name }}</p>
-								<p class="article-published m-0"><i
-										class="fa fa-clock warning-clr pr-2"></i><small class="thin">{{ comment.published_date }}</small>
+								<p class="lato my-0"><strong>{{ comment.owner }} </strong>|
+									{{ comment.owner.profiles.country.name }}</p>
+								<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small
+										class="thin">{{ comment.published_date }}</small>
 								</p>
 							</div>
 							{% if user.is_authenticated and user == comment.owner %}
 							<div class="editComment d-flex flex-row">
 								<div class="text-center">
 									<button class="update-comment btn btn-sm btn-warning" id="updateComment"
-										data-id="{% url 'posts:update' comment.pk %}"
-										data-tooltip="tooltip" data-placement="bottom" title="Edit comment"
-										data-delay="50"><span
+										data-id="{% url 'posts:update' comment.pk %}" data-tooltip="tooltip"
+										data-placement="bottom" title="Edit comment" data-delay="50"><span
 											class="fas fa-user-edit text-color-dark"></span></button>
 								</div>
 								<div class="text-center ml-1">
-									<button class="delete-comment btn btn-sm btn-outline-danger" data-id="{% url 'posts:delete' comment.pk %}" data-tooltip="tooltip" data-placement="bottom" title="Delete comment" data-delay="50">
+									<button class="delete-comment btn btn-sm btn-outline-danger"
+										data-id="{% url 'posts:delete' comment.pk %}" data-tooltip="tooltip"
+										data-placement="bottom" title="Delete comment" data-delay="50">
 										<span class="fas fa-trash text-color-dark"></span>
 									</button>
 								</div>

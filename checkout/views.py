@@ -69,12 +69,11 @@ def checkout(request):
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
-
-    context = {
-        "order_form": order_form,
-        "payment_form": payment_form,
-        "publishable": publishable,
-        "title": "Checkout",
-        "cart": "cart",
-    }
+        context = {
+            "order_form": order_form,
+            "payment_form": payment_form,
+            "publishable": publishable,
+            "title": "Checkout",
+            "cart": "cart",
+        }
     return render(request, "checkout.html", context)
