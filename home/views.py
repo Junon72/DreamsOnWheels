@@ -5,6 +5,7 @@ from products.models import Product, Original
 def index(request):
     """Return the index.html file"""
     products = Product.objects.all()
+    print(products)
     highlights = Original.objects.filter(status='h')
     context = {
         "index_page": "active",

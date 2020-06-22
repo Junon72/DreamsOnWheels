@@ -268,10 +268,7 @@ a.footer-nav .fa:hover,
 }
 
 .sliderItem .slider-image {
-	object-fit: cover;
-	position: absolute;
-	top: 0px;
-	bottom: 0;
+	position: relative;
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
@@ -279,7 +276,7 @@ a.footer-nav .fa:hover,
 	}
 
 /* Overlay Sales carousel in index.html */
-.sliderItem:hover .overlay {
+.sliderItem:hover .carousel-overlay {
 	opacity: 1;
 }
 
@@ -288,8 +285,7 @@ a.footer-nav .fa:hover,
 	opacity: 1;
 }
 
-.overlay,
-.carousel-overlay {
+.overlay {
 	position: absolute;
 	top: 0;
 	bottom: 0;
