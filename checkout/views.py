@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .forms import MakePaymentForm, OrderForm
 from accounts.forms import UserForm
 from django.contrib import messages
@@ -11,13 +12,11 @@ from accounts.models import Profile
 from accounts.forms import ProfileForm
 import stripe
 
-# Create your views here.
-
-stripe.api_key = settings.STRIPE_SECRET
-publishable = settings.STRIPE_PUBLISHABLE
-
 @login_required()
 def checkout(request):
+    stripe.api_key = settings.STRIPE_SECRET
+    publishable = settings.STRIPE_PUBLISHABLE
+
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -68,7 +67,18 @@ def checkout(request):
 
     else:
         payment_form = MakePaymentForm()
-        order_form = OrderForm()
+        profile = Profile.objects.get(user=request.user)
+        order_form = OrderForm(initial={
+            'full_name': profile.user.get_full_name(),
+            'email': profile.user.email,
+            'phone_number': profile.phone_number,
+            'street_address1': profile.address1,
+            'street_address2': profile.address2,
+            'postcode': profile.zipcode,
+            'town_or_city': profile.town_or_city,
+            'county': '',
+            'country': profile.country,
+        })
     context = {
         "order_form": order_form,
         "payment_form": payment_form,

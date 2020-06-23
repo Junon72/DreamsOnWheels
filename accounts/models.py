@@ -14,8 +14,10 @@ class Profile(models.Model):
     )
     contributor = models.BooleanField(default=False)
     image = models.ImageField(upload_to="avatars/", blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
     address1 = models.CharField(max_length=95, blank=False)
     address2 = models.CharField(max_length=95, blank=True)
+    town_or_city = models.CharField(max_length=80, blank=True, null=True)
     zipcode = models.CharField(max_length=20, blank=False)
     country = CountryField()
 

@@ -53,4 +53,12 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('address1', 'address2', 'zipcode', 'country', 'image')
+        fields = (
+            'phone_number',
+            'address1',
+            'address2',
+            'zipcode',
+            'town_or_city',
+            'country',
+            'image'
+        )

@@ -181,8 +181,8 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 if 'USE_EMAIL' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'admin@dow.com'
-    EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+    # EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+    # EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
     EMAIL_USE_TLS = False
     EMAIL_PORT = 1025
 else:
