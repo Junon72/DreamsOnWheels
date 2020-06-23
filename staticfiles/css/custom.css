@@ -1,0 +1,637 @@
+/* The html views and css style development were started at https://github.com/Junon72/DOW-UI.
+/* I wanted to keep the UI development separate from the back end development workspace especially at the beginning.
+/* This allowed me to focus on one area of development at the time and test the visual features before
+/* implementing them to the project.
+
+
+
+/* Titles / Subtitles / Headers / Paragraphs */
+
+
+/* Fonts */
+
+h4,
+p {
+	font-family: "Lato", serif;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+}
+
+.FyNorm {
+	font-size: 1.6rem;
+}
+
+.FyMed {
+	font-size: 1.2rem;
+}
+
+.FySmall {
+	font-size: .8rem;
+}
+
+.lato {
+	font-family: "Lato", serif;
+}
+
+.jost {
+	font-family: "Jost", serif;
+}
+
+.arvo {
+	font-family: 'Arvo', serif !important;
+}
+
+.medium {
+	font-weight: 400;
+}
+
+.thin {
+	font-weight: 200;
+}
+
+.section-title,
+.article-title {
+	font-size: 2.2rem;
+	font-family: "Jost", serif;
+	font-weight: 400;
+}
+
+.warning-clr {
+	color: rgb(244, 195, 0);
+}
+
+/* Buttons */
+
+.btn {
+	text-transform: uppercase !important;
+}
+
+.back-button {
+	text-decoration: none !important;
+	text-transform: uppercase;
+}
+
+.backHome a {
+	font-family: "Lato", serif;
+	margin-bottom: -8px;
+}
+
+.home-arrow {
+	padding-bottom: 2px;
+	padding-right: 10px;
+}
+
+.home-arrow:hover {
+	color: rgb(244, 167, 0);
+}
+
+/* Right align */
+
+.section-title {
+	color: black;
+}
+
+.autoRight {
+	margin-right: auto;
+}
+
+.autoLeft {
+	margin-left: auto;
+}
+
+.rightalign {
+	float: right;
+}
+
+/* Logo header section */
+.top-container {
+	background-color: rgb(161, 164, 169);
+	padding: 30px;
+	text-align: center;
+	min-width: 100vw;
+}
+
+
+.logo-title,
+.logo-sub {
+	margin: auto;
+	font-family: 'Arvo', serif;
+	color: #ffffff;
+}
+
+.logo-title {
+	font-size: 3.4rem;
+	font-weight: 500;
+	text-shadow: 0 1px 0 rgb(244, 195, 0), 0 2px 0 rgb(247, 201, 15), 0 3px 0 rgb(247, 201, 15), 0 4px 0 rgb(249, 212, 64), 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+		0 10px 0 #ccc, 0 11px 0 #ccc, 0 12px 0 rgb(211, 211, 211), 0 3px 10px rgba(237, 235, 235, 0.8);
+}
+
+.logo-sub {
+	font-size: 1.3rem;
+	text-shadow: 2px 4px 5px rgb(0, 0, 0, .8);
+}
+
+/* ------------------------------------------------ _navbar */
+
+.nav-header {
+	margin: 0;
+	background: rgb(216, 217, 219);
+	color: #ffffff;
+	z-index: 1020;
+}
+
+.navbar {
+	height: 80px;
+}
+
+.navbar-collapse.show {
+	background-color: rgb(52, 58, 64, .96);
+	width: 100vw;
+	margin-right: -1rem;
+	margin-left: -1rem;
+}
+
+.navbar-collapse.show ul {
+	padding-left: 1rem;
+}
+
+a.nav-link {
+	font-family: 'Arvo', serif !important;
+	color: #ffffff;
+	font-size: 1.5em !important;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+a.nav-link:hover {
+	color: #ffffff;
+}
+
+.active a.nav-link {
+	color: rgb(244, 195, 0) !important;
+}
+
+.nav-link {
+	margin-right: 1rem;
+}
+
+
+.content {
+	padding: 16px;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.sticky+.content {
+	padding-top: 102px;
+}
+
+/* ------------------------------------------------ _footer.html */
+
+.footer-nav {
+	color: black;
+}
+
+a.footer-nav .fa {
+	color: #ffffff;
+}
+
+a.footer-nav .fa:hover,
+.footer-nav:hover {
+	color: rgb(244, 195, 0);
+}
+
+/* ------------------------------------------------ Index.html */
+
+/* Hero */
+
+.topHeroWrap {
+	overflow: hidden;
+	z-index: 999;
+}
+
+.topHero {
+	position: relative;
+	left: 50%;
+	top: calc(100vw/ 6);
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transition-timing-function: ease-in-out;
+	z-index: -1;
+	margin-bottom: calc(100vw/ -6);
+}
+
+/* Header title and nav */
+
+.headerRightElement {
+	text-align: right;
+}
+
+/* Main container */
+
+.main-wrapper-index {
+	z-index: 1;
+	margin-top: 2em;
+}
+
+/* Carousel */
+
+.salesSlider {
+	min-width: 100vw;
+	height: 27vh;
+	overflow: hidden;
+	border: red;
+	clear: left;
+	display: flex;
+	margin-left: -15px;
+	padding: 0 !important;
+}
+
+.sliderItem {
+	overflow: hidden;
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	width: auto;
+	height: 27vh;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.sliderItem .slider-image {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	margin-left: 3px;
+	}
+
+/* Overlay Sales carousel in index.html */
+.sliderItem:hover .carousel-overlay {
+	opacity: 1;
+}
+
+/* Overlay Sales product card in products.html */
+.product-detail:hover .overlay {
+	opacity: 1;
+}
+
+.overlay,
+.carousel-overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color: rgb(244, 195, 0);
+}
+
+.carousel-overlay {
+	right: -3px;
+	left: 3px;
+}
+
+.invite {
+	color: #ffffff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.arrow:hover {
+	color: rgb(244, 167, 0);
+}
+
+
+/* Highlight and Blogs */
+
+.article p {
+	font-size: 1.1rem;
+}
+
+#blogs {
+	margin-bottom: 5em;
+}
+
+/* About */
+
+.article {
+	columns: 2 360px;
+	/* column-width: 45vw; */
+}
+
+.employee-image {
+	width: 160px;
+	height: 160px;
+}
+
+/* ------------------------------------------------ Products.html.html */
+
+.main-wrapper-sales {
+	z-index: 1;
+	margin-top: 2em;
+}
+
+.badge {
+	border-radius: 3px !important;
+}
+
+.promo-badge {
+	position: absolute;
+	margin-top: 6px;
+	margin-left: 6px;
+	z-index: 5;
+	padding: 4px;
+	line-height: 1.5;
+}
+
+.sales-card {
+	z-index: 0;
+	margin: 0 .5em;
+}
+
+.view {
+	overflow: hidden;
+	margin: auto;
+}
+
+.view .product-image {
+	position: relative;
+	height: auto;
+	width: 100%;
+	object-fit: cover;
+}
+
+.modal-product-image {
+	position: relative;
+	height: auto;
+	width: 100%;
+	object-fit: cover;
+}
+
+.old-price {
+	text-decoration-line: line-through;
+	color: rgb(153, 156, 159);
+}
+
+.scale {
+	font-size: .8rem;
+	font-weight: 300;
+}
+
+.about-original {
+	font-size: .8rem !important;
+	font-family: "Lato", serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 0;
+}
+
+.no-p {
+	padding: 0 !important;
+}
+
+/* Search form */
+
+.search-form label {
+	font-family: lato;
+	font-weight: 300;
+	font-size: .9rem;
+}
+
+.search-form select {
+	height: 31px;
+	font-size: .9rem;
+}
+
+/* ------------------------------------------------ Cart.html */
+
+.view .cart-product-image {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.amend {
+	height: 36px;
+}
+
+.sales-card-no-border {
+	border: none;
+}
+
+
+/* ------------------------------------------------ Checkout.html */
+.badge {
+	padding-left: 9px;
+	padding-right: 9px;
+	border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+	background-color: #c67605;
+}
+
+.checkout-product {
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 200px;
+	margin: auto auto;
+}
+
+#item-column {
+	height: 100%;
+	min-height: 500px;
+	overflow-y: scroll;
+	right: 0;
+}
+
+
+
+
+/* ------------------------------------------------ Highlight.html */
+
+
+.highlightItem {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: calc(100vh/ 4);
+	min-height: 540px;
+}
+
+
+.highlightSpec {
+	text-align: center;
+	display: block;
+	padding-left: 0;
+	margin-top: .7rem;
+	font-family: "Lato", serif;
+	font-size: 1rem;
+}
+
+.highlightRange {
+	text-align: center;
+	display: block;
+	padding-left: 0;
+	margin-top: .7rem;
+	font-size: 1.2rem;
+	font-weight: 300;
+}
+
+.highlightArticle {
+	padding: 0 1em;
+}
+
+.article-published {
+	font-family: "Lato", serif;
+	font-size: 1rem;
+	font-weight: 200;
+}
+
+/* ------------------------------------------------ Blogposts.html */
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 1em;
+	justify-content: center;
+	margin: 1em;
+}
+
+
+.card-title {
+	margin: 1em 0;
+	text-align: center;
+}
+
+.pagin-anchor {
+	color: black;
+}
+
+.pagin-anchor:hover {
+	color: rgb(244, 195, 0);
+}
+
+.pagin-text {
+	font-family: "Lato", serif;
+	text-transform: uppercase;
+}
+
+.read-more {
+	font-size: .8rem !important;
+	font-family: "Lato", serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: 55px;
+}
+
+/* ------------------------------------------------ Blog.html */
+
+.hero-image {
+	width: 100%;
+	height: auto;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.editComment {
+	position: absolute;
+	right: 1rem;
+	top: 5px;
+	color: rgb(52, 58, 64);
+}
+
+.comment-owner-image-container {
+	height: 76px;
+}
+
+.comment-owner-image {
+	object-fit: cover;
+	width: 76px;
+	height: auto;
+	border-radius: 50%;
+}
+
+.card-columns {
+
+	@include media-breakpoint-only(xl) {
+		column-count: 2;
+	}
+
+	@include media-breakpoint-only(lg) {
+		column-count: 2;
+	}
+
+	@include media-breakpoint-only(md) {
+		column-count: 2;
+	}
+
+	@include media-breakpoint-only(sm) {
+		column-count: 2;
+	}
+
+	@include media-breakpoint-only(xs) {
+		column-count: 1;
+	}
+}
+
+/* ------------------------------------------------ Profile.html */
+.profile-image-container {
+	height: 200px;
+}
+
+.profile-image {
+	object-fit: cover;
+	width: 200px;
+	height: auto;
+	border-radius: 50%;
+}
+
+/* ------------------------------------------------ 404.html and 500.html*/
+
+.page-wrap {
+	min-height: 100vh;
+}
+
+.error-code {
+	color: #ffc107;
+	font-size: 4em;
+	font-weight: 900;
+	font-family: 'Lato'
+}
+
+.error-link {
+	text-decoration: none;
+}
+
+.error-text {
+	color: #ffffff;
+}
