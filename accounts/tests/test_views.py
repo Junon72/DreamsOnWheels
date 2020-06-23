@@ -4,6 +4,7 @@ from accounts.models import Profile
 from accounts.views import logout, login, register, user_profile, update_profile
 from django.contrib.messages import get_messages
 
+
 class TestRegisterUserView(TestCase):
 
     def test_register_template(self):
@@ -32,6 +33,7 @@ class TestRegisterUserView(TestCase):
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(User.objects.count(), 1)
+
 
 class TestLoginView(TestCase):
 
@@ -112,28 +114,12 @@ class TestLogoutView(TestCase):
             self.assertTrue('You have successfully logged out!' in message.message)
 
 
-# class TestUpdateProfileView(TestCase):
+class TestUpdateProfileView(TestCase):
 
-#     @classmethod
-#     def setUp(cls):
-#         test_user = User.objects.create_user(
-#             email='testUser@example.com',
-#             username='testUser',
-#             password='passw0rd',
-#             first_name='Larry',
-#             last_name='Lentel'
-#         )
-#         test_profile = Profile.objects.create(
-#             address1 = 'Sesamistreet',
-#             zipcode = 'zipit6',
-#             country = 'LaLaLand',
-#             user_id=test_user
-#         )
+    def test_profile(self):
+        User.objects.create_user(username='testUser', email='testUser@email.com', password='passW0rd')
+        self.client.login(username='testUser', password='passW0rd') 
+        response = self.client.get("/accounts/profile/")
 
-#     def test_profile_template(self):
-#         self.user = User.objects.get(username='testUser')
-#         self.assertTrue(self.user.is_authenticated)
-#         page = self.client.get('/accounts/update_profile/')
-
-#         self.assertEqual(page.status_code, 302)
-#         self.assertTemplateUsed('update_profile.html')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('profile.html')

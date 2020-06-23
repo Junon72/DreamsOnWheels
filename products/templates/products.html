@@ -118,10 +118,10 @@
 						<div class="row w-100 h-100 mb-0 no-gutters">
 							<div class="col d-flex clearfix align-items-center">
 								<span class="lato pl-2"><strong class="lato price medium">Price: </strong></span>
-								{% if product.old_price > 0 %}
+								{% if product.status == 'p' %}
 								<div class="autoRight pl-2"><i class="fa fa-euro"></i>
 									<span class="old-price">{{ product.old_price }} </span><strong
-										class="lato price medium">&nbsp; {{ product.price }}</strong>
+										class="lato price medium">&nbsp; at {{ product.price }}</strong>
 								</div>
 								{% else %}
 								<div class="autoRight pl-2"><i class="fa fa-euro"></i>

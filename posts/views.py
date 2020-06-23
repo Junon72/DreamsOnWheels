@@ -109,5 +109,4 @@ class CommentDeleteView(BSModalDeleteView):
     def get_success_url(self):
         post = self.object.post
         post_id = self.object.post.id
-        print(post_id)
         return reverse_lazy('posts:post_detail', kwargs={'pk': post.id})

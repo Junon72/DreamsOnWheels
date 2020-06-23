@@ -9,7 +9,7 @@ class TestCustomErrorHandlers(SimpleTestCase):
 
     def test_handler_renders_template_response_404(self):
         response = self.client.get('/404/')
-        self.assertContains(response, 'Page not found.', status_code=404)
+        self.assertContains(response, 'Oops! Nothing to see here.', status_code=404)
 
 
 class TestErrors(TestCase):

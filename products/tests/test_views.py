@@ -17,8 +17,6 @@ class TestProductViews(TestCase):
                 make__contains="Original"),
                 [o1]
             )
-        
-        # self.assertRaises(Http404, get_list_or_404, Product, make="Auto")
 
     def test_can_get_products(self):
         o1 = Original.objects.create(make="Original", status='h', pk=1)
@@ -33,20 +31,3 @@ class TestProductViews(TestCase):
                 make__contains="Mobile"),
                 [products[1]]
             )
-
-
-    # def test_can_get_original(self):
-
-    # def test_get_all_products_template(self):
-    #     response = self.client.get('/products/')
-
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed('products.html')
-
-    # def test_get_original_template(self):
-    #     # original = Original.objects.get(id=1)
-    #     response = self.client.get('/products/original/{0}'.format(o1.id))
-
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(original.make, 'Original')
-    #     self.assertTemplateUsed('original.html')

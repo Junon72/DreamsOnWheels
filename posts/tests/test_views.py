@@ -21,13 +21,11 @@ class TestViews(TestCase):
             author=self.user
         )
         self.comment = Comment.objects.create(
+            pk=1,
             post=self.post,
             owner=self.user,
             content='Test comment'
         )
-        print(self.post)
-        print(self.detail_url)
-        print(self.comment)
 
     def test_get_posts(self):
         response = self.client.get(self.posts_url)
@@ -46,23 +44,18 @@ class TestViews(TestCase):
         self.client.force_login(user=self.user)
         post = Post.objects.get(pk=1)
         self.assertEqual(Comment.objects.count(), 1)
+        comment = Comment.objects.get(pk=1)
         response = self.client.post('/posts/post/')
 
-        # self.assertEqual(response.status_code, 302)
         self.assertEqual(post.title, 'Test post 1')
+        self.assertEqual(comment.content, 'Test comment')
 
     def test_edit_comment(self):
         self.client.force_login(user=self.user)
         post = Post.objects.get(pk=1)
-        response = self.client.get('/posts/update/{0}/'.format(post.pk))
+        comment = Comment.objects.get(pk=1)
+        comment.content = 'Edit test comment'
+        response = self.client.get('/posts/post/1/update/{0}/'.format(comment.pk))
 
-        # self.assertEqual(response.status_code, 302)
+        self.assertEqual(comment.content, 'Edit test comment')
         self.assertTemplateUsed('edit_comment.html')
-
-    def test_delete_comment(self):
-        self.client.force_login(user=self.user)
-        post = Post.objects.get(pk=1)
-        response = self.client.get('/posts/delete/{0}/'.format(post.pk))
-
-        # self.assertEqual(response.status_code, 302)
-        self.assertTemplateUsed('delete_comment.html')
