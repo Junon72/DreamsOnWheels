@@ -48,27 +48,3 @@ class TestHighlightGetViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'highlight.html')
 
-# class UserCanVote(TestCase):
-
-#     def test_vote_highlight_vote_is_counted(self):
-#         user = User.objects.create_user(
-#             id=3,
-#             username='testUser',
-#             email='email@test.com',
-#             password='testWord'
-#         )
-
-#         highlight = Original.objects.create(
-#             id=1,
-#             make="Bluesmobile",
-#             status='h',
-#             votes=0
-#         )
-
-#         self.client.login(username='testUser', password='testWord')
-#         print(user)
-#         request = self.client.post('/highlight/vote/1/'.format(Original.id))
-#         self.assertEqual(Original.objects.count(), 1)
-#         Vote.objects.create(user_id=3, highlight_id=1)
-#         highlight = Original.objects.get(id=1)
-#         self.assertEqual(highlight.votes, 1)

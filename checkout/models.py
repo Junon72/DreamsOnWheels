@@ -30,4 +30,4 @@ class OrderLineItem(models.Model):
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return f"{self.quantity} / {self.product.make} / {self.product.model} @ {self.product.price}"
+        return f"{self.quantity} / {self.product.make} / {self.product.model} / € {self.product.price}"

@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
   console.log('accessed');
   $('#payment-form').submit(function () {
     var form = this;
