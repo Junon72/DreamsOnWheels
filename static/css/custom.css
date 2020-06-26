@@ -35,10 +35,6 @@ a, a:hover, a:focus {
 	font-family: "Lato", serif;
 }
 
-.jost {
-	font-family: "Jost", serif;
-}
-
 .arvo {
 	font-family: 'Arvo', serif !important;
 }
@@ -578,29 +574,6 @@ a.footer-nav .fa:hover,
 	width: 76px;
 	height: auto;
 	border-radius: 50%;
-}
-
-.card-columns {
-
-	@include media-breakpoint-only(xl) {
-		column-count: 2;
-	}
-
-	@include media-breakpoint-only(lg) {
-		column-count: 2;
-	}
-
-	@include media-breakpoint-only(md) {
-		column-count: 2;
-	}
-
-	@include media-breakpoint-only(sm) {
-		column-count: 2;
-	}
-
-	@include media-breakpoint-only(xs) {
-		column-count: 1;
-	}
 }
 
 /* ------------------------------------------------ Profile.html */

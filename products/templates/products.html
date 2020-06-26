@@ -190,27 +190,6 @@
 			{% endfor %}
 		</div>
 	</section>
-	<!-- <div class="row justify-content-center no-gutters">
-		<div class="pagination col-xs-12 my-4">
-			<span class="step-links pagin-text lato">
-				{% if posts.has_previous %}
-				<a href="?page=1" class="pagin-anchor">&laquo; first</a>
-				<span>|</span>
-				<a href="?page={{ posts.previous_page_number }}" class="pagin-anchor">previous</a>
-				{% endif %}
-
-				<span class="current">
-					Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-				</span>
-
-				{% if posts.has_next %}
-				<a href="?page={{ posts.next_page_number }}" class="pagin-anchor">next</a>
-				<span>|</span>
-				<a href="?page={{ posts.paginator.num_pages }}" class="pagin-anchor">last &raquo;</a>
-				{% endif %}
-			</span>
-		</div>
-	</div> -->
 	{% if not user.is_authenticated %}
 	<div class="row clearfix no-gutters">
 		<div class="col">

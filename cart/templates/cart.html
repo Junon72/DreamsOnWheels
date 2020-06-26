@@ -189,13 +189,14 @@
 						{% if user.is_authenticated %}
 						{% else %}
 						<div class="row no-gutters">
-							<div class="col">
-								<a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm btn-block">Login</a>
-								<div class="display-block mb-2"><strong class="lato price FySmall">
-										Login to make purchases and use our promotions!
-									</strong>
-								</div>
+							<div class="col-12">
+								<a href="{% url 'login' %}" class="btn btn-block btn-dark btn-sm btn-block">Login</a>
 							</div>
+							<div class="col-12 mt-2"><p class="lato price text-warning text-center">
+									Login to checkout!
+								</p>
+							</div>
+
 						</div>
 						{% endif %}
 						<div class="row no-gutters mt-4">
@@ -212,7 +213,7 @@
 						<div class="row no-gutters mt-3 mb-2">
 							<div class="col">
 								{% if totals == 0 or not user.is_authenticated %}
-								<a href="#" class="btn btn-dark btn-default btn-block">Checkout</a>
+								<button class="btn btn-outline-secondary btn-block" disabled>Checkout</button>
 								{% else %}
 								<a href="{% url 'checkout' %}" class="btn btn-dark btn-default btn-block">Checkout</a>
 								{% endif %}

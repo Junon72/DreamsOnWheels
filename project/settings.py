@@ -17,7 +17,6 @@ from os import path
 if path.exists("env.py"):
     import env
     DEBUG = True
-    print('env imported')
 else:
     DEBUG = False
 
@@ -113,7 +112,7 @@ if "DATABASE_URL" in os.environ:
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
-    print("Postgres URL not found, using sqlite instead")
+    print("Postgres URL not found, using sqlite3 instead")
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -164,15 +163,17 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-if 'USE_EMAIL' in os.environ:
+if 'DEBUG' in os.environ:
+    print('Using SMPT setting from email backend')
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     DEFAULT_FROM_EMAIL = 'admin@dow.com'
     EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
     EMAIL_USE_TLS = True
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_PORT = 587
+    EMAIL_HOST = os.getenv("EMAIL_HOST")
+    EMAIL_PORT = os.getenv("EMAIL_PORT")
 else:
+    print('Use console email backend')
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'admin@dow.com'
     EMAIL_USE_TLS = False

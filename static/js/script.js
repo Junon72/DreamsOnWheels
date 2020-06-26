@@ -14,7 +14,7 @@ $(document).ready(function () {
 		} else {
 			header.classList.remove('sticky');
 		}
-	};
+	}
 
 	// Tooltips
 	$(function () {

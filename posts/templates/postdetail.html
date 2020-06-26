@@ -52,11 +52,11 @@
 					</div>
 					<div class="col-sx-10 clearfix d-flex flex-column pl-3 pt-auto">
 						<p class="my-0"><strong class="lato">{{ post.author }}</strong>
-						{% if post.author.profiles.contributor == True %}
-						<small> | Guest</small>
-						{% else %}
-						<small> | DOW</small>
-						{% endif %}
+							{% if post.author.profiles.contributor == True %}
+							<small> | Guest</small>
+							{% else %}
+							<small> | DOW</small>
+							{% endif %}
 						</p>
 						<p class="article-published m-0"><i class="fa fa-clock warning-clr pr-2"></i><small
 								class="thin">{{ post.published_date }}</small>
@@ -68,6 +68,9 @@
 		<div class="row pb-4 mt-2 no-gutters justify-content-center highlightArticle w-100">
 			<div class="col-lg-8 col-md-10 col-sx-12">
 				<p>{{ post.content }}</p>
+			</div>
+			<div class="col-lg-8 col-md-10 col-sx-12 justify-content-end d-flex">
+				<p class="text-muted">{{ post.views }} views</p>
 			</div>
 		</div>
 	</section>

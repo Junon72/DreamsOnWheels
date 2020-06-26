@@ -6,7 +6,7 @@ from .models import Post, Comment
 class PostAdmin(admin.ModelAdmin):
     list_display = ('status', 'author', 'title', 'created_date', 'tag')
     list_filter = ('status', 'published_date', 'tag')
-    search_fields = ('status', 'author')
+    search_fields = ('content', 'title', 'tag')
     actions = ['publish_post', 'draw_post']
 
     def publish_post(self, request, queryset):
@@ -25,8 +25,8 @@ class CommentAdmin(admin.ModelAdmin):
         'post',
         'created_date'
     )
-    list_filter = ('status', 'created_date')
-    search_fields = ('owner', 'content')
+    list_filter = ('status', 'created_date', 'owner')
+    search_fields = ('content',)
     actions = ['approve_comments', 'suspend_comments']
 
     def approve_comments(self, request, queryset):
