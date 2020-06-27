@@ -1015,7 +1015,7 @@ Detailed testing documentation can be found [here](#)
 
 ## Media and Content Origin
 
-[Wikipedia](https://www.wikipedia.org/) was used to create content for the products, originals and blogs.
+[Wikipedia](https://www.wikipedia.org/) was used to create content for the products, originals and blogs, and images.
 
 Product images were downloaded from Copyright free image site.
 
