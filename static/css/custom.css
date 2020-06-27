@@ -7,9 +7,6 @@
 
 /* Titles / Subtitles / Headers / Paragraphs */
 
-
-/* Fonts */
-
 h4,
 p {
 	font-family: "Lato", serif;
@@ -83,7 +80,7 @@ a, a:hover, a:focus {
 	color: rgb(244, 167, 0);
 }
 
-/* Right align */
+/* Alignment */
 
 .section-title {
 	color: black;
@@ -241,9 +238,8 @@ a.footer-nav .fa:hover,
 
 .salesSlider {
 	min-width: 100vw;
-	height: 27vh;
+	height: auto;
 	overflow: hidden;
-	border: red;
 	clear: left;
 	display: flex;
 	margin-left: -15px;
@@ -256,7 +252,7 @@ a.footer-nav .fa:hover,
 	position: relative;
 	overflow: hidden;
 	width: auto;
-	height: 27vh;
+	height: auto;
 	margin: auto;
 	align-items: center;
 	justify-content: center;
@@ -433,8 +429,8 @@ a.footer-nav .fa:hover,
 	border: none;
 }
 
-
 /* ------------------------------------------------ Checkout.html */
+
 .badge {
 	padding-left: 9px;
 	padding-right: 9px;
@@ -462,20 +458,13 @@ a.footer-nav .fa:hover,
 	right: 0;
 }
 
-
-
-
 /* ------------------------------------------------ Highlight.html */
-
 
 .highlightItem {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: calc(100vh/ 4);
-	min-height: 540px;
 }
-
 
 .highlightSpec {
 	text-align: center;
@@ -514,7 +503,6 @@ a.footer-nav .fa:hover,
 	justify-content: center;
 	margin: 1em;
 }
-
 
 .card-title {
 	margin: 1em 0;
@@ -607,4 +595,35 @@ a.footer-nav .fa:hover,
 
 .error-text {
 	color: #ffffff;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1400px) {
+	.highlightItem {
+		height: calc(100vw/ 3);
+	}
+}
+
+@media screen and (max-width: 1399px) and (min-width: 992px) {
+	.highlightItem {
+		height: calc(100vw/ 2.6);
+	}
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	.highlightItem {
+		height: calc(100vw/ 2.4);
+	}
+}
+
+@media screen and (max-width: 767px) and (min-width: 575px) {
+	.highlightItem {
+		height: calc(100vw/ 2.2);
+	}
+}
+
+@media screen and (max-width: 574px) and (min-width: 315px) {
+	.highlightItem {
+		height: calc(100vw/ 1.8);
+	}
 }

@@ -6,7 +6,7 @@
 
 ## E-commerce site for model cars
 
-Heroku App: [DreamsOnWheels](https://dreamsonwheels.herokuapp.com/checkout/)
+Heroku App: [DreamsOnWheels](https://dreamsonwheels.herokuapp.com)
 
 GitHub: [DreamsOnWheels GitHub](https://github.com/Junon72/DreamsOnWheels)
 
@@ -1003,17 +1003,28 @@ HTML code was tested with [W3 validator](https://validator.w3.org/).
 CSS code was tested with [Jigsaw validator](https://jigsaw.w3.org/css-validator/).
 JS code was tested with [JShint](https://jshint.com/).
 
-All the functionality, features and pages were teste extensively manually. The forms were tried with unqualified inputs, to test
-form validation, input validation and error messaging as well as valid inpouts and messageing where messageing was relevant.
+All the functionality, features and pages were tested manually. The forms were tried with unqualified inputs, to test
+form validation, input validation and error messaging as well as valid inputs and messaging where messaging was relevant.
 Email functionality were tested, both with console backend and using smtp server.
+
+The application was also tested by friend and family, who I instructed to make account, login, vote for highlight,
+leave a comment and to make a purchase. I also was asking if they would try to reset their password, edit and delete a comment,
+after they've been published.
 
 Detailed testing documentation can be found [here](#)
 
 ## Media and Content Origin
 
-For content text wikipedia was used as a source. Images are downloaded from Copyright free sites, such as Pexels, 
+[Wikipedia](https://www.wikipedia.org/) was used to create content for the products, originals and blogs.
 
-the default user avatar for a profile picture comes from [icon-icons](https://icon-icons.com/icon/avatar-default-user/92824)
+Product images were downloaded from Copyright free image site.
+
+- [Pexels](https://www.pexels.com/)
+- [Free images](https://www.freeimages.com)
+- [Unsplash](https://unsplash.com/)
+- [Mad4Wheels](https://www.mad4wheels.com/)
+
+- [icon-icons](https://icon-icons.com/icon/avatar-default-user/92824) - for the default user avatar / profile image.
 
 ## References
 
@@ -1021,35 +1032,42 @@ the default user avatar for a profile picture comes from [icon-icons](https://ic
 
 To build the comments functionality I modified the examples from these two sources to fit DOW app.
 Neither of them was build on Django 3, but they gave some understanding of the principles.
+
 - [Django Builds a Personal Blog: Comment on the Blog](https://developpaper.com/django-builds-a-personal-blog-comment-on-the-blog/)
 - [Creating Comments System With Django](https://djangocentral.com/creating-comments-system-with-django/)
 
 Comments edit and delete were build using django-bootstrap-modal-forms package, which refused to co-operate in the enviroment I gave it.
-We did find tune together after sorting out few issues of being little diffrent.
+We did find tune together after sorting out few issues of being little different.
+
 - [In an UpdateView with the form_valid over-written, how does django know where to redirect to?](https://stackoverflow.com/questions/47429203/in-an-updateview-with-the-form-valid-over-written-how-does-django-know-where-to)
 - [DeleteView with a dynamic success_url dependent on id](https://stackoverflow.com/questions/26290415/deleteview-with-a-dynamic-success-url-dependent-on-id)
 
 These two helped to decide what should happen with related models on delete.
+
 - [Django: ForeignKey's on_delete handlers](https://jilles.me/django-foreignkeys-on_delete-handlers/)
 - [Django database integrity: ForeignKey on_delete options](https://medium.com/@inem.patrick/django-database-integrity-foreignkey-on-delete-option-db7d160762e4)
 
 Vote function came together with the little help from these guys.
-[what is reverse() in Django](https://stackoverflow.com/questions/11241668/what-is-reverse-in-django)
-[Django - How to make an upvote button?](https://stackoverflow.com/questions/55158202/django-how-to-make-an-upvote-button)
 
-In my attemps to wrestle testing with Django, I studied Code Institute alumni works and more than few other sources.
+- [what is reverse() in Django](https://stackoverflow.com/questions/11241668/what-is-reverse-in-django)
+- [Django - How to make an upvote button?](https://stackoverflow.com/questions/55158202/django-how-to-make-an-upvote-button)
+
+In my attempts to wrestle testing with Django, I studied Code Institute alumni works and more than few other sources.
 From these sources I am sure I have traces in my testing code.
-[Testing in Django (Part 1) – Best Practices and Examples](https://realpython.com/testing-in-django-part-1-best-practices-and-examples/)
-[PCSwimming](https://github.com/hschafer2017/PCSwimming)
+
+- [Testing in Django (Part 1) – Best Practices and Examples](https://realpython.com/testing-in-django-part-1-best-practices-and-examples/)
+- [PCSwimming](https://github.com/hschafer2017/PCSwimming)
 
 To test error handling this stack post was most helpful.
-[How to test 500.html error page in django development env?](https://stackoverflow.com/questions/2740003/how-to-test-500-html-error-page-in-django-development-env)
+
+- [How to test 500.html error page in django development env?](https://stackoverflow.com/questions/2740003/how-to-test-500-html-error-page-in-django-development-env)
 
 To extend the django user model I asked from Victor, because Simpleisbetterthancomplex.
-[How to Extend Django User Model](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html)
+
+- [How to Extend Django User Model](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html)
 
 ## Special Thanks
 
 Thank you for you patience and support my lovely family. I wish nothing more than I will have a chance to pay you back the time away from you while climbing this mountain, and to be fully present with you again. 
-Thank you for Code Institute tutor team who helped me sort out few hickups on the way, and Slack community who I know go trhough the same ups and downs. 
-And thank you Brian for mentoring me and having my back.
+Thank you for Code Institute tutor team who helped me sort out few hiccups on the way, and Slack community who I know go trhough the same ups and downs. 
+And thank you Brian Macharia for mentoring me and having my back.
