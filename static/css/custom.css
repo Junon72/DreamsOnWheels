@@ -367,7 +367,8 @@ a.footer-nav .fab:hover,
 .view .product-image {
 	position: relative;
 	height: auto;
-	min-width: 100%;
+	width: 100%;
+	min-width: initial!important;
 	object-fit: cover;
 }
 
