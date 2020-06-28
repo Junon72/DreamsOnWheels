@@ -366,16 +366,14 @@ a.footer-nav .fab:hover,
 
 .view .product-image {
 	position: relative;
-	height: auto;
+	height: 100%;
 	width: 100%;
-	min-width: auto!important;
-	min-width: 100%!important;
 	object-fit: cover;
 }
 
 .modal-product-image {
 	position: relative;
-	height: auto;
+	height: 100%;
 	width: 100%;
 	object-fit: cover;
 }
