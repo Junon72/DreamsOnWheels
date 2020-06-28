@@ -786,7 +786,7 @@ After this you can push using just `git push`.
 I have installed VSCode GitHub extension, which makes committing changes slightly easier,
 by skipping username and password inquiry with each new commit.
 
-### Installing packages
+### Installing packages
 
 To install packages to your environment you need to update your pip, which is a Python package installer:
 
@@ -858,6 +858,8 @@ In browser you'll see the Django welcome page which confirms everything is confi
 
 ![Image of Django project page](docs/images/Django-page.png)
 
+[Back to index](#index)
+
 ## Deployment
 
 If you want to deploy the app in Heroku, I recomment first deploying the app locally. 
@@ -928,6 +930,7 @@ b. In your browser url tab navigate to `http://127.0.0.1:8000/admin`
 c. Login with your superuser credentials.
 
 #### Admin panel
+
 - If you want to emulate the setup as it has been thought out in real life scenario,
 you would need to create minimum of two groups: Employees and Contributors. You can find more about the
 groups authorization and access levels from [here](#Users-and-groups).
@@ -993,7 +996,9 @@ b. Serach for your GitHub repo and connect
 c. In `Manual Deploy` further down on the page, click `Deploy branch`. Wait while Heroku builds the project.
 d. When building is comlete, click `View` button under the build log.
 
-9. To use the app as intended follow the recommendations [here](#Admin-panel)
+9. To use the app as intended follow the recommendations and instructions [here](#Admin-panel)
+
+[Back to index](#index)
 
 ## Testing
 
@@ -1027,6 +1032,13 @@ Product images were downloaded from Copyright free image site.
 - [icon-icons](https://icon-icons.com/icon/avatar-default-user/92824) - for the default user avatar / profile image.
 
 [LorryIpsu](http://www.lorryipsum.com/), [DeLorean Ipsum](https://idsgn.dropmark.com/107/1458166) and [Social Good Ipsum](http://socialgoodipsum.com/#/) were used given a go in comments section.
+
+Favicon icon links were created using a [online HMTL generator](https://codepen.io/fuzzywalrus/pen/BWWMjJ) by [Greg Gant](https://codepen.io/fuzzywalrus)
+The icon is from [Icon Library](http://icon-library.com/icon/car-png-icon-16.html). The attributions go to:
+
+```<a href="https://icon-library.net/icon/car-png-icon-16.html">Car Png Icon #270076</a>```
+
+[Back to index](#index)
 
 ## References
 
@@ -1068,8 +1080,11 @@ To extend the django user model I asked from Victor, because Simpleisbetterthanc
 
 - [How to Extend Django User Model](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html)
 
+[Back to index](#index)
+
 ## Special Thanks
 
 Thank you for you patience and support my lovely family. I wish nothing more than I will have a chance to pay you back the time away from you while climbing this mountain, and to be fully present with you again.
-Thank you for Code Institute tutor team who helped me sort out few hiccups on the way, and Slack community who I know go through the same ups and downs.
-And thank you Brian Macharia for mentoring me and having my back.
+Thank you for Code Institute tutor team who helped me sort out few hiccups on the way,
+and of course Code Institute Slack community who I know go through the same ups and downs.
+And heartfelt thank you for Brian Macharia for mentoring me and having my back.
