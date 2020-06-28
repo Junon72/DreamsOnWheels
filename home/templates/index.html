@@ -72,7 +72,7 @@
 			<section id="highlights">
 				<div class="row w-100 no-gutters content-div mb-3 d-flex">
 					{% with highlights|first as highlight %}
-					<div class="col-md-6 mb-3">
+					<div class="col-lg-6 mb-3">
 						<h2 class="section-title">Highlights</h2>
 						<div class="blockquote text-muted pr-2 highlight-teaser">
 							<p class="mb-0 pt-3 pb-2">In this months highlights we present you
@@ -90,7 +90,7 @@
 
 						<a class="btn btn-warning" href="{% url 'highlight:get_highlight' %}">Read more</a>
 					</div>
-					<div class="col-md-6 pl-md-4">
+					<div class="col-lg-6 pl-lg-4">
 						<img class="img-fluid img-responsive d-block pb-0"
 							src="{{ MEDIA_URL }}{{ highlight.image_main }}" alt="Highlight of the month">
 					</div>
@@ -99,11 +99,11 @@
 			</section>
 			<section id="blogs">
 				<div class="row w-100 justify-content-right no-gutters content-div mt-5 mb-5 d-flex clearfix">
-					<div class="col-md-6 mb-4">
+					<div class="col-lg-6 mb-4">
 						<img class="img-fluid d-block img-responsive blogs-image"
 							src="{% static 'img/index/sunset-big.jpg' %}" alt="Red classic sports car in a beautiful sunset">
 					</div>
-					<div class="col-md-6 pl-md-4">
+					<div class="col-lg-6 pl-lg-4">
 						<h2 class="section-title">Blogs</h2>
 						<div class="blockquote text-muted blogs-teaser">
 							<p class="mb-0"><strong>Contributor posts</strong> -&nbsp;
@@ -127,62 +127,46 @@
 			<!-- About -->
 			<section id="about">
 				<div class="row w-100 justify-content-left no-gutters content-div mb-3 mt-5 d-flex">
-
 					<h2 class="section-title">About</h2>
-
 				</div>
 				<div class="row">
 					<div class="col mb-5">
 						<div class="article">
-							<p class="mr-2">We at DOW are passionate about cars and models.
-								And when we say passionate… we mean it.
-								The driving force behind Dow is B.W. Smith. A true petrolhead.
-								During his studies he started participating in historic rallies with an old Lancia
-								Fulvia in 1998.
-								Nowadays he owns an Alfa Romeo Giulia and a MGB.
-								True timeless beauties form different eras and generations of pure automobile greatness.
+							<p class="mr-2">Dow are B.W.
+								Smith, J.G.Wold and A. Roberts. We at DOW are passionate about cars and models.
+								And when we say passionate… we really mean it.
+								B.W. Smith, a true petrolhead, is the driving force behind Dow. From proud owner of die cast Ford Mustang Boss 429, to driving the real life breathing Dodge Challenger in those wild student years, to an owner os few timeless beauties seen also on this site. The pursue for dream wheels, from collecting matchbox cars, to driving in historic rallies after college, the passion has become his way of life, hobby and a job.
 							</p>
-							<p class="mr-2">In 2012 the Dow’s Model Car Workshop opened its virtual doors to offer its
-								services. Today our customers of the commissioned customized model cars are located all
-								around the globe. It is a truly international market we proudly serve. Dow are B.W.
-								Smith, J.G.Wold and A. Roberts Sharing our love for anything motor related brought us
-								together at University. Our different areas of expertise made us realise that a business
-								venture together would set us apart from what was already out there. We bring you the
-								highest of quality products and deep knowledge in the field, together with a a forward
-								thinking attitude to manage the best deals for the most sought out items in the market.
-							</p>
-							<p class="mr-2">At DOW we are enthusiasts as much as retailers. We don’t just want to
+							<p class="mr-2"> Sharing our love for anything motor related brought us
+								together. Our different areas of expertise made us realise that a business
+								venture together would set us apart from what was already out there. We don’t just want to
 								sell you a model, we want you to love what you purchase! When you purchase a model
 								from DOW you know that you are dealing with people who share your passion and take a
 								pride in providing impeccable customer service.
 							</p>
-							<p class="mr-2">We specialise in 1/43 and 1/18 scale model cars by manufacturers including
-								C.A.R.S, Modelthat, Nr.one, Wheels, Precious and many others.
-								As enthusiasts, our interests are mainly in European classics with
-								French cars being particularly prominent. This enthusiasm stems from owning a long
-								line of French cars and having a keen interest in all things automotive. But surely,
-								we do not discriminate, and bring interesting additions to our collection from all
-								corners of the car world. What matters to us is the quality.
-								The models we stock are those which we like and offer good value.
-								We are continually expanding our product range as we believe that
-								it is important to not only offer great service and value for money,
-								but also to offer the widest possible choice to our customers.
-								The models we stock are those which we like and offer good value with affordable
-								pricing.
+							<p class="mr-2">In 2012 the Dow’s Model Car Workshop opened its virtual doors to our customers from all
+								around the globe. We bring you customized model cars of highest quality, with deep knowledge in the field. You can expect us to manage you the best deals and the most sought out items in the market.
 							</p>
-							<p class="mr-2"> If you do not find what you are looking for, stay tuned.
+							<p class="mr-2">We specialize in 1/43 and 1/18 scale model cars by manufacturers including
+								C.A.R.S, Modelthat, Nr.one, Aston Originals, Precious and many others.
+								As enthusiasts, our interests are mainly in European classics, but surely, we do not discriminate. We regularly bring interesting additions to our collection from all
+								corners of the car world. What matters to us is the quality and the value for investment.
+							</p>
+							<p class="mr-2"> And if you do not find what you are looking for, stay tuned or throw us with a message.
 								There are many well-loved models in the pipeline which we will add to our catalog
 								as they are released. Meanwhile, get to know our highlights contenders for this month.
-								And don't forget our blog section for stories, intrigue and tidbits from our expert
-								A. Roberts and other contributors.
+								And don't forget our blog section for stories, intrigue and tidbits from our contributors
+								A. Roberts, J.G. Wolf and guests. Or apply to become a contributor yourself.
 							</p>
+							{% if not user.is_authenticated %}
 							<p class="mr-2">New to this site?
 								<a class="lato text-warning text-uppercase mx-2" href="{% url 'register' %}" data-tooltip="tooltip"
 							data-placement="bottom" title="Register" data-delay="50">Sign in
 									now</a>
-								and join us on a journey of collectibles with ever growing community of all models and
+								and join our ever growing community of all models and
 								cars enthusiasts.
 							</p>
+							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -218,7 +202,7 @@
 					<div class="row d-flex justify-content-center">
 						<a href="{% url 'contact:contact' %}" class="lato text-warning FyMed mt-3" data-tooltip="tooltip"
 							data-placement="bottom" title="Contact us" data-delay="50">We are always looking for
-							contributors to our team. Interested of joining?</a>
+							contributors to our team. Interested in joining?</a>
 					</div>
 				</div>
 			</section>

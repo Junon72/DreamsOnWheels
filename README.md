@@ -247,14 +247,14 @@ Sales preview section
 
 Car Highlight preview section
 
-- Image (right)
+- Image (right / stacked on smaller screens)
 - Title
 - Text
 - Button to view the highlights page
 
 Blogs preview section
 
-- Image (left)
+- Image (left / stacked on smaller screens)
 - Title
 - Text
 - Button to view the page
@@ -1026,6 +1026,8 @@ Product images were downloaded from Copyright free image site.
 
 - [icon-icons](https://icon-icons.com/icon/avatar-default-user/92824) - for the default user avatar / profile image.
 
+[LorryIpsu](http://www.lorryipsum.com/), [DeLorean Ipsum](https://idsgn.dropmark.com/107/1458166) and [Social Good Ipsum](http://socialgoodipsum.com/#/) were used given a go in comments section.
+
 ## References
 
 ### Comments section in blogs
@@ -1066,8 +1068,8 @@ To extend the django user model I asked from Victor, because Simpleisbetterthanc
 
 - [How to Extend Django User Model](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html)
 
-## Special Thanks
+## Special Thanks
 
-Thank you for you patience and support my lovely family. I wish nothing more than I will have a chance to pay you back the time away from you while climbing this mountain, and to be fully present with you again. 
-Thank you for Code Institute tutor team who helped me sort out few hiccups on the way, and Slack community who I know go trhough the same ups and downs. 
+Thank you for you patience and support my lovely family. I wish nothing more than I will have a chance to pay you back the time away from you while climbing this mountain, and to be fully present with you again.
+Thank you for Code Institute tutor team who helped me sort out few hiccups on the way, and Slack community who I know go through the same ups and downs.
 And thank you Brian Macharia for mentoring me and having my back.

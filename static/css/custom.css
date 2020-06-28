@@ -626,4 +626,7 @@ a.footer-nav .fa:hover,
 	.highlightItem {
 		height: calc(100vw/ 1.8);
 	}
+	.login-notice {
+		font-size: medium;
+	}
 }

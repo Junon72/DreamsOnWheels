@@ -7,7 +7,7 @@
 <!-- Blog posts Header -->
 <div class="container main-wrapper-index">
 	<section id="blogs-header">
-	{% include '_home_header.html' %}
+		{% include '_home_header.html' %}
 	</section>
 </div>
 <!-- /Blog posts Header -->
@@ -21,7 +21,6 @@
 			<img class="card-img-top" src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }} | title image">
 			{% endif %}
 			<div class="card-body pt-2">
-				<h5 class="card-title lato">{{ post.title }}</h5>
 				<p class="my-0"><strong class="lato mt-auto">{{ post.author }}</strong>
 					{% if post.author.profiles.contributor == True %}
 					<small> | Guest</small>
@@ -32,8 +31,11 @@
 				<p class="article-published m-0"><i class="fa fa-clock pr-2 text-secondary"></i><small
 						class="thin">{{ post.published_date }}</small>
 				</p>
+				<h5 class="card-title lato">{{ post.title }}</h5>
 				<p class="card-text pt-2 mb-5">{{ post.content | truncatewords:50 }}</p>
-				<a class="btn btn-lin toBlog lato text-muted read-more p-0" href="{% url 'posts:post_detail' pk=post.pk %}" data-tooltip="tooltip" data-placement="bottom" title="About original" data-delay="50">Read more ></a>
+				<button class="btn btn-sm btn-outline-dark lato"
+					href="{% url 'posts:post_detail' pk=post.pk %}" data-tooltip="tooltip" data-placement="bottom"
+					title="Read this post" data-delay="50">Read post ></button>
 			</div>
 			<div class="card-footer d-flex align-items-end">
 				<small class="text-muted">Views {{ post.views }} | Comments {{ post.comments.count }}</small>

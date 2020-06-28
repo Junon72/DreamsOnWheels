@@ -61,7 +61,7 @@
 		<div class="row clearfix no-gutters">
 			<!-- Product card (row start) -->
 			{% for product in filter.qs %}
-			<div class="col-md-6 mb-4 no-p">
+			<div class="col-md-6 mb-4 p-0 mx-sm-0">
 				<div class="card sales-card pr-0 h-100">
 					{% if product.status == 'p' %}
 					<span class="badge badge-success promo-badge lato position-absolute mb-2">Promotion</span>
