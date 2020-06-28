@@ -360,7 +360,7 @@ a.footer-nav .fab:hover,
 }
 
 .view {
-	overflow: hidden;
+	/* overflow: hidden; */
 	margin: auto;
 }
 
@@ -369,6 +369,7 @@ a.footer-nav .fab:hover,
 	height: auto;
 	width: 100%;
 	min-width: initial!important;
+	min-width: auto!important;
 	object-fit: cover;
 }
 
