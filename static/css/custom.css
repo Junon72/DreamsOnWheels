@@ -361,6 +361,7 @@ a.footer-nav .fab:hover,
 
 .view {
 	margin: auto;
+	height: auto;
 }
 
 .view .product-image {
