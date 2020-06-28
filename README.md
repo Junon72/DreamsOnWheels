@@ -18,7 +18,7 @@ The project was created as Milestone project for the Full Stack Development modu
 
 1. [Project brief](#Project-brief)
 2. [Project overview](#Project-overview)
-3. [Who is this application for?](#Who-is-this-application-for?)
+3. [User stories](#User-stories)
 4. [UX/UI](#UX/UI)
 5. [Planned features in future](#Planned-features)
 6. [Planning](#Planning)
@@ -108,7 +108,7 @@ DOW - DreamsOnWheels user is able to:
 
 [Back to index](#index)
 
-## Who is this application for?
+## User stories
 
 The application is for dream car and model car enthusiasts
 
@@ -120,7 +120,7 @@ The application is for dream car and model car enthusiasts
 - Professionals
 - Friends and families of all above
 
-### User stories
+### Their stories stories
 
 1. I'm a model car collector interested in high quality model cars and rare occasions.
 I look for high quality products and good deals. On website I would like to read about
@@ -1014,20 +1014,25 @@ Email functionality were tested, both with console backend and using smtp server
 
 The application was also tested by friend and family, who I instructed to make account, login, vote for highlight,
 leave a comment and to make a purchase. I also was asking if they would try to reset their password, edit and delete a comment,
-after they've been published.
+after they've been published. Adjustments were made to features that appeared confusing of not self explanatory after discussion
+with the testing individuals.
 
-Detailed testing documentation can be found [here](#)
+Detailed testing documentation can be found [here](docs/documents/DOWtesting.pdf)
+
+[Back to index](#index)
 
 ## Media and Content Origin
 
 [Wikipedia](https://www.wikipedia.org/) was used to create content for the products, originals and blogs, and images.
 
-Product images were downloaded from Copyright free image site.
+Most product images were downloaded from following.
 
 - [Pexels](https://www.pexels.com/)
 - [Free images](https://www.freeimages.com)
 - [Unsplash](https://unsplash.com/)
 - [Mad4Wheels](https://www.mad4wheels.com/)
+
+Some model cars origins are not definite. If there is any copyright frictions, I would like to be contacted at juno.athome@gmail.com, so I can remove the content.
 
 - [icon-icons](https://icon-icons.com/icon/avatar-default-user/92824) - for the default user avatar / profile image.
 
