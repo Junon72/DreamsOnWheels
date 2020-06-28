@@ -367,7 +367,7 @@ a.footer-nav .fab:hover,
 .view .product-image {
 	position: relative;
 	height: auto;
-	width: 100%;
+	min-width: 100%;
 	object-fit: cover;
 }
 
@@ -525,10 +525,6 @@ a.footer-nav .fab:hover,
 }
 
 .read-more {
-	font-size: .8rem !important;
-	font-family: "Lato", serif;
-	font-weight: 400;
-	text-transform: uppercase;
 	position: absolute;
 	bottom: 55px;
 }

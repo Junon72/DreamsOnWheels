@@ -33,9 +33,9 @@
 				</p>
 				<h5 class="card-title lato">{{ post.title }}</h5>
 				<p class="card-text pt-2 mb-5">{{ post.content | truncatewords:50 }}</p>
-				<button class="btn btn-sm btn-outline-dark lato"
+				<a class="btn btn-sm btn-outline-dark lato read-more"
 					href="{% url 'posts:post_detail' pk=post.pk %}" data-tooltip="tooltip" data-placement="bottom"
-					title="Read this post" data-delay="50">Read post ></button>
+					title="Read this post" data-delay="50">Read post ></a>
 			</div>
 			<div class="card-footer d-flex align-items-end">
 				<small class="text-muted">Views {{ post.views }} | Comments {{ post.comments.count }}</small>
