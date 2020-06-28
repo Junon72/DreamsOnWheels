@@ -1034,9 +1034,9 @@ Product images were downloaded from Copyright free image site.
 [LorryIpsu](http://www.lorryipsum.com/), [DeLorean Ipsum](https://idsgn.dropmark.com/107/1458166) and [Social Good Ipsum](http://socialgoodipsum.com/#/) were used given a go in comments section.
 
 Favicon icon links were created using a [online HMTL generator](https://codepen.io/fuzzywalrus/pen/BWWMjJ) by [Greg Gant](https://codepen.io/fuzzywalrus)
-The icon is from [Icon Library](http://icon-library.com/icon/car-png-icon-16.html). The attributions go to:
 
-```<a href="https://icon-library.net/icon/car-png-icon-16.html">Car Png Icon #270076</a>```
+The icon is from [Icon Library](http://icon-library.com/icon/car-png-icon-16.html). The provided attribution link was flagged faulty and possibly harmful, for why I have not included the link here or on the website. The site appears to have an obsolete certification.
+Attribution should go to icon-library.net.
 
 [Back to index](#index)
 
