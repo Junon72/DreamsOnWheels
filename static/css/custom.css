@@ -140,7 +140,8 @@ a, a:hover, a:focus {
 }
 
 .navbar-collapse.show {
-	background-color: rgb(52, 58, 64, .96);
+	background-color: #343A40;
+	background-color: rgb(52,58,64,0.96);
 	width: 100vw;
 	margin-right: -1rem;
 	margin-left: -1rem;
