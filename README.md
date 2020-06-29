@@ -1020,6 +1020,24 @@ with the testing individuals.
 
 Detailed testing documentation can be found [here](docs/documents/DOWtesting.pdf)
 
+### Bugs
+
+In deployment phase to Heroku, I suddenly lost ability to login to the Admin page. The admin login stopped showing up.
+
+I got a message on console when trying to access admin login stating:
+
+```GET https://dreamsonwheels.herokuapp.com/admin/login/?next=/admin/ 500 (Internal Server Error)```
+
+On local server the message was:
+
+```bash
+DoesNotExist at /admin/login/
+Site matching query does not exist.
+```
+
+With the assistance from Code Institute tutor Kevin Lorey, the bug was resolved by removing `django.contrib.sites` from the `INSTALLED_APPS` in project settings.py file.
+
+
 [Back to index](#index)
 
 ## Media and Content Origin

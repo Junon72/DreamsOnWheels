@@ -14,6 +14,14 @@ import stripe
 
 @login_required()
 def checkout(request):
+    '''
+    Fetch user profile data to pre-fill
+    order form. Provide order form based on 
+    profile model and Stripe payment form.
+    After successfull transaction, return to
+    pack to the Sales page
+    '''
+
     stripe.api_key = settings.STRIPE_SECRET
     publishable = settings.STRIPE_PUBLISHABLE
 

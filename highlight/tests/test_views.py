@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 
 
 class TestHighlightGetViews(TestCase):
+    '''
+    Test was build with the help from Code Institute
+    tutor Xavier Astor.
+    '''
 
     @classmethod
     def setUpTestData(cls):

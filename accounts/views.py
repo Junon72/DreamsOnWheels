@@ -15,7 +15,7 @@ from accounts.forms import (
 
 @login_required
 def logout(request):
-    """Logout the user"""
+    """Logout the user and return index page"""
 
     auth.logout(request)
     messages.success(request, 'You have successfully logged out!')
