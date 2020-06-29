@@ -1010,6 +1010,11 @@ leave a comment and to make a purchase. I also was asking if they would try to r
 after they've been published. Adjustments were made to features that appeared confusing of not self explanatory after discussion
 with the testing individuals.
 
+### TTD
+
+Test Driven Development approach was intended, but after few attempts to truly implement TTD into the development process I decided to try to tackle the testing again afterwards. Despite my sincere efforts, shifting the thinking from coding what I would like to happen, to thinking about a test first, turned out to be way above my current capabilities and proficiency in these new frameworks. It disrupted the development process and halted any progress sometimes for days at the time. I did test each step manually and recursively for functionality and dependencies before committing them to the Git. Forms were tested against the models, views tested for paths and functions and  rendering and producing right templates. Data was tested using print function, django template rendering and admin site.
+
+Documentation for testing can be found [here](docs/documents/DOWtesting.pdf).
 
 ### Bugs
 
