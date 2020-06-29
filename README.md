@@ -19,9 +19,9 @@ The project was created as Milestone project for the Full Stack Development modu
 1. [Project brief](#Project-brief)
 2. [Project overview](#Project-overview)
 3. [User stories](#User-stories)
-4. [UX/UI](#UX/UI)
+4. [UX/UI](#UX-UI)
 5. [Wireframes](#Wireframes)
-6. [Planned features in future](#Planned-features)
+6. [Planned features and functions](#Planned-features-and-functions)
 7. [Planning](#Planning)
 8. [Database schema](#Database-schema)
 9. [Functional flow and Features](#Functional-Flow-And-Features)
@@ -153,7 +153,7 @@ Where is the webshop of really cool model cars!
 
 [Back to index](#index)
 
-## UX/UI
+## UX UI
 
 ### CSS
 
